@@ -155,4 +155,9 @@ class CustomerDeliveryAddress
         $new->country = $country;
         return $new;
     }
+
+    public function toArray(){
+        $data = ['name' => $this->careOf,  'street_address' => $this->streetAddress, 'careof' => $this->careOf, 'zipcode' => $this->zipCode, 'city' => $this->city, 'country' => $this->country];
+        return $data;
+    }
 }

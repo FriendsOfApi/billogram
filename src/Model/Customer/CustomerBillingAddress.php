@@ -154,4 +154,9 @@ class CustomerBillingAddress
         $new->country = $country;
         return $new;
     }
+
+    public function toArray(){
+        $data = ['careof' => $this->careOf, 'use_careof_as_attention' => $this->useCareOfAsAttention, 'street_address' => $this->streetAddress, 'zipcode' => $this->zipCode, 'city' => $this->city, 'country' => $this->country];
+        return $data;
+    }
 }

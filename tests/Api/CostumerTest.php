@@ -32,7 +32,7 @@ class CostumerTest extends TestCase
         $customer = $customer->withCompanyType('individual');
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient->customers()->create($customer);
-    }
+    }*/
 
     public function testUpdate(){
         $contact = new CustomerContact('ib92g','ib922@gmail.com','0712223344');
@@ -52,15 +52,15 @@ class CostumerTest extends TestCase
         $apiClient->customers()->update(1, $customer);
     }
 
-    public function testFetch(){
+    /*public function testFetch(){
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $custumer=$apiClient->customers()->fetch(1,['customer_no']);}*/
 
 
 
-    public function testSearch(){
+    /*public function testSearch(){
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $custumers = $apiClient->customers()->search( ['page'=>400, 'page_size'=> 1100 ]);
-    }
+        $custumers = $apiClient->customers()->search( ['name'=>'foo', 'page'=>2]);
+    }*/
 
 }

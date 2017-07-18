@@ -34,9 +34,9 @@ class Customers implements CreatableFromArray
     }
 
     /**
-     * @return Customer
+     * @return Customer[]
      */
-    public function getCustomer(): Customer
+    public function getCustomer()
     {
         return $this->customers;
     }

@@ -93,7 +93,7 @@ class CustomerContact
     }
 
     public function toArray(){
-        $data['contact']=['name' => $this->name , 'email' => $this->email, 'phone' => $this->phone];
+        $data = ['name' => $this->name , 'email' => $this->email, 'phone' => $this->phone];
         return $data;
     }
 }

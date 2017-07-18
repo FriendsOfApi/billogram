@@ -301,13 +301,13 @@ class Customer implements CreatableFromArray
         if ($this->vatNo !== null){
             $data['vat_no'] = $this->vatNo ?? null;}
         if ($this->contact !== null){
-            $data['contact'] = ['name' => $this->contact->getName() , 'email' => $this->contact->getEmail(), 'phone' => $this->contact->getPhone()];
+            $data['contact'] = $this->contact->toArray();
         }
         if ($this->address !== null){
-            $data['address'] = ['careof' => $this->address->getCareOf(), 'use_careof_as_attention' => $this->address->isUseCareOfAsAttention(), 'street_address' => $this->address->getStreetAddress(), 'zipcode' => $this->address->getZipCode(), 'city' => $this->address->getCity(), 'country' => $this->address->getCountry()];
+            $data['address'] = $this->address->toArray();
         }
         if ($this->deliveryAddress !== null){
-            $data['delivery_address'] = ['name' => $this->deliveryAddress->getCareOf(), 'street_address' => $this->deliveryAddress->getStreetAddress(), 'careof' => $this->deliveryAddress->getCareOf(), 'zipcode' => $this->deliveryAddress->getZipCode(), 'city' => $this->deliveryAddress->getCity(), 'country' => $this->deliveryAddress->getCountry()] ?? null;
+            $data['delivery_address'] = $this->deliveryAddress->toArray();
         }
         return $data;
     }

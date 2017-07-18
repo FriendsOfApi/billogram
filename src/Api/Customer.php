@@ -20,17 +20,21 @@ class Customer extends HttpApi
      */
     public function search(array $param = [])
     {
-        if (empty($param)){
-            $param = ['page'=>1, 'page_size'=> 100 ];
-
+        $paramFinal = ['page'=>1, 'page_size'=> 100];
+        foreach ($param as $key => $value){
+            if ('page' ===$param[$key]){
+                $paramFinal['page'] = $param['page'];
+            }elseif ('page_size' ===$param[$key]){
+                $paramFinal['page_size'] = $param['page_size'];
+            }else{
+                $paramFinal[$key] = $param[$key];
+            }
         }
-        $response= $this->httpget('/customer', $param);
+        $response= $this->httpGet('/customer', $paramFinal);
 
         if (!$this->hydrator) {
             return $response;
         }
-
-        // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
         }
@@ -49,9 +53,6 @@ class Customer extends HttpApi
      */
     public function fetch(int $customerNo, array $param = [])
     {
-        if (empty($customerNo)) {
-            throw new InvalidArgumentException('Id cannot be empty');
-        }
         $response = $this->httpGet('/customer/'.$customerNo, $param);
 
         if (!$this->hydrator) {
@@ -66,17 +67,13 @@ class Customer extends HttpApi
     }
 
     /**
-     * @param Model $costumer
+     * @param Model $customer
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws ValidationException
      */
-    public function create(Model $costumer)
+    public function create(Model $customer)
     {
-        if (empty($costumer->toArray())) {
-            throw new InvalidArgumentException('Message cannot be empty');
-        }
-
-        $response = $this->httpPost('/customer', $costumer->toArray());
+        $response = $this->httpPost('/customer', $customer->toArray());
         $body = $response->getBody()->__toString();
 
         if (!$this->hydrator) {
@@ -104,9 +101,6 @@ class Customer extends HttpApi
      */
     public function update(int $customerNo, Model $costumer)
     {
-        if ($customerNo < 0) {
-            throw new \InvalidArgumentException('Id is invalid');
-        }
         $response = $this->httpPut('/customer/'.$customerNo, $costumer->toArray());
 
         if (!$this->hydrator) {
