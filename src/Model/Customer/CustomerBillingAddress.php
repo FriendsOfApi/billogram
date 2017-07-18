@@ -186,6 +186,7 @@ class CustomerBillingAddress
         if ($this->country !== null) {
             $data['country'] = $this->country;
         }
+
         return $data;
     }
 }

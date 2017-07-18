@@ -20,7 +20,6 @@ class Customer extends HttpApi
      */
     public function search(array $param = [])
     {
-
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
         $response = $this->httpGet('/customer', $param);
 

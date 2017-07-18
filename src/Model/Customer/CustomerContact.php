@@ -110,7 +110,9 @@ class CustomerContact
             $data['careof'] = $this->phone;
         }
         if ($this->phone !== null) {
-            $data['phone'] = $this->phone;}
+            $data['phone'] = $this->phone;
+        }
+
         return $data;
     }
 }

@@ -54,8 +54,9 @@ class CostumerTest extends TestCase
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $custumer=$apiClient->customers()->fetch(1,['customer_no']);}*/
 
-    public function testSearch(){
+    public function testSearch()
+    {
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $custumers = $apiClient->customers()->search( ['name'=>'foo', 'page'=>2]);
+        $custumers = $apiClient->customers()->search(['name' => 'foo', 'page' => 2]);
     }
 }

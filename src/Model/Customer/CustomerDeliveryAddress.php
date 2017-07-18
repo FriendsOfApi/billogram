@@ -188,6 +188,7 @@ class CustomerDeliveryAddress
         if ($this->country !== null) {
             $data['country'] = $this->country;
         }
+
         return $data;
     }
 }
