@@ -17,13 +17,7 @@ class Customers implements CreatableFromArray
 
     private function __construct(array $customers)
     {
-        foreach ($customers as $customer) {
-            if (!$customers instanceof Customer) {
-                throw new InvalidArgumentException('All tweets must be an instance of '.Customer::class);
-            }
-        }
         $this->customers = $customers;
-
     }
 
     public static function createFromArray(array $data)

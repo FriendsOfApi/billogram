@@ -16,10 +16,14 @@ class Customer extends HttpApi
     /**
      * @param array $param
      * @return string|array
-     * @link
+     * @link https://billogram.com/api/documentation#customers_list
      */
-    public function search(array $param = ['page'=>1, 'page_size'=> 100 ])
+    public function search(array $param = [])
     {
+        if (empty($param)){
+            $param = ['page'=>1, 'page_size'=> 100 ];
+
+        }
         $response= $this->httpget('/customer', $param);
 
         if (!$this->hydrator) {
@@ -63,11 +67,12 @@ class Customer extends HttpApi
 
     /**
      * @param Model $costumer
-     *  @link https://billogram.com/api/documentation#customers_create
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws ValidationException
      */
     public function create(Model $costumer)
     {
-        if (empty($costumer)) {
+        if (empty($costumer->toArray())) {
             throw new InvalidArgumentException('Message cannot be empty');
         }
 
@@ -92,15 +97,15 @@ class Customer extends HttpApi
     }
 
     /**
-     * @param int                       $customerNo
-     * @param  $costumer
-     *
-     * @link https://billogram.com/api/documentation#customers_edit
+     * @param int $customerNo
+     * @param Model $costumer
+     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @throws ValidationException
      */
     public function update(int $customerNo, Model $costumer)
     {
-        if ($customerNo===0) {
-            throw new \InvalidArgumentException('Id cannot be empty');
+        if ($customerNo < 0) {
+            throw new \InvalidArgumentException('Id is invalid');
         }
         $response = $this->httpPut('/customer/'.$customerNo, $costumer->toArray());
 

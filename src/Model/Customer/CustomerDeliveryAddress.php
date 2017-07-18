@@ -37,23 +37,8 @@ class CustomerDeliveryAddress
      */
     private $country;
 
-    /**
-     *
-     * @param string $name
-     * @param string $streetAddress
-     * @param string $careOf
-     * @param string $zipCode
-     * @param string $city
-     * @param string $country
-     */
-    public function __construct($name, $streetAddress, $careOf, $zipCode, $city, $country)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->streetAddress = $streetAddress;
-        $this->careOf = $careOf;
-        $this->zipCode = $zipCode;
-        $this->city = $city;
-        $this->country = $country;
     }
 
     /**
@@ -66,10 +51,13 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $name
+     * @return CustomerDeliveryAddress
      */
-    public function setName(string $name)
+    public function withName(string $name)
     {
-        $this->name = $name;
+        $new = clone $this;
+        $new->name = $name;
+        return $new;
     }
 
     /**
@@ -82,10 +70,13 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $streetAddress
+     * @return CustomerDeliveryAddress
      */
-    public function setStreetAddress(string $streetAddress)
+    public function withStreetAddress(string $streetAddress)
     {
-        $this->streetAddress = $streetAddress;
+        $new = clone $this;
+        $new->streetAddress = $streetAddress;
+        return $new;
     }
 
     /**
@@ -98,11 +89,15 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $careOf
+     * @return CustomerDeliveryAddress
      */
-    public function setCareOf(string $careOf)
+    public function withCareOf(string $careOf)
     {
-        $this->careOf = $careOf;
+        $new = clone $this;
+        $new->zipCode = $careOf;
+        return $new;
     }
+
 
     /**
      * @return string
@@ -114,10 +109,13 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $zipCode
+     * @return CustomerDeliveryAddress
      */
-    public function setZipCode(string $zipCode)
+    public function withZipCode(string $zipCode)
     {
-        $this->zipCode = $zipCode;
+        $new = clone $this;
+        $new->zipCode = $zipCode;
+        return $new;
     }
 
     /**
@@ -130,10 +128,13 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $city
+     * @return CustomerDeliveryAddress
      */
-    public function setCity(string $city)
+    public function withCity(string $city)
     {
-        $this->city = $city;
+        $new = clone $this;
+        $new->city = $city;
+        return $new;
     }
 
     /**
@@ -146,9 +147,12 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $country
+     * @return CustomerDeliveryAddress
      */
-    public function setCountry(string $country)
+    public function withCountry(string $country)
     {
-        $this->country = $country;
+        $new = clone $this;
+        $new->country = $country;
+        return $new;
     }
 }

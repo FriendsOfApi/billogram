@@ -66,8 +66,6 @@ class Customer implements CreatableFromArray
 
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
     }
 
     /**
@@ -288,16 +286,29 @@ class Customer implements CreatableFromArray
 
     public function toArray()
     {
-        //$data['customer_no'] = $this->orgNo ?? null;
-        $data['name'] = $this->name ?? null;
-        $data['notes'] = $this->notes ?? null;
-        $data['org_no'] = $this->orgNo ?? null;
-        $data['vat_no'] = $this->vatNo ?? null;
-        $data['contact'] = ['name' => $this->contact->getName() , 'email' => $this->contact->getEmail(), 'phone' => $this->contact->getPhone()] ?? null;
-        $data['address'] = ['careof' => $this->address->getCareOf(), 'use_careof_as_attention' => $this->address->isUseCareOfAsAttention(), 'street_address' => $this->address->getStreetAddress(), 'zipcode' => $this->address->getZipCode(), 'city' => $this->address->getCity(), 'country' => $this->address->getCountry()];
-        $data['delivery_address'] = ['name' => $this->deliveryAddress->getCareOf(), 'street_address' => $this->deliveryAddress->getStreetAddress(), 'careof' => $this->deliveryAddress->getCareOf(), 'zipcode' => $this->deliveryAddress->getZipCode(), 'city' => $this->deliveryAddress->getCity(), 'country' => $this->deliveryAddress->getCountry()] ?? null;
-
-
+        $data = [];
+        if ($this->customerNo !== null){
+            $data['customer_no'] = $this->customerNo;
+        }
+        if ($this->name !== null){
+            $data['name'] = $this->name;
+        }
+        if ($this->notes !== null){
+            $data['notes'] = $this->notes;}
+        if ($this->orgNo !== null){
+            $data['org_no'] = $this->orgNo;
+        }
+        if ($this->vatNo !== null){
+            $data['vat_no'] = $this->vatNo ?? null;}
+        if ($this->contact !== null){
+            $data['contact'] = ['name' => $this->contact->getName() , 'email' => $this->contact->getEmail(), 'phone' => $this->contact->getPhone()];
+        }
+        if ($this->address !== null){
+            $data['address'] = ['careof' => $this->address->getCareOf(), 'use_careof_as_attention' => $this->address->isUseCareOfAsAttention(), 'street_address' => $this->address->getStreetAddress(), 'zipcode' => $this->address->getZipCode(), 'city' => $this->address->getCity(), 'country' => $this->address->getCountry()];
+        }
+        if ($this->deliveryAddress !== null){
+            $data['delivery_address'] = ['name' => $this->deliveryAddress->getCareOf(), 'street_address' => $this->deliveryAddress->getStreetAddress(), 'careof' => $this->deliveryAddress->getCareOf(), 'zipcode' => $this->deliveryAddress->getZipCode(), 'city' => $this->deliveryAddress->getCity(), 'country' => $this->deliveryAddress->getCountry()] ?? null;
+        }
         return $data;
     }
 }

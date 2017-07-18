@@ -37,23 +37,8 @@ class CustomerBillingAddress
      */
     private $country;
 
-    /**
-     *
-     * @param string $careOf
-     * @param bool   $useCareOfAsAttention
-     * @param string $streetAddress
-     * @param string $zipCode
-     * @param string $city
-     * @param string $country
-     */
-    public function __construct(string $careOf, bool $useCareOfAsAttention, string $streetAddress, string $zipCode, string $city, string $country)
+    public function __construct()
     {
-        $this->careOf = $careOf;
-        $this->useCareOfAsAttention = $useCareOfAsAttention;
-        $this->streetAddress = $streetAddress;
-        $this->zipCode = $zipCode;
-        $this->city = $city;
-        $this->country = $country;
     }
 
     /**
@@ -67,9 +52,11 @@ class CustomerBillingAddress
     /**
      * @param string $careOf
      */
-    public function setCareOf(string $careOf)
+    public function withCareOf(string $careOf)
     {
-        $this->careOf = $careOf;
+        $new = clone $this;
+        $new->careOf = $careOf;
+        return $new;
     }
 
     /**
@@ -77,15 +64,19 @@ class CustomerBillingAddress
      */
     public function isUseCareOfAsAttention()
     {
+
         return $this->useCareOfAsAttention;
     }
 
     /**
      * @param bool $useCareOfAsAttention
+     * @return CustomerBillingAddress
      */
-    public function setUseCareOfAsAttention(bool $useCareOfAsAttention)
+     public function withUseCareOfAsAttention(bool $useCareOfAsAttention)
     {
-        $this->useCareOfAsAttention = $useCareOfAsAttention;
+        $new = clone $this;
+        $new->useCareOfAsAttention = $useCareOfAsAttention;
+        return $new;
     }
 
     /**
@@ -98,10 +89,13 @@ class CustomerBillingAddress
 
     /**
      * @param string $streetAddress
+     * @return CustomerBillingAddress
      */
-    public function setStreetAddress(string $streetAddress)
+    public function withStreetAddress(string $streetAddress)
     {
-        $this->streetAddress = $streetAddress;
+        $new = clone $this;
+        $new->streetAddress = $streetAddress;
+        return $new;
     }
 
     /**
@@ -114,10 +108,13 @@ class CustomerBillingAddress
 
     /**
      * @param string $zipCode
+     * @return CustomerBillingAddress
      */
-    public function setZipCode(string $zipCode)
+    public function withZipCode(string $zipCode)
     {
-        $this->zipCode = $zipCode;
+        $new = clone $this;
+        $new->zipCode = $zipCode;
+        return $new;
     }
 
     /**
@@ -130,10 +127,13 @@ class CustomerBillingAddress
 
     /**
      * @param string $city
+     * @return CustomerBillingAddress
      */
-    public function setCity(string $city)
+    public function withCity(string $city)
     {
-        $this->city = $city;
+        $new = clone $this;
+        $new->city = $city;
+        return $new;
     }
 
     /**
@@ -146,9 +146,12 @@ class CustomerBillingAddress
 
     /**
      * @param string $country
+     * @return CustomerBillingAddress
      */
-    public function setCountry(string $country)
+    public function withCountry(string $country)
     {
-        $this->country = $country;
+        $new = clone $this;
+        $new->country = $country;
+        return $new;
     }
 }
