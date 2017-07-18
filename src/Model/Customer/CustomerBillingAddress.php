@@ -167,8 +167,25 @@ class CustomerBillingAddress
 
     public function toArray()
     {
-        $data = ['careof' => $this->careOf, 'use_careof_as_attention' => $this->useCareOfAsAttention, 'street_address' => $this->streetAddress, 'zipcode' => $this->zipCode, 'city' => $this->city, 'country' => $this->country];
-
+        $data = [];
+        if ($this->careOf !== null) {
+            $data['careof'] = $this->careOf;
+        }
+        if ($this->useCareOfAsAttention !== null) {
+            $data['use_careof_as_attention'] = $this->useCareOfAsAttention;
+        }
+        if ($this->streetAddress !== null) {
+            $data['street_address'] = $this->streetAddress;
+        }
+        if ($this->zipCode !== null) {
+            $data['zipcode'] = $this->zipCode;
+        }
+        if ($this->city !== null) {
+            $data['city'] = $this->city;
+        }
+        if ($this->country !== null) {
+            $data['country'] = $this->country;
+        }
         return $data;
     }
 }

@@ -99,8 +99,18 @@ class CustomerContact
 
     public function toArray()
     {
-        $data = ['name' => $this->name, 'email' => $this->email, 'phone' => $this->phone];
-
+        $data = [];
+        if ($this->name !== null) {
+            $data['name'] = $this->name;
+        }
+        if ($this->email !== null) {
+            $data['email'] = $this->email;
+        }
+        if ($this->phone !== null) {
+            $data['careof'] = $this->phone;
+        }
+        if ($this->phone !== null) {
+            $data['phone'] = $this->phone;}
         return $data;
     }
 }

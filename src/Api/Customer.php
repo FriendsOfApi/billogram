@@ -20,17 +20,9 @@ class Customer extends HttpApi
      */
     public function search(array $param = [])
     {
-        $paramFinal = ['page' => 1, 'page_size' => 100];
-        foreach ($param as $key => $value) {
-            if ('page' === $param[$key]) {
-                $paramFinal['page'] = $param['page'];
-            } elseif ('page_size' === $param[$key]) {
-                $paramFinal['page_size'] = $param['page_size'];
-            } else {
-                $paramFinal[$key] = $param[$key];
-            }
-        }
-        $response = $this->httpGet('/customer', $paramFinal);
+
+        $param = array_merge(['page' => 1, 'page_size' => 100], $param);
+        $response = $this->httpGet('/customer', $param);
 
         if (!$this->hydrator) {
             return $response;

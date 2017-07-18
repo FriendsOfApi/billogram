@@ -169,8 +169,25 @@ class CustomerDeliveryAddress
 
     public function toArray()
     {
-        $data = ['name' => $this->careOf,  'street_address' => $this->streetAddress, 'careof' => $this->careOf, 'zipcode' => $this->zipCode, 'city' => $this->city, 'country' => $this->country];
-
+        $data = [];
+        if ($this->name !== null) {
+            $data['name'] = $this->name;
+        }
+        if ($this->streetAddress !== null) {
+            $data['street_address'] = $this->streetAddress;
+        }
+        if ($this->careOf !== null) {
+            $data['careof'] = $this->careOf;
+        }
+        if ($this->zipCode !== null) {
+            $data['zipcode'] = $this->zipCode;
+        }
+        if ($this->city !== null) {
+            $data['city'] = $this->city;
+        }
+        if ($this->country !== null) {
+            $data['country'] = $this->country;
+        }
         return $data;
     }
 }
