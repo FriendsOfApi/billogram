@@ -1,12 +1,16 @@
 <?php
+
 declare(strict_types=1);
 /*
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
+
 namespace Billogram\Hydrator;
+
 use Billogram\Exception\HydrationException;
 use Psr\Http\Message\ResponseInterface;
+
 /**
  * Hydrate an HTTP response to array.
  *
@@ -30,6 +34,7 @@ final class ArrayHydrator implements Hydrator
         if (JSON_ERROR_NONE !== json_last_error()) {
             throw new HydrationException(sprintf('Error (%d) when trying to json_decode response', json_last_error()));
         }
+
         return $content;
     }
 }

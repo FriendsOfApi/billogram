@@ -6,31 +6,31 @@ namespace Billogram\Api;
 
 use Billogram\Api;
 use Billogram\Exception\Domain\ValidationException;
-use Billogram\Exception\InvalidArgumentException;
 use Billogram\Model\Customer\Customer as Model;
 use Billogram\Model\Customer\Customers;
-use Billogram\Api\HttpApi;
 
 class Customer extends HttpApi
 {
     /**
      * @param array $param
+     *
      * @return string|array
-     * @link https://billogram.com/api/documentation#customers_list
+     *
+     * @see https://billogram.com/api/documentation#customers_list
      */
     public function search(array $param = [])
     {
-        $paramFinal = ['page'=>1, 'page_size'=> 100];
-        foreach ($param as $key => $value){
-            if ('page' ===$param[$key]){
+        $paramFinal = ['page' => 1, 'page_size' => 100];
+        foreach ($param as $key => $value) {
+            if ('page' === $param[$key]) {
                 $paramFinal['page'] = $param['page'];
-            }elseif ('page_size' ===$param[$key]){
+            } elseif ('page_size' === $param[$key]) {
                 $paramFinal['page_size'] = $param['page_size'];
-            }else{
+            } else {
                 $paramFinal[$key] = $param[$key];
             }
         }
-        $response= $this->httpGet('/customer', $paramFinal);
+        $response = $this->httpGet('/customer', $paramFinal);
 
         if (!$this->hydrator) {
             return $response;
@@ -38,17 +38,16 @@ class Customer extends HttpApi
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
         }
-        return $this->hydrator->hydrate($response, Customers::class);
 
+        return $this->hydrator->hydrate($response, Customers::class);
     }
 
     /**
-     *
      * @param int   $customerNo
      * @param array $param
      *
+     * @see https://billogram.com/api/documentation#customers_fetch
      *
-     * @link https://billogram.com/api/documentation#customers_fetch
      * @return \Billogram\Model\Customer\Customer
      */
     public function fetch(int $customerNo, array $param = [])
@@ -62,13 +61,15 @@ class Customer extends HttpApi
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
         }
-        return $this->hydrator->hydrate($response, Model::class);
 
+        return $this->hydrator->hydrate($response, Model::class);
     }
 
     /**
      * @param Model $customer
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
+     *
      * @throws ValidationException
      */
     public function create(Model $customer)
@@ -90,13 +91,16 @@ class Customer extends HttpApi
                     break;
             }
         }
+
         return $this->hydrator->hydrate($response, Model::class);
     }
 
     /**
-     * @param int $customerNo
+     * @param int   $customerNo
      * @param Model $costumer
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
+     *
      * @throws ValidationException
      */
     public function update(int $customerNo, Model $costumer)
@@ -117,8 +121,7 @@ class Customer extends HttpApi
                     break;
             }
         }
+
         return $this->hydrator->hydrate($response, Model::class);
     }
-
-
 }

@@ -1,14 +1,18 @@
 <?php
+
 declare(strict_types=1);
 
 /*
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
+
 namespace Billogram\Hydrator;
+
 use Billogram\Exception\HydrationException;
 use Billogram\Model\CreatableFromArray;
 use Psr\Http\Message\ResponseInterface;
+
 /**
  * Hydrate an HTTP response to domain object.
  *
@@ -37,6 +41,7 @@ final class ModelHydrator implements Hydrator
         } else {
             $object = new $class($data);
         }
+
         return $object;
     }
 }

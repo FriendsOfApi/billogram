@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -6,14 +7,13 @@ declare(strict_types=1);
  * of the MIT license. See the LICENSE file for details.
  */
 
-
 namespace Billogram\Exception;
+
 use Billogram\Exception;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-
 class HydrationException extends \RuntimeException implements Exception
 {
 }

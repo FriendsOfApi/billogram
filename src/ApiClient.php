@@ -1,10 +1,13 @@
 <?php
+
 declare(strict_types=1);
 /*
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
+
 namespace Billogram;
+
 use Billogram\Api\Customer;
 use Billogram\Hydrator\ModelHydrator;
 use Billogram\Hydrator\Hydrator;
@@ -13,10 +16,8 @@ use Http\Client\HttpClient;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-
 final class ApiClient
 {
-
     /**
      * @var HttpClient
      */
@@ -63,8 +64,10 @@ final class ApiClient
         RequestBuilder $requestBuilder = null
     ): self {
         $httpClient = $httpClientConfigurator->createConfiguredClient();
+
         return new self($httpClient, $hydrator, $requestBuilder);
     }
+
     /**
      * @param string $apiKey
      *
@@ -72,9 +75,11 @@ final class ApiClient
      */
     public static function create(string $username, string $apiKey): ApiClient
     {
-        $httpClientConfigurator = (new HttpClientConfigurator())->setAuth($username,$apiKey);
+        $httpClientConfigurator = (new HttpClientConfigurator())->setAuth($username, $apiKey);
+
         return self::configure($httpClientConfigurator);
     }
+
     /**
      * @return Api\Customer
      */
@@ -82,5 +87,4 @@ final class ApiClient
     {
         return new Api\Customer($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
-
 }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -7,12 +8,12 @@ declare(strict_types=1);
  */
 
 namespace Billogram\Exception;
+
 use Billogram\Exception;
 
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-
 class InvalidArgumentException extends \InvalidArgumentException implements Exception
 {
 }

@@ -129,6 +129,7 @@ class Api
      * @param string $expectContentType
      *
      * @return string|array
+     *
      * @throws InvalidAuthenticationError
      * @throws InvalidFieldCombinationError
      * @throws InvalidFieldValueError
@@ -299,7 +300,8 @@ class Api
      *
      * @param string $objectUrl
      * @param array  $data
-     * @param string   $expectContentType
+     * @param string $expectContentType
+     *
      * @return string|array
      */
     public function get(string $objectUrl, array $data = null, string $expectContentType = null)
@@ -344,6 +346,7 @@ class Api
      *
      * @param string $objectUrl
      * @param array  $data
+     *
      * @return string|array
      */
     public function put(string $objectUrl, array $data)

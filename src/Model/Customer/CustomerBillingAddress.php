@@ -56,6 +56,7 @@ class CustomerBillingAddress
     {
         $new = clone $this;
         $new->careOf = $careOf;
+
         return $new;
     }
 
@@ -64,20 +65,21 @@ class CustomerBillingAddress
      */
     public function isUseCareOfAsAttention()
     {
-
         return $this->useCareOfAsAttention;
     }
 
-    /**
-     * @param bool $useCareOfAsAttention
-     * @return CustomerBillingAddress
-     */
+     /**
+      * @param bool $useCareOfAsAttention
+      *
+      * @return CustomerBillingAddress
+      */
      public function withUseCareOfAsAttention(bool $useCareOfAsAttention)
-    {
-        $new = clone $this;
-        $new->useCareOfAsAttention = $useCareOfAsAttention;
-        return $new;
-    }
+     {
+         $new = clone $this;
+         $new->useCareOfAsAttention = $useCareOfAsAttention;
+
+         return $new;
+     }
 
     /**
      * @return string
@@ -89,12 +91,14 @@ class CustomerBillingAddress
 
     /**
      * @param string $streetAddress
+     *
      * @return CustomerBillingAddress
      */
     public function withStreetAddress(string $streetAddress)
     {
         $new = clone $this;
         $new->streetAddress = $streetAddress;
+
         return $new;
     }
 
@@ -108,12 +112,14 @@ class CustomerBillingAddress
 
     /**
      * @param string $zipCode
+     *
      * @return CustomerBillingAddress
      */
     public function withZipCode(string $zipCode)
     {
         $new = clone $this;
         $new->zipCode = $zipCode;
+
         return $new;
     }
 
@@ -127,12 +133,14 @@ class CustomerBillingAddress
 
     /**
      * @param string $city
+     *
      * @return CustomerBillingAddress
      */
     public function withCity(string $city)
     {
         $new = clone $this;
         $new->city = $city;
+
         return $new;
     }
 
@@ -146,17 +154,21 @@ class CustomerBillingAddress
 
     /**
      * @param string $country
+     *
      * @return CustomerBillingAddress
      */
     public function withCountry(string $country)
     {
         $new = clone $this;
         $new->country = $country;
+
         return $new;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         $data = ['careof' => $this->careOf, 'use_careof_as_attention' => $this->useCareOfAsAttention, 'street_address' => $this->streetAddress, 'zipcode' => $this->zipCode, 'city' => $this->city, 'country' => $this->country];
+
         return $data;
     }
 }

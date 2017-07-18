@@ -1,10 +1,13 @@
 <?php
+
 declare(strict_types=1);
 /*
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
+
 namespace Billogram\Api;
+
 use Billogram\Exception\Domain as DomainExceptions;
 use Billogram\Exception\DomainException;
 use Billogram\Hydrator\NoopHydrator;
@@ -12,6 +15,7 @@ use Http\Client\HttpClient;
 use Billogram\Hydrator\Hydrator;
 use Billogram\RequestBuilder;
 use Psr\Http\Message\ResponseInterface;
+
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
@@ -29,6 +33,7 @@ abstract class HttpApi
      * @var RequestBuilder
      */
     protected $requestBuilder;
+
     /**
      * @param HttpClient     $httpClient
      * @param RequestBuilder $requestBuilder
@@ -42,6 +47,7 @@ abstract class HttpApi
             $this->hydrator = $hydrator;
         }
     }
+
     /**
      * Send a GET request with query parameters.
      *
@@ -56,10 +62,12 @@ abstract class HttpApi
         if (count($params) > 0) {
             $path .= '?'.http_build_query($params);
         }
+
         return $this->httpClient->sendRequest(
             $this->requestBuilder->create('GET', $path, $requestHeaders)
         );
     }
+
     /**
      * Send a POST request with JSON-encoded parameters.
      *
@@ -73,6 +81,7 @@ abstract class HttpApi
     {
         return $this->httpPostRaw($path, $this->createJsonBody($params), $requestHeaders);
     }
+
     /**
      * Send a POST request with raw data.
      *
@@ -88,6 +97,7 @@ abstract class HttpApi
             $this->requestBuilder->create('POST', $path, $requestHeaders, $body)
         );
     }
+
     /**
      * Send a PUT request with JSON-encoded parameters.
      *
@@ -103,6 +113,7 @@ abstract class HttpApi
             $this->requestBuilder->create('PUT', $path, $requestHeaders, $this->createJsonBody($params))
         );
     }
+
     /**
      * Send a DELETE request with JSON-encoded parameters.
      *
@@ -118,6 +129,7 @@ abstract class HttpApi
             $this->requestBuilder->create('DELETE', $path, $requestHeaders, $this->createJsonBody($params))
         );
     }
+
     /**
      * Create a JSON encoded version of an array of parameters.
      *
@@ -129,6 +141,7 @@ abstract class HttpApi
     {
         return (count($params) === 0) ? null : json_encode($params, empty($params) ? JSON_FORCE_OBJECT : 0);
     }
+
     /**
      * Handle HTTP errors.
      *

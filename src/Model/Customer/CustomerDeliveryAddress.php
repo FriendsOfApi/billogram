@@ -51,12 +51,14 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $name
+     *
      * @return CustomerDeliveryAddress
      */
     public function withName(string $name)
     {
         $new = clone $this;
         $new->name = $name;
+
         return $new;
     }
 
@@ -70,12 +72,14 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $streetAddress
+     *
      * @return CustomerDeliveryAddress
      */
     public function withStreetAddress(string $streetAddress)
     {
         $new = clone $this;
         $new->streetAddress = $streetAddress;
+
         return $new;
     }
 
@@ -89,15 +93,16 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $careOf
+     *
      * @return CustomerDeliveryAddress
      */
     public function withCareOf(string $careOf)
     {
         $new = clone $this;
         $new->zipCode = $careOf;
+
         return $new;
     }
-
 
     /**
      * @return string
@@ -109,12 +114,14 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $zipCode
+     *
      * @return CustomerDeliveryAddress
      */
     public function withZipCode(string $zipCode)
     {
         $new = clone $this;
         $new->zipCode = $zipCode;
+
         return $new;
     }
 
@@ -128,12 +135,14 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $city
+     *
      * @return CustomerDeliveryAddress
      */
     public function withCity(string $city)
     {
         $new = clone $this;
         $new->city = $city;
+
         return $new;
     }
 
@@ -147,17 +156,21 @@ class CustomerDeliveryAddress
 
     /**
      * @param string $country
+     *
      * @return CustomerDeliveryAddress
      */
     public function withCountry(string $country)
     {
         $new = clone $this;
         $new->country = $country;
+
         return $new;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         $data = ['name' => $this->careOf,  'street_address' => $this->streetAddress, 'careof' => $this->careOf, 'zipcode' => $this->zipCode, 'city' => $this->city, 'country' => $this->country];
+
         return $data;
     }
 }

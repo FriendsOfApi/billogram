@@ -23,7 +23,6 @@ class CustomerContact
     private $phone;
 
     /**
-     *
      * @param string $name
      * @param string $email
      * @param string $phone
@@ -45,12 +44,14 @@ class CustomerContact
 
     /**
      * @param string $name
+     *
      * @return CustomerContact
      */
     public function withName(string $name)
     {
         $new = clone $this;
         $new->name = $name;
+
         return $new;
     }
 
@@ -64,12 +65,14 @@ class CustomerContact
 
     /**
      * @param string $email
+     *
      * @return CustomerContact
      */
     public function setEmail(string $email)
     {
         $new = clone $this;
         $new->email = $email;
+
         return $new;
     }
 
@@ -83,17 +86,21 @@ class CustomerContact
 
     /**
      * @param string $phone
+     *
      * @return CustomerContact
      */
     public function setPhone(string $phone)
     {
         $new = clone $this;
         $new->phone = $phone;
+
         return $new;
     }
 
-    public function toArray(){
-        $data = ['name' => $this->name , 'email' => $this->email, 'phone' => $this->phone];
+    public function toArray()
+    {
+        $data = ['name' => $this->name, 'email' => $this->email, 'phone' => $this->phone];
+
         return $data;
     }
 }

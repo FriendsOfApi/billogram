@@ -6,6 +6,7 @@
  */
 
 namespace Billogram;
+
 /**
  * All our exception implements this interface.
  *

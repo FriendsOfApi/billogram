@@ -1,14 +1,18 @@
 <?php
+
 declare(strict_types=1);
 /*
  * This software may be modified and distributed under the terms
  * of the MIT license. See the LICENSE file for details.
  */
+
 namespace Billogram;
+
 use Http\Discovery\MessageFactoryDiscovery;
 use Http\Message\MultipartStream\MultipartStreamBuilder;
 use Http\Message\RequestFactory;
 use Psr\Http\Message\RequestInterface;
+
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  *
@@ -24,6 +28,7 @@ final class RequestBuilder
      * @var MultipartStreamBuilder
      */
     private $multipartStreamBuilder;
+
     /**
      * @param RequestFactory         $requestFactory
      * @param MultipartStreamBuilder $multipartStreamBuilder
@@ -35,6 +40,7 @@ final class RequestBuilder
         $this->requestFactory = $requestFactory ?: MessageFactoryDiscovery::find();
         $this->multipartStreamBuilder = $multipartStreamBuilder ?: new MultipartStreamBuilder();
     }
+
     /**
      * Creates a new PSR-7 request.
      *
@@ -68,6 +74,7 @@ final class RequestBuilder
         $boundary = $this->multipartStreamBuilder->getBoundary();
         $headers['Content-Type'] = 'multipart/form-data; boundary='.$boundary;
         $this->multipartStreamBuilder->reset();
+
         return $this->requestFactory->createRequest($method, $uri, $headers, $multipartStream);
     }
 }

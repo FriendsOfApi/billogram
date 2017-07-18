@@ -6,6 +6,7 @@
  */
 
 namespace Billogram;
+
 use Http\Client\HttpClient;
 use Http\Client\Common\PluginClient;
 use Http\Discovery\HttpClientDiscovery;
@@ -13,6 +14,7 @@ use Http\Discovery\UriFactoryDiscovery;
 use Http\Message\Authentication;
 use Http\Message\UriFactory;
 use Http\Client\Common\Plugin;
+
 /**
  * Configure an HTTP client.
  *
@@ -34,7 +36,6 @@ final class HttpClientConfigurator
     /**
      * @var string
      */
-
     private $authKey;
     /**
      * @var UriFactory
@@ -52,6 +53,7 @@ final class HttpClientConfigurator
      * @var Plugin[]
      */
     private $appendPlugins = [];
+
     /**
      * @param HttpClient|null $httpClient
      * @param UriFactory|null $uriFactory
@@ -61,6 +63,7 @@ final class HttpClientConfigurator
         $this->httpClient = $httpClient ?? HttpClientDiscovery::find();
         $this->uriFactory = $uriFactory ?? UriFactoryDiscovery::find();
     }
+
     /**
      * @return HttpClient
      */
@@ -73,11 +76,12 @@ final class HttpClientConfigurator
             'Content-Type' => 'application/json',
         ]);
         if (null !== $this->authKey && null !== $this->authUser) {
-
             $plugins[] = new Plugin\AuthenticationPlugin(new Authentication\BasicAuth($this->authUser, $this->authKey));
         }
+
         return new PluginClient($this->httpClient, array_merge($plugins, $this->appendPlugins));
     }
+
     /**
      * @param string $endpoint
      *
@@ -86,6 +90,7 @@ final class HttpClientConfigurator
     public function setEndpoint(string $endpoint): HttpClientConfigurator
     {
         $this->endpoint = $endpoint;
+
         return $this;
     }
 
@@ -99,6 +104,7 @@ final class HttpClientConfigurator
     {
         $this->authKey = $password;
         $this->authUser = $username;
+
         return $this;
     }
 
@@ -112,8 +118,10 @@ final class HttpClientConfigurator
         foreach ($plugin as $p) {
             $this->appendPlugins[] = $p;
         }
+
         return $this;
     }
+
     /**
      * @param Plugin $plugin
      *
@@ -125,6 +133,7 @@ final class HttpClientConfigurator
         foreach ($plugin as $p) {
             array_unshift($this->prependPlugins, $p);
         }
+
         return $this;
     }
 }

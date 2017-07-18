@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 /*
@@ -7,6 +8,7 @@ declare(strict_types=1);
  */
 
 namespace Billogram\Exception\Domain;
+
 use Billogram\Exception\DomainException;
 
 /**

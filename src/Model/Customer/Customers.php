@@ -1,10 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Customer;
 
-
-use Billogram\Exception\InvalidArgumentException;
 use Billogram\Model\CreatableFromArray;
 
 class Customers implements CreatableFromArray
@@ -13,7 +12,6 @@ class Customers implements CreatableFromArray
      * @var Customer[]
      */
     private $customers;
-
 
     private function __construct(array $customers)
     {
@@ -30,7 +28,6 @@ class Customers implements CreatableFromArray
         }
 
         return new self($customers);
-
     }
 
     /**
