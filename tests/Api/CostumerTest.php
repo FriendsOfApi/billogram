@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 
 class CostumerTest extends TestCase
 {
-
+/*
     public function testPost(){
         $contact = new CustomerContact('ib92g','ib922@gmail.com','0712223344');
         $addressCustomer = new CustomerBillingAddress('ibrahim',false,'Flygarvägen 189B','175 69','Järfälla','SE');
@@ -61,5 +61,5 @@ class CostumerTest extends TestCase
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $custumers = $apiClient->customers()->search();
     }
-
+*/
 }
