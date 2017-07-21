@@ -9,6 +9,8 @@ declare(strict_types=1);
 namespace Billogram;
 
 use Billogram\Api\Customer;
+use Billogram\Api\Invoice;
+use Billogram\Api\Item;
 use Billogram\Hydrator\ModelHydrator;
 use Billogram\Hydrator\Hydrator;
 use Http\Client\HttpClient;
@@ -87,4 +89,21 @@ final class ApiClient
     {
         return new Api\Customer($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
+
+    /**
+     * @return Api\Item
+     */
+    public function items(): Item
+    {
+        return new Api\Item($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
+
+    /**
+     * @return Api\Invoice
+     */
+    public function invoices(): Invoice
+    {
+        return new Api\Invoice ($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
+
 }
