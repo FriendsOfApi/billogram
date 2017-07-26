@@ -788,7 +788,7 @@ class Invoice
         }
         if ($this->items !== null) {
             foreach ($this->items as $item){
-            $data['items'] = $item->toArray() ?? null;}
+            $data['items'] = $item->toArray() ;}
         }
         if ($this->invoiceDate !== null) {
                 $data['invoice_date'] = $this->invoiceDate ?? null;

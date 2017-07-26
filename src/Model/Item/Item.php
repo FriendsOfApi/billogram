@@ -11,7 +11,7 @@ use Billogram\Model\Item\Bookkeeping;
 class Item implements CreatableFromArray
 {
     /**
-     * @var string
+     * @var int
      */
     private $itemNo;
 
@@ -60,18 +60,18 @@ class Item implements CreatableFromArray
     }
 
     /**
-     * @return string
+     * @return int
      */
-    public function getItemNo(): string
+    public function getItemNo(): int
     {
         return $this->itemNo;
     }
 
     /**
-     * @param string $itemNo
+     * @param int $itemNo
      * @return Item
      */
-    public function withItemNo(string $itemNo)
+    public function withItemNo(int $itemNo)
     {
         $new = clone $this;
         $new->itemNo = $itemNo;
@@ -253,6 +253,9 @@ class Item implements CreatableFromArray
         $data = [];
         if ($this->title !== null) {
             $data['title'] = $this->title;
+        }
+        if ($this->itemNo !== null) {
+            $data['item_no'] = $this->itemNo;
         }
         if ($this->description !== null) {
         $data['description'] = $this->description ?? null;
