@@ -234,18 +234,21 @@ class Item implements CreatableFromArray
      */
     public static function createFromArray(array $data)
     {
+        if (key_exists('data',$data)){
+            $itemArray = $data['data'];
+        }else{
+            $itemArray = $data;
+        }
         $item = new self();
-        //$bookkeeping = new Bookkeeping($data['data']['income_account'],$data['data']['vat_account']);
-        $item->itemNo = $data['data']['item_no'] ?? null;
-        $item->title = $data['data']['title'] ?? null;
-        $item->description = $data['data']['description'] ?? null;
-        $item->price = $data['data']['price'] ?? null;
-        $item->vat = $data['data']['vat'] ?? null;
-        $item->unit = $data['data']['data']['unit'] ?? null;
-        //$item->bookkeeping->withIncomeAccount( $data['data']['income_account']);
-        //$item->bookkeeping->withVatAccount( $data['data']['vat_account']);
-        $item->createdAt = $data['data']['created_at'];
-        $item->updatedAt = $data['data']['updated_at'];
+        $item->itemNo = $itemArray['item_no'] ?? null;
+        $item->title = $itemArray['title'] ?? null;
+        $item->description = $itemArray['description'] ?? null;
+        $item->price = $itemArray['price'] ?? null;
+        $item->vat = $itemArray['vat'] ?? null;
+        $item->unit = $itemArray['unit'] ?? null;
+        $item->bookkeeping = Bookkeeping::createFromArray($itemArray['bookkeeping']);
+        $item->createdAt = $itemArray['created_at'] ?? null;
+        $item->updatedAt = $itemArray['updated_at'] ?? null;
         return $item;
     }
 

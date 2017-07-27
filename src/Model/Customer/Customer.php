@@ -284,21 +284,34 @@ class Customer implements CreatableFromArray
     public static function createFromArray(array $data): Customer
     {
         $customer = new self();
-        $contact = new  CustomerContact($data['data']['contact']['name'], $data['data']['contact']['email'], $data['data']['contact']['phone']);
-        $address = new CustomerBillingAddress($data['data']['address']['careof'], $data['data']['address']['use_careof_as_attention'], $data['data']['address']['street_address'], $data['data']['address']['zipcode'], $data['data']['address']['city'], $data['data']['address']['country']);
-        $deliveryAddress = new CustomerDeliveryAddress($data['data']['delivery_address']['name'], $data['data']['delivery_address']['street_address'], $data['data']['delivery_address']['careof'], $data['data']['delivery_address']['zipcode'], $data['data']['delivery_address']['city'], $data['data']['delivery_address']['country']);
-        $customer->customerNo = $data['data']['customer_no'] ?? null;
-        $customer->name = $data['data']['name'] ?? null;
-        $customer->notes = $data['data']['notes'] ?? null;
-        $customer->orgNo = $data['data']['org_no'] ?? null;
-        $customer->vatNo = $data['data']['vat_no'] ?? null;
-        $customer->contact = $contact;
-        $customer->address = $address;
-        $customer->deliveryAddress = $deliveryAddress;
-        $customer->createdAt = $data['data']['created_at'];
-        $customer->updatedAt = $data['data']['updated_at'];
-        $customer->companyType = $data['data']['company_type'];
+        if(key_exists('data',$data)){
+            $customerArray = $data['data'];
+            $contactArray = $customerArray['contact'];
+            $addressArray = $customerArray['address'];
+            $deliveryAddressArray = $customerArray['delivery_address'];
 
+            $contact = CustomerContact::createFromArray($contactArray);
+            $address = CustomerBillingAddress::createFromArray($addressArray);
+            $deliveryAddress = CustomerDeliveryAddress::createFromArray($deliveryAddressArray);
+            $customer->contact = $contact;
+            $customer->address = $address;
+        }else{
+            $customerArray = $data;
+            $deliveryAddressArray = $customerArray['address'] ?? null;
+            $deliveryAddress =  CustomerDeliveryAddress::createFromArray(['name' => $customerArray['name'] ?? null, 'street_address' => $deliveryAddressArray['street_address'], 'careof' => $deliveryAddressArray['careof'], 'zipcode' =>$deliveryAddressArray['zipcode'], 'city' => $deliveryAddressArray['city'], 'country' => $deliveryAddressArray['country']]) ?? null;
+            $contact = CustomerContact::createFromArray(['name' =>$customerArray['name'], 'email' =>$customerArray['email'], 'phone' =>$customerArray['phone'] ?? null]) ?? null;
+        }
+        $customer->deliveryAddress = $deliveryAddress ?? null;
+        $customer->contact = $contact ?? null;
+        $customer->customerNo = $customerArray['customer_no'] ?? null;
+        $customer->name = $customerArray['name'] ?? null;
+        $customer->notes = $customerArray['notes'] ?? null;
+        $customer->orgNo = $customerArray['org_no'] ?? null;
+        $customer->vatNo = $customerArray['vat_no'] ?? null;
+
+        $customer->createdAt = $customerArray['created_at']?? null;
+        $customer->updatedAt = $customerArray['updated_at']?? null;
+        $customer->companyType = $customerArray['company_type']?? null;
         return $customer;
     }
 
@@ -329,7 +342,6 @@ class Customer implements CreatableFromArray
         if ($this->deliveryAddress !== null) {
             $data['delivery_address'] = $this->deliveryAddress->toArray();
         }
-
         return $data;
     }
 }

@@ -1,11 +1,13 @@
 <?php
 
 namespace Billogram\Model\Customer;
+use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-class CustomerContact
+
+class CustomerContact implements CreatableFromArray
 {
     /**
      * @var string
@@ -22,16 +24,8 @@ class CustomerContact
      */
     private $phone;
 
-    /**
-     * @param string $name
-     * @param string $email
-     * @param string $phone
-     */
-    public function __construct($name, $email, $phone)
+    public function __construct()
     {
-        $this->name = $name;
-        $this->email = $email;
-        $this->phone = $phone;
     }
 
     /**
@@ -107,12 +101,25 @@ class CustomerContact
             $data['email'] = $this->email;
         }
         if ($this->phone !== null) {
-            $data['careof'] = $this->phone;
-        }
-        if ($this->phone !== null) {
             $data['phone'] = $this->phone;
         }
 
         return $data;
+    }
+
+    /**
+     * Create an API response object from the HTTP response from the API server.
+     *
+     * @param array $data
+     *
+     * @return self
+     */
+    public static function createFromArray(array $data)
+    {
+        $contact = new self();
+        $contact->name = $data['name'];
+        $contact->email = $data['email'];
+        $contact->phone = $data['phone'];
+        return $contact;
     }
 }

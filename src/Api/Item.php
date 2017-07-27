@@ -1,13 +1,15 @@
 <?php
 declare(strict_types=1);
 
-
 namespace Billogram\Api;
-use Billogram\Exception\Domain\ValidationException;
-use Billogram\Model\Invoice\Invoice as Model;
-use Billogram\Model\Invoice\Invoices;
 
-class Invoice extends HttpApi
+
+use Billogram\Exception\Domain\ValidationException;
+use Billogram\Exception\InvalidArgumentException;
+use \Billogram\Model\Item\Item as Model;
+use Billogram\Model\Item\Items;
+
+class Item extends HttpApi
 {
     /**
      * @param array $param
@@ -17,7 +19,7 @@ class Invoice extends HttpApi
     public function search(array $param = [])
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
-        $response= $this->httpget('/billogram', $param);
+        $response= $this->httpget('/item', $param);
 
         if (!$this->hydrator) {
             return $response;
@@ -27,19 +29,19 @@ class Invoice extends HttpApi
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
         }
-        return $this->hydrator->hydrate($response, Invoices::class);
+        return $this->hydrator->hydrate($response, Items::class);
 
     }
 
     /**
-     * @param string $invoiceId
+     * @param int $itemNo
      * @param array $param
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function fetch(string $invoiceId, array $param = [])
+    public function fetch(int $itemNo, array $param = [])
     {
 
-        $response = $this->httpGet('/billogram/'.$invoiceId, $param);
+        $response = $this->httpGet('/item/'.$itemNo, $param);
 
         if (!$this->hydrator) {
             return $response;
@@ -53,13 +55,13 @@ class Invoice extends HttpApi
     }
 
     /**
-     * @param Model $invoice
+     * @param Model $item
      * @return mixed|\Psr\Http\Message\ResponseInterface
      * @throws ValidationException
      */
-    public function create(Model $invoice)
+    public function create(Model $item)
     {
-        $response = $this->httpPost('/billogram', $invoice->toArray());
+        $response = $this->httpPost('/item', $item->toArray());
         $body = $response->getBody()->__toString();
 
         if (!$this->hydrator) {
@@ -79,16 +81,11 @@ class Invoice extends HttpApi
         return $this->hydrator->hydrate($response, Model::class);
     }
 
-    /**
-     * @param string $invoiceId
-     * @param Model $invoice
-     * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @throws ValidationException
-     */
-    public function update(string $invoiceId, Model $invoice)
+    /****/
+    public function update(int $itemNo, Model $item)
     {
 
-        $response = $this->httpPut('/billogram/'.$invoiceId, $invoice->toArray());
+        $response = $this->httpPut('/item/'.$itemNo, $item->toArray());
 
         if (!$this->hydrator) {
             return $response;
@@ -106,5 +103,6 @@ class Invoice extends HttpApi
         }
         return $this->hydrator->hydrate($response, Model::class);
     }
+
 
 }

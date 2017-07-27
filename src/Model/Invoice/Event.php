@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Billogram\Model\Invoice;
 
 
-class Event
+use Billogram\Model\CreatableFromArray;
+
+class Event implements CreatableFromArray
 {
     /**
      * @var \DateTime $createdAt
@@ -19,7 +21,7 @@ class Event
     /**
      * @var EventData $data
      */
-    private $date;
+    private $data;
 
     /**
      * @return \DateTime
@@ -64,17 +66,17 @@ class Event
      */
     public function getDate()
     {
-        return $this->date;
+        return $this->data;
     }
 
     /**
-     * @param EventData $date
+     * @param EventData $data
      * @return Event
      */
-    public function setDate(EventData $date)
+    public function setDate(EventData $data)
     {
         $new = clone $this;
-        $new->date = $date;
+        $new->data = $data;
         return $new;
     }
 
@@ -87,10 +89,25 @@ class Event
         if ($this->type !== null) {
             $data['type'] = $this->type ?? null;
         }
-        if ($this->date !== null) {
-            $data['data'] = $this->date->toArray() ?? null;
+        if ($this->data !== null) {
+            $data['data'] = $this->data->toArray() ?? null;
         }
         return $data;
     }
 
+    /**
+     * Create an API response object from the HTTP response from the API server.
+     *
+     * @param array $data
+     *
+     * @return self
+     */
+    public static function createFromArray(array $data)
+    {
+        $event = new self();
+        $event->type = $data['type'];
+        $event->createdAt = $data['created_at'];
+        $event->data = EventData::createFromArray($data['data']);
+        return $event;
+    }
 }

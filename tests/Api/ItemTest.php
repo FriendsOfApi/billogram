@@ -41,12 +41,12 @@ class ItemTest extends TestCase
         $apiClient->items()->update(1, $item);
     }*/
 
-    public function testFetch(){
+    /*public function testFetch(){
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $custumer=$apiClient->items()->fetch(1,['']);}
-/*
+        $custumer=$apiClient->items()->fetch(1,['']);}*/
+
     public function testSearch(){
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $custumers = $apiClient->items()->search();
-    }*/
+    }
 }

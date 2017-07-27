@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Billogram\Model\Invoice;
 
 
-class RegionalInformation
+use Billogram\Model\CreatableFromArray;
+
+class RegionalInformation implements CreatableFromArray
 {
     /**
      * @var int $rotavdrag
@@ -476,4 +478,33 @@ class RegionalInformation
     }
 
 
+    /**
+     * Create an API response object from the HTTP response from the API server.
+     *
+     * @param array $data
+     *
+     * @return self
+     */
+    public static function createFromArray(array $data)
+    {
+        $regionalInfo = new self();
+        $regionalInfo->rotavdrag = $data['rotavdrag'] ?? null;
+        $regionalInfo->rotavdragPersonalNumber = $data['rotavdrag_personal_number'] ?? null;
+        $regionalInfo->rotavdragDescription = $data['rotavdrag_description'] ?? null;
+        $regionalInfo->reversedVat = $data['reversed_vat'] ?? null;
+        $regionalInfo->autogiroBetalarnummer = $data['autogiro_betalarnummer'] ?? null;
+        $regionalInfo->autogiroPaymentDate = $data['autogiro_payment_date'] ?? null;
+        $regionalInfo->autogiroStatus = $data['autogiro_status'] ?? null;
+        $regionalInfo->autogiroFullStatus = $data['autogiro_full_status'] ?? null;
+        $regionalInfo->autogiroTotalSum = $data['autogiro_total_sum'] ?? null;
+        $regionalInfo->efakturaRecipientType = $data['efaktura_recipient_type'] ?? null;
+        $regionalInfo->efakturaRecipientIdentifier = $data['efaktura_recipient_identifier'] ?? null;
+        $regionalInfo->efakturaRecipientBankName = $data['efaktura_recipient_bank_name'] ?? null;
+        $regionalInfo->efakturaRecipientBankId = $data['efaktura_recipient_bank_id'] ?? null;
+        $regionalInfo->efakturaRecipientBankCode = $data['efaktura_recipient_bank_code'] ?? null;
+        $regionalInfo->rotavdragPersonalNumber = $data['efaktura_recipient_id_number'] ?? null;
+        $regionalInfo->efakturaRequestedAmount = $data['efaktura_requested_amount'] ?? null;
+        $regionalInfo->collectionForElectricityInvoices = CollectionForElectricityInvoices::createFromArray($data['electricity_collection']);
+        return $regionalInfo;
+    }
 }
