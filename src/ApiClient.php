@@ -91,6 +91,14 @@ final class ApiClient
     }
 
     /**
+     * @return Api\Item
+     */
+    public function invoices(): Invoice
+    {
+        return new Api\Invoice ($this->httpClient, $this->hydrator, $this->requestBuilder);
+    }
+
+    /**
      * @return Api\Invoice
      */
     public function invoices(): Invoice

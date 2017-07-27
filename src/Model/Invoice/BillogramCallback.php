@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Billogram\Model\Invoice;
 
 
-class BillogramCallback
+use Billogram\Model\CreatableFromArray;
+
+class BillogramCallback implements CreatableFromArray
 {
     /**
      * @var string $url
@@ -93,5 +95,21 @@ class BillogramCallback
         if ($this->signKey !== null) {
             $data['sign_key'] = $this->signKey ?? null;
         }
+    }
+
+    /**
+     * Create an API response object from the HTTP response from the API server.
+     *
+     * @param array $data
+     *
+     * @return self
+     */
+    public static function createFromArray(array $data)
+    {
+        $billogramCallback = new self();
+        $billogramCallback->url = $data['url'];
+        $billogramCallback->custom = $data['custom'];
+        $billogramCallback->signKey = $data['sign_key'];
+        return $billogramCallback;
     }
 }

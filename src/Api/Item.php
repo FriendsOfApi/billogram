@@ -7,6 +7,7 @@ namespace Billogram\Api;
 use Billogram\Exception\Domain\ValidationException;
 use Billogram\Exception\InvalidArgumentException;
 use \Billogram\Model\Item\Item as Model;
+use Billogram\Model\Item\Items;
 
 class Item extends HttpApi
 {
@@ -15,8 +16,9 @@ class Item extends HttpApi
      * @return string|array
      * @link https://billogram.com/api/documentation#items_list
      */
-    public function search(array $param = ['page'=>1, 'page_size'=> 100 ])
+    public function search(array $param = [])
     {
+        $param = array_merge(['page' => 1, 'page_size' => 100], $param);
         $response= $this->httpget('/item', $param);
 
         if (!$this->hydrator) {
@@ -27,7 +29,7 @@ class Item extends HttpApi
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
         }
-        return $this->hydrator->hydrate($response, Model::class);
+        return $this->hydrator->hydrate($response, Items::class);
 
     }
 

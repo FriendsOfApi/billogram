@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Billogram\Model\Invoice;
 
 
-class AdditionalInformation
+use Billogram\Model\CreatableFromArray;
+
+class AdditionalInformation implements CreatableFromArray
 {
 
     /**
@@ -230,5 +232,25 @@ class AdditionalInformation
             $data['message'] = $this->message;
         }
         return $data;
+    }
+
+    /**
+     * Create an API response object from the HTTP response from the API server.
+     *
+     * @param array $data
+     *
+     * @return self
+     */
+    public static function createFromArray(array $data)
+    {
+        $info = new self();
+        $info->orderNo = $data['order_no'];
+        $info->orderDate = $data['order_date'];
+        $info->ourReference = $data['our_reference'];
+        $info->yourReference = $data['your_reference'];
+        $info->shippingDate = $data['shipping_date'];
+        $info->deliveryDate = $data['delivery_date'];
+        $info->referenceNumber = $data['reference_number'];
+        $info->message = $data['message'];
     }
 }

@@ -6,9 +6,9 @@ namespace Billogram\Model\Item;
 
 use Billogram\Exception\InvalidArgumentException;
 use Billogram\Model\CreatableFromArray;
-use Billogram\Model\Customer\Item;
 
-class Customers implements CreatableFromArray
+
+class Items implements CreatableFromArray
 {
     /**
      * @var Item[]

@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Billogram\Model\Invoice;
 
 
-class CollectionForElectricityInvoices
+use Billogram\Model\CreatableFromArray;
+
+class CollectionForElectricityInvoices implements CreatableFromArray
 {
     /**
      * @var int $kommunkod
@@ -367,5 +369,31 @@ class CollectionForElectricityInvoices
             $data['slutfaktura'] = $this->slutfaktura;
         }
         return $data;
+    }
+
+    /**
+     * Create an API response object from the HTTP response from the API server.
+     *
+     * @param array $data
+     *
+     * @return self
+     */
+    public static function createFromArray(array $data)
+    {
+        $collection = new self();
+        $collection->kommunkod = $data['kommunkod'] ?? null;
+        $collection->slutfaktura = $data['slutfaktura'] ?? null;
+        $collection->kravmall = $data['kravmall'] ?? null;
+        $collection->frankopplad = $data['frankopplad'] ?? null;
+        $collection->arsforb = $data['arsforb'] ?? null;
+        $collection->plombkod = $data['plombkod'] ?? null;
+        $collection->natom = $data['natom'] ?? null;
+        $collection->avflyttadDatum = $data['avflyttad_datum'] ?? null;
+        $collection->frankoppladDatum = $data['frankopplad_datum'] ?? null;
+        $collection->anladr = $data['anladr'] ?? null;
+        $collection->anlid = $data['anlid'] ?? null;
+        $collection->avflyttad = $data['avflyttad'] ?? null;
+        $collection->naringsidkare = $data['naringsidkare'] ?? null;
+        return $collection;
     }
 }

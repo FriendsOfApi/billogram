@@ -284,25 +284,34 @@ class Customer implements CreatableFromArray
     public static function createFromArray(array $data): Customer
     {
         $customer = new self();
-        $customerArray = $data['data'];
-        $contactArray = $customerArray['contact'];
-        $addressArray = $customerArray['address'];
-        $deliveryAddressArray = $customerArray['delivery_address'];
+        if(key_exists('data',$data)){
+            $customerArray = $data['data'];
+            $contactArray = $customerArray['contact'];
+            $addressArray = $customerArray['address'];
+            $deliveryAddressArray = $customerArray['delivery_address'];
 
-        $contact = new  CustomerContact($contactArray['name'], $contactArray['email'], $contactArray['phone']);
-        $address = new CustomerBillingAddress($addressArray['careof'], $addressArray['use_careof_as_attention'], $addressArray['street_address'], $addressArray['zipcode'], $addressArray['city'], $addressArray['country']);
-        $deliveryAddress = new CustomerDeliveryAddress($deliveryAddressArray['name'], $deliveryAddressArray['street_address'], $deliveryAddressArray['careof'], $deliveryAddressArray['zipcode'], $deliveryAddressArray['city'], $deliveryAddressArray['country']);
+            $contact = CustomerContact::createFromArray($contactArray);
+            $address = CustomerBillingAddress::createFromArray($addressArray);
+            $deliveryAddress = CustomerDeliveryAddress::createFromArray($deliveryAddressArray);
+            $customer->contact = $contact;
+            $customer->address = $address;
+        }else{
+            $customerArray = $data;
+            $deliveryAddressArray = $customerArray['address'] ?? null;
+            $deliveryAddress =  CustomerDeliveryAddress::createFromArray(['name' => $customerArray['name'] ?? null, 'street_address' => $deliveryAddressArray['street_address'], 'careof' => $deliveryAddressArray['careof'], 'zipcode' =>$deliveryAddressArray['zipcode'], 'city' => $deliveryAddressArray['city'], 'country' => $deliveryAddressArray['country']]) ?? null;
+            $contact = CustomerContact::createFromArray(['name' =>$customerArray['name'], 'email' =>$customerArray['email'], 'phone' =>$customerArray['phone'] ?? null]) ?? null;
+        }
+        $customer->deliveryAddress = $deliveryAddress ?? null;
+        $customer->contact = $contact ?? null;
         $customer->customerNo = $customerArray['customer_no'] ?? null;
         $customer->name = $customerArray['name'] ?? null;
         $customer->notes = $customerArray['notes'] ?? null;
         $customer->orgNo = $customerArray['org_no'] ?? null;
         $customer->vatNo = $customerArray['vat_no'] ?? null;
-        $customer->contact = $contact;
-        $customer->address = $address;
-        $customer->deliveryAddress = $deliveryAddress;
-        $customer->createdAt = $customerArray['created_at'];
-        $customer->updatedAt = $customerArray['updated_at'];
-        $customer->companyType = $customerArray['company_type'];
+
+        $customer->createdAt = $customerArray['created_at']?? null;
+        $customer->updatedAt = $customerArray['updated_at']?? null;
+        $customer->companyType = $customerArray['company_type']?? null;
 
         return $customer;
     }

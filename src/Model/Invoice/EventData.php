@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Billogram\Model\Invoice;
 
 
-class EventData
+use Billogram\Model\CreatableFromArray;
+
+class EventData implements CreatableFromArray
 {
     /**
      * @var string $invoiceNo
@@ -795,5 +797,46 @@ class EventData
             $data['scanning_central'] = $this->scanningCentral;
         }
         return $data;
+    }
+
+    /**
+     * Create an API response object from the HTTP response from the API server.
+     *
+     * @param array $data
+     *
+     * @return self
+     */
+    public static function createFromArray(array $data = null)
+    {
+        $eventData = new self();
+        $eventData->invoiceNo = $data['invoice_no'];
+        $eventData->deliveryMethod = $data['delivery_method'];
+        $eventData->letterId = $data['letter_id'];
+        $eventData->amount = $data['amount'];
+        $eventData->payerName = $data['payer_name'];
+        $eventData->paymentFlags = $data['payment_flags'];
+        $eventData->bankingAmount = $data['banking_amount'];
+        $eventData->manual = $data['manual'];
+        $eventData->reminderFee = $data['reminder_fee'];
+        $eventData->reminderCount = $data['reminder_count'];
+        $eventData->interestRate = $data['interest_rate'];
+        $eventData->customerPhone = $data['customer_phone'];
+        $eventData->ip = $data['ip'];
+        $eventData->type = $data['type'];
+        //$eventData->message = $data['message'];
+        $eventData->fullStatus = $data['full_status'];
+        $eventData->collectorMethod = $data['collector_method'];
+        $eventData->collectorReference = $data['collector_reference'];
+        $eventData->factoringMethod = $data['factoring_method'];
+        $eventData->factoringReference = $data['factoring_reference'];
+        $eventData->sellsFor = $data['sells_for'];
+        $eventData->soldFor = $data['sold_for'];
+        $eventData->bankgiro = $data['bankgiro'];
+        $eventData->recipientIdentifier = $data['recipient_identifier'];
+        $eventData->errorStatus = $data['error_status'];
+        $eventData->totalSum = $data['total_sum'];
+        $eventData->remainingSum = $data['remaining_sum'];
+        $eventData->scanningCentral = $data['scanning_central'];
+        return $eventData;
     }
 }

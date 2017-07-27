@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Billogram\Model\Item;
 
 
-class Bookkeeping
+use Billogram\Model\CreatableFromArray;
+
+class Bookkeeping implements CreatableFromArray
 {
     /**
      * @var string
@@ -64,6 +66,18 @@ class Bookkeeping
     }
 
 
-
-
+    /**
+     * Create an API response object from the HTTP response from the API server.
+     *
+     * @param array $data
+     *
+     * @return self
+     */
+    public static function createFromArray(array $data)
+    {
+        $bookkeeping = new self();
+        $bookkeeping->incomeAccount = $data=['income_account'];
+        $bookkeeping->vatAccount = $data=['vat_account'];
+        return $bookkeeping;
+    }
 }
