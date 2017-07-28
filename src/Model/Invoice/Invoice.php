@@ -5,7 +5,10 @@ namespace Billogram\Model\Invoice;
 
 use Billogram\Model\CreatableFromArray;
 use Billogram\Model\Customer\Customer;
-use Billogram\Model\Item\Item;
+
+/**
+ * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
+ */
 
 class Invoice implements CreatableFromArray
 {

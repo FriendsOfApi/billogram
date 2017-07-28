@@ -6,6 +6,10 @@ use Billogram\Model\CreatableFromArray;
 use Billogram\Model\Item\Bookkeeping;
 use Billogram\Model\Item\Item as Model;
 
+/**
+ * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
+ */
+
 class Item extends Model implements CreatableFromArray
 {
     /**

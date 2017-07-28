@@ -148,18 +148,21 @@ abstract class HttpApi
      * Call is controlled by the specific API methods.
      *
      * @param ResponseInterface $response
-     *
+     * @param string $message
      * @throws DomainException
      */
-    protected function handleErrors(ResponseInterface $response)
+    protected function handleErrors(ResponseInterface $response, string $message)
     {
         switch ($response->getStatusCode()) {
             case 404:
-                throw new DomainExceptions\NotFoundException();
+                throw new DomainExceptions\NotFoundException($message);
+                break;
+            case 400:
+                throw new DomainExceptions\ValidationException($message);
                 break;
             default:
                 $body = $response->getBody()->__toString();
-                throw new DomainExceptions\UnknownErrorException();
+                throw new DomainExceptions\UnknownErrorException($message);
                 break;
         }
     }

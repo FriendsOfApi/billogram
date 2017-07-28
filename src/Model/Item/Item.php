@@ -8,6 +8,7 @@ use Billogram\Model\Item\Bookkeeping;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
+
 class Item implements CreatableFromArray
 {
     /**

@@ -7,6 +7,9 @@ namespace Billogram\Model\Item;
 use Billogram\Exception\InvalidArgumentException;
 use Billogram\Model\CreatableFromArray;
 
+/**
+ * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
+ */
 
 class Items implements CreatableFromArray
 {
@@ -19,8 +22,8 @@ class Items implements CreatableFromArray
     private function __construct(array $items)
     {
         foreach ($items as $item) {
-            if (!$items instanceof Item) {
-                throw new InvalidArgumentException('All tweets must be an instance of '.Item::class);
+            if (!$item instanceof Item) {
+                throw new InvalidArgumentException('All items must be an instance of '.Item::class);
             }
         }
         $this->items = $items;
@@ -30,9 +33,9 @@ class Items implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $items = [];
-        if (isset($data['items'])) {
-            foreach ($data['items'] as $item) {
-                $customers[] = Item::createFromArray($item);
+        if (isset($data['data'])) {
+            foreach ($data['data'] as $item) {
+                $items[] = Item::createFromArray($item);
             }
         }
 

@@ -11,11 +11,13 @@ use Billogram\Model\Customer\CustomerBillingAddress;
 use Billogram\Model\Customer\CustomerDeliveryAddress;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
+ */
+
 class CostumerTest extends TestCase
 {
-
-/*
-    public function testPost(){
+    /*public function testPost(){
         $contact = new CustomerContact('ib92g','ib922@gmail.com','0712223344');
         $addressCustomer = new CustomerBillingAddress('ibrahim',false,'Flygarvägen 189B','175 69','Järfälla','SE');
         $addressDelivery = new CustomerDeliveryAddress('ibrahim','Flygarvägen 189B','ibrahim','175 69','Järfälla','SE');
@@ -32,7 +34,6 @@ class CostumerTest extends TestCase
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient->customers()->create($customer);
     }
-
 
    public function testUpdate()
     {
@@ -55,12 +56,12 @@ class CostumerTest extends TestCase
 
     public function testFetch(){
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $custumer=$apiClient->customers()->fetch(1,['customer_no']);}
+        $custumer=$apiClient->customers()->fetch(100,['customer_no']);}
 
     public function testSearch()
     {
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $custumers = $apiClient->customers()->search(['page' => 1]);
-    }
-*/
+        $custumers = $apiClient->customers()->search(['page' => 'a50']);
+    }*/
+
 }
