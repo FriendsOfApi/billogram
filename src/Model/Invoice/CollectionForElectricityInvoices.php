@@ -6,6 +6,10 @@ namespace Billogram\Model\Invoice;
 
 use Billogram\Model\CreatableFromArray;
 
+/**
+ * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
+ */
+
 class CollectionForElectricityInvoices implements CreatableFromArray
 {
     /**
