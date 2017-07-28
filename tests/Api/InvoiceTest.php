@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace tests\Api;
-
 
 use Billogram\ApiClient;
 use Billogram\Model\Customer\Customer;
@@ -13,7 +13,6 @@ use PHPUnit\Framework\TestCase;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class InvoiceTest extends TestCase
 {/*
     public function testPost(){

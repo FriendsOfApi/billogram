@@ -1,15 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class Invoices implements CreatableFromArray
 {
     /**
@@ -27,7 +26,7 @@ class Invoices implements CreatableFromArray
         $invoices = [];
         if (isset($data['data'])) {
             foreach ($data['data'] as $item) {
-                $invoices[] = Invoice::createFromArray(['data'=>$item]);
+                $invoices[] = Invoice::createFromArray(['data' => $item]);
             }
         }
 
@@ -41,5 +40,4 @@ class Invoices implements CreatableFromArray
     {
         return $this->invoices;
     }
-
 }

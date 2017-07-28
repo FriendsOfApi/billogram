@@ -95,7 +95,7 @@ final class ApiClient
      */
     public function items(): Item
     {
-        return new Api\Item ($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Item($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
 
     /**
@@ -103,7 +103,6 @@ final class ApiClient
      */
     public function invoices(): Invoice
     {
-        return new Api\Invoice ($this->httpClient, $this->hydrator, $this->requestBuilder);
+        return new Api\Invoice($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
-
 }

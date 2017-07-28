@@ -1,55 +1,53 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class AdditionalInformation implements CreatableFromArray
 {
-
     /**
-     * @var string $orderNo
+     * @var string
      */
     private $orderNo;
 
     /**
-     * @var string $orderDate
+     * @var string
      */
     private $orderDate;
 
     /**
-     * @var string $ourReference
+     * @var string
      */
     private $ourReference;
 
     /**
-     * @var string $yourReference
+     * @var string
      */
     private $yourReference;
 
     /**
-     * @var string $shippingDate
+     * @var string
      */
     private $shippingDate;
 
     /**
-     * @var string $deliveryDate
+     * @var string
      */
     private $deliveryDate;
 
     /**
-     * @var string $referenceNumber
+     * @var string
      */
     private $referenceNumber;
 
     /**
-     * @var string $message
+     * @var string
      */
     private $message;
 
@@ -67,12 +65,14 @@ class AdditionalInformation implements CreatableFromArray
 
     /**
      * @param string $orderNo
+     *
      * @return AdditionalInformation
      */
     public function withOrderNo(string $orderNo)
     {
         $new = clone $this;
         $new->orderNo = $orderNo;
+
         return $new;
     }
 
@@ -86,12 +86,14 @@ class AdditionalInformation implements CreatableFromArray
 
     /**
      * @param string $orderDate
+     *
      * @return AdditionalInformation
      */
     public function withOrderDate(string $orderDate)
     {
         $new = clone $this;
         $new->orderDate = $orderDate;
+
         return $new;
     }
 
@@ -105,12 +107,14 @@ class AdditionalInformation implements CreatableFromArray
 
     /**
      * @param string $ourReference
+     *
      * @return AdditionalInformation
      */
     public function withOurReference(string $ourReference)
     {
         $new = clone $this;
         $new->ourReference = $ourReference;
+
         return $new;
     }
 
@@ -124,12 +128,14 @@ class AdditionalInformation implements CreatableFromArray
 
     /**
      * @param string $yourReference
+     *
      * @return AdditionalInformation
      */
     public function withYourReference(string $yourReference)
     {
         $new = clone $this;
         $new->yourReference = $yourReference;
+
         return $new;
     }
 
@@ -143,12 +149,14 @@ class AdditionalInformation implements CreatableFromArray
 
     /**
      * @param string $shippingDate
+     *
      * @return AdditionalInformation
      */
     public function withShippingDate(string $shippingDate)
     {
         $new = clone $this;
         $new->shippingDate = $shippingDate;
+
         return $new;
     }
 
@@ -162,12 +170,14 @@ class AdditionalInformation implements CreatableFromArray
 
     /**
      * @param string $deliveryDate
+     *
      * @return AdditionalInformation
      */
     public function withDeliveryDate(string $deliveryDate)
     {
         $new = clone $this;
         $new->deliveryDate = $deliveryDate;
+
         return $new;
     }
 
@@ -181,12 +191,14 @@ class AdditionalInformation implements CreatableFromArray
 
     /**
      * @param string $referenceNumber
+     *
      * @return AdditionalInformation
      */
     public function withReferenceNumber(string $referenceNumber)
     {
         $new = clone $this;
         $new->referenceNumber = $referenceNumber;
+
         return $new;
     }
 
@@ -200,16 +212,19 @@ class AdditionalInformation implements CreatableFromArray
 
     /**
      * @param $message
+     *
      * @return AdditionalInformation
      */
     public function withMessage($message)
     {
         $new = clone $this;
         $new->message = $message;
+
         return $new;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         $data = [];
         if ($this->orderNo !== null) {
             $data['order_no'] = $this->orderNo;
@@ -235,6 +250,7 @@ class AdditionalInformation implements CreatableFromArray
         if ($this->message !== null) {
             $data['message'] = $this->message;
         }
+
         return $data;
     }
 

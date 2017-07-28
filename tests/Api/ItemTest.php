@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
 namespace tests\Api;
-
 
 use Billogram\ApiClient;
 use Billogram\Model\Item\Bookkeeping;
@@ -14,7 +14,8 @@ use PHPUnit\Framework\TestCase;
  */
 class ItemTest extends TestCase
 {
-    public function testPost(){
+    public function testPost()
+    {
         //$bookkeeping = new Bookkeeping();
         //$bookkeeping = $bookkeeping->withVatAccount();
         //$bookkeeping = $bookkeeping->withIncomeAccount();
@@ -29,7 +30,8 @@ class ItemTest extends TestCase
         $apiClient->items()->create($item);
     }
 
-    public function testUpdate(){
+    public function testUpdate()
+    {
         //$bookkeeping = new Bookkeeping();
         //$bookkeeping = $bookkeeping->withVatAccount();
         //$bookkeeping = $bookkeeping->withIncomeAccount();
@@ -44,18 +46,22 @@ class ItemTest extends TestCase
         $apiClient->items()->update(1, $item);
     }
 
-    public function testDelete(int $itemNo = 1){
+    public function testDelete(int $itemNo = 1)
+    {
         $item = $this->testFetch(2);
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient->items()->delete($itemNo,$item);
+        $apiClient->items()->delete($itemNo, $item);
     }
 
-    public function testFetch(int $itemNo = 1){
+    public function testFetch(int $itemNo = 1)
+    {
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        return $apiClient->items()->fetch($itemNo,['']);
+
+        return $apiClient->items()->fetch($itemNo, ['']);
     }
 
-    public function testSearch(){
+    public function testSearch()
+    {
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $items = $apiClient->items()->search(['page' => 1]);
     }

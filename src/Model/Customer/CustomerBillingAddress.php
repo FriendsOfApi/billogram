@@ -1,14 +1,12 @@
 <?php
 
 namespace Billogram\Model\Customer;
-use Billogram\Model\CreatableFromArray;
 
+use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
-
 class CustomerBillingAddress implements CreatableFromArray
 {
     /**
@@ -55,6 +53,7 @@ class CustomerBillingAddress implements CreatableFromArray
 
     /**
      * @param string $careOf
+     *
      * @return CustomerBillingAddress
      */
     public function withCareOf(string $careOf)
@@ -211,6 +210,7 @@ class CustomerBillingAddress implements CreatableFromArray
         $customerBillingAddress->zipCode = $data['zipCode'];
         $customerBillingAddress->city = $data['city'];
         $customerBillingAddress->country = $data['country'];
+
         return $customerBillingAddress;
     }
 }

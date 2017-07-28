@@ -148,7 +148,8 @@ abstract class HttpApi
      * Call is controlled by the specific API methods.
      *
      * @param ResponseInterface $response
-     * @param string $message
+     * @param string            $message
+     *
      * @throws DomainException
      */
     protected function handleErrors(ResponseInterface $response, string $message)

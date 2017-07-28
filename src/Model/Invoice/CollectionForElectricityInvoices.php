@@ -1,79 +1,78 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class CollectionForElectricityInvoices implements CreatableFromArray
 {
     /**
-     * @var int $kommunkod
+     * @var int
      */
     private $kommunkod;
 
     /**
-     * @var bool $naringsidkare
+     * @var bool
      */
     private $naringsidkare;
 
     /**
-     * @var bool $avflyttad
+     * @var bool
      */
     private $avflyttad;
 
     /**
-     * var string $avflyttadDatum
+     * var string $avflyttadDatum.
      */
     private $avflyttadDatum;
 
     /**
-     * @var bool $frankopplad
+     * @var bool
      */
     private $frankopplad;
 
     /**
-     * @var string $frankoppladDatum
+     * @var string
      */
     private $frankoppladDatum;
 
     /**
-     * @var string $anladr
+     * @var string
      */
     private $anladr;
 
     /**
-     * @var string $natom
+     * @var string
      */
     private $natom;
 
     /**
-     * @var int $arsforb
+     * @var int
      */
     private $arsforb;
 
     /**
-     * @var string $anlid
+     * @var string
      */
     private $anlid;
 
     /**
-     * @var string $kravmall
+     * @var string
      */
     private $kravmall;
 
     /**
-     * @var string $plombkod
+     * @var string
      */
     private $plombkod;
 
     /**
-     * @var bool $slutfaktura
+     * @var bool
      */
     private $slutfaktura;
 
@@ -91,12 +90,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param int $kommunkod
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withKommunkod(int $kommunkod)
     {
         $new = clone $this;
         $new->kommunkod = $kommunkod;
+
         return $new;
     }
 
@@ -110,12 +111,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param bool $naringsidkare
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withNaringsidkare(bool $naringsidkare)
     {
         $new = clone $this;
         $new->naringsidkare = $naringsidkare;
+
         return $new;
     }
 
@@ -129,12 +132,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param bool $avflyttad
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withAvflyttad(bool $avflyttad)
     {
         $new = clone $this;
         $new->avflyttad = $avflyttad;
+
         return $new;
     }
 
@@ -148,12 +153,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param mixed $avflyttadDatum
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withAvflyttadDatum($avflyttadDatum)
     {
         $new = clone $this;
         $new->avflyttadDatum = $avflyttadDatum;
+
         return $new;
     }
 
@@ -167,12 +174,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param bool $frankopplad
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withFrankopplad(bool $frankopplad)
     {
         $new = clone $this;
         $new->frankopplad = $frankopplad;
+
         return $new;
     }
 
@@ -186,12 +195,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param string $frankoppladDatum
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withFrankoppladDatum(string $frankoppladDatum)
     {
         $new = clone $this;
         $new->frankoppladDatum = $frankoppladDatum;
+
         return $new;
     }
 
@@ -205,12 +216,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param string $anladr
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withAnladr(string $anladr)
     {
         $new = clone $this;
         $new->anladr = $anladr;
+
         return $new;
     }
 
@@ -224,12 +237,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param string $natom
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withNatom(string $natom)
     {
         $new = clone $this;
         $new->natom = $natom;
+
         return $new;
     }
 
@@ -243,12 +258,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param int $arsforb
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withArsforb(int $arsforb)
     {
         $new = clone $this;
         $new->arsforb = $arsforb;
+
         return $new;
     }
 
@@ -262,12 +279,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param string $anlid
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withAnlid(string $anlid)
     {
         $new = clone $this;
         $new->anlid = $anlid;
+
         return $new;
     }
 
@@ -281,12 +300,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param string $kravmall
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withKravmall(string $kravmall)
     {
         $new = clone $this;
         $new->kravmall = $kravmall;
+
         return $new;
     }
 
@@ -300,12 +321,14 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param string $plombkod
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withPlombkod(string $plombkod)
     {
         $new = clone $this;
         $new->plombkod = $plombkod;
+
         return $new;
     }
 
@@ -319,16 +342,19 @@ class CollectionForElectricityInvoices implements CreatableFromArray
 
     /**
      * @param bool $slutfaktura
+     *
      * @return CollectionForElectricityInvoices
      */
     public function withSlutfaktura(bool $slutfaktura)
     {
         $new = clone $this;
         $new->slutfaktura = $slutfaktura;
+
         return $new;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         $data = [];
         if ($this->kommunkod !== null) {
             $data['kommunkod'] = $this->kommunkod;
@@ -372,6 +398,7 @@ class CollectionForElectricityInvoices implements CreatableFromArray
         if ($this->slutfaktura !== null) {
             $data['slutfaktura'] = $this->slutfaktura;
         }
+
         return $data;
     }
 
@@ -398,6 +425,7 @@ class CollectionForElectricityInvoices implements CreatableFromArray
         $collection->anlid = $data['anlid'] ?? null;
         $collection->avflyttad = $data['avflyttad'] ?? null;
         $collection->naringsidkare = $data['naringsidkare'] ?? null;
+
         return $collection;
     }
 }

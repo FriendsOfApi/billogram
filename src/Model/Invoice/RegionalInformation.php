@@ -1,99 +1,98 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class RegionalInformation implements CreatableFromArray
 {
     /**
-     * @var int $rotavdrag
+     * @var int
      */
-    private $rotavdrag=0;
+    private $rotavdrag = 0;
 
     /**
-     * @var string $rotavdragPersonalNumber
+     * @var string
      */
     private $rotavdragPersonalNumber;
 
     /**
-     * @var string $rotavdragDescription
+     * @var string
      */
     private $rotavdragDescription;
 
     /**
-     * @var bool $reversedVat
+     * @var bool
      */
     private $reversedVat = false;
 
     /**
-     * @var string $autogiroBetalarnummer
+     * @var string
      */
     private $autogiroBetalarnummer;
 
     /**
-     * @var string $autogiroPaymentDate
+     * @var string
      */
     private $autogiroPaymentDate;
 
     /**
-     * @var string $autogiroStatus
+     * @var string
      */
     private $autogiroStatus;
 
     /**
-     * @var string $autogiroFullStatus
+     * @var string
      */
     private $autogiroFullStatus;
 
     /**
-     * @var string $autogiroTotalSum
+     * @var string
      */
     private $autogiroTotalSum;
 
     /**
-     * @var string $efakturaRecipientIdentifier
+     * @var string
      */
     private $efakturaRecipientIdentifier;
 
     /**
-     * @var string $efakturaRecipientType
+     * @var string
      */
     private $efakturaRecipientType;
 
     /**
-     * @var string $efakturaRecipientBankName
+     * @var string
      */
     private $efakturaRecipientBankName;
 
     /**
-     * @var int $efakturaRecipientBankId
+     * @var int
      */
     private $efakturaRecipientBankId;
 
     /**
-     * @var string $efakturaRecipientBankCode
+     * @var string
      */
     private $efakturaRecipientBankCode;
 
     /**
-     * @var int $efakturaRecipientIdNumber
+     * @var int
      */
     private $efakturaRecipientIdNumber;
 
     /**
-     * @var int $efakturaRequestedAmount
+     * @var int
      */
     private $efakturaRequestedAmount;
 
     /**
-     * @var CollectionForElectricityInvoices $collectionForElectricityInvoices
+     * @var CollectionForElectricityInvoices
      */
     private $collectionForElectricityInvoices;
 
@@ -111,12 +110,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param int $rotavdrag
+     *
      * @return RegionalInformation
      */
     public function withRotavdrag(int $rotavdrag)
     {
         $new = clone $this;
         $new->rotavdrag = $rotavdrag;
+
         return $new;
     }
 
@@ -130,12 +131,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $rotavdragPersonalNumber
+     *
      * @return RegionalInformation
      */
     public function withRotavdragPersonalNumber(string $rotavdragPersonalNumber)
     {
         $new = clone $this;
         $new->rotavdragPersonalNumber = $rotavdragPersonalNumber;
+
         return $new;
     }
 
@@ -149,12 +152,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $rotavdragDescription
+     *
      * @return RegionalInformation
      */
     public function withRotavdragDescription(string $rotavdragDescription)
     {
         $new = clone $this;
         $new->rotavdragDescription = $rotavdragDescription;
+
         return $new;
     }
 
@@ -168,12 +173,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param bool $reversedVat
+     *
      * @return RegionalInformation
      */
     public function withReversedVat(bool $reversedVat)
     {
         $new = clone $this;
         $new->reversedVat = $reversedVat;
+
         return $new;
     }
 
@@ -187,12 +194,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $autogiroBetalarnummer
+     *
      * @return RegionalInformation
      */
     public function withAutogiroBetalarnummer(string $autogiroBetalarnummer)
     {
         $new = clone $this;
         $new->autogiroBetalarnummer = $autogiroBetalarnummer;
+
         return $new;
     }
 
@@ -206,12 +215,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $autogiroPaymentDate
+     *
      * @return RegionalInformation
      */
     public function withAutogiroPaymentDate(string $autogiroPaymentDate)
     {
         $new = clone $this;
         $new->autogiroPaymentDate = $autogiroPaymentDate;
+
         return $new;
     }
 
@@ -225,12 +236,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $autogiroStatus
+     *
      * @return RegionalInformation
      */
     public function withAutogiroStatus(string $autogiroStatus)
     {
         $new = clone $this;
         $new->autogiroStatus = $autogiroStatus;
+
         return $new;
     }
 
@@ -244,12 +257,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $autogiroFullStatus
+     *
      * @return RegionalInformation
      */
     public function withAutogiroFullStatus(string $autogiroFullStatus)
     {
         $new = clone $this;
         $new->autogiroFullStatus = $autogiroFullStatus;
+
         return $new;
     }
 
@@ -263,12 +278,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $autogiroTotalSum
+     *
      * @return RegionalInformation
      */
     public function withAutogiroTotalSum(string $autogiroTotalSum)
     {
         $new = clone $this;
         $new->autogiroTotalSum = $autogiroTotalSum;
+
         return $new;
     }
 
@@ -282,12 +299,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $efakturaRecipientIdentifier
+     *
      * @return RegionalInformation
      */
     public function withEfakturaRecipientIdentifier(string $efakturaRecipientIdentifier)
     {
         $new = clone $this;
         $new->efakturaRecipientIdentifier = $efakturaRecipientIdentifier;
+
         return $new;
     }
 
@@ -301,12 +320,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $efakturaRecipientType
+     *
      * @return RegionalInformation
      */
     public function withEfakturaRecipientType(string $efakturaRecipientType)
     {
         $new = clone $this;
         $new->efakturaRecipientType = $efakturaRecipientType;
+
         return $new;
     }
 
@@ -320,12 +341,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $efakturaRecipientBankName
+     *
      * @return RegionalInformation
      */
     public function withEfakturaRecipientBankName(string $efakturaRecipientBankName)
     {
         $new = clone $this;
         $new->efakturaRecipientBankName = $efakturaRecipientBankName;
+
         return $new;
     }
 
@@ -339,12 +362,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param int $efakturaRecipientBankId
+     *
      * @return RegionalInformation
      */
     public function withEfakturaRecipientBankId(int $efakturaRecipientBankId)
     {
         $new = clone $this;
         $new->efakturaRecipientBankId = $efakturaRecipientBankId;
+
         return $new;
     }
 
@@ -358,12 +383,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param string $efakturaRecipientBankCode
+     *
      * @return RegionalInformation
      */
     public function withEfakturaRecipientBankCode(string $efakturaRecipientBankCode)
     {
         $new = clone $this;
         $new->efakturaRecipientBankCode = $efakturaRecipientBankCode;
+
         return $new;
     }
 
@@ -377,12 +404,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param int $efakturaRecipientIdNumber
+     *
      * @return RegionalInformation
      */
     public function withEfakturaRecipientIdNumber(int $efakturaRecipientIdNumber)
     {
         $new = clone $this;
         $new->efakturaRecipientIdNumber = $efakturaRecipientIdNumber;
+
         return $new;
     }
 
@@ -396,12 +425,14 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param int $efakturaRequestedAmount
+     *
      * @return RegionalInformation
      */
     public function withEfakturaRequestedAmount(int $efakturaRequestedAmount)
     {
         $new = clone $this;
         $new->efakturaRequestedAmount = $efakturaRequestedAmount;
+
         return $new;
     }
 
@@ -415,16 +446,19 @@ class RegionalInformation implements CreatableFromArray
 
     /**
      * @param CollectionForElectricityInvoices $collectionForElectricityInvoices
+     *
      * @return RegionalInformation
      */
     public function withCollectionForElectricityInvoices(CollectionForElectricityInvoices $collectionForElectricityInvoices)
     {
         $new = clone $this;
         $new->collectionForElectricityInvoices = $collectionForElectricityInvoices;
+
         return $new;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         $data = [];
         if ($this->rotavdrag !== null) {
             $data['rotavdrag'] = $this->rotavdrag;
@@ -478,9 +512,9 @@ class RegionalInformation implements CreatableFromArray
         if ($this->collectionForElectricityInvoices !== null) {
             $data['efaktura_recipient_bank_code'] = $this->collectionForElectricityInvoices->toArray();
         }
+
         return $data;
     }
-
 
     /**
      * Create an API response object from the HTTP response from the API server.
@@ -509,6 +543,7 @@ class RegionalInformation implements CreatableFromArray
         $regionalInfo->rotavdragPersonalNumber = $data['efaktura_recipient_id_number'] ?? null;
         $regionalInfo->efakturaRequestedAmount = $data['efaktura_requested_amount'] ?? null;
         $regionalInfo->collectionForElectricityInvoices = CollectionForElectricityInvoices::createFromArray($data['electricity_collection']);
+
         return $regionalInfo;
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace Billogram\Model\Customer;
+
 use Billogram\Model\CreatableFromArray;
 
 /**
@@ -101,6 +102,7 @@ class CustomerDeliveryAddress implements CreatableFromArray
     {
         $new = clone $this;
         $new->zipCode = $careOf;
+
         return $new;
     }
 
@@ -208,7 +210,7 @@ class CustomerDeliveryAddress implements CreatableFromArray
         $customerDeliveryAddress->zipCode = $data['zipcode'];
         $customerDeliveryAddress->city = $data['city'];
         $customerDeliveryAddress->country = $data['country'];
-        return $customerDeliveryAddress;
 
+        return $customerDeliveryAddress;
     }
 }
