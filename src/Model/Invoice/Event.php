@@ -1,29 +1,28 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class Event implements CreatableFromArray
 {
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime
      */
     private $createdAt;
 
     /**
-     * @var string $type
+     * @var string
      */
     private $type;
 
     /**
-     * @var EventData $data
+     * @var EventData
      */
     private $data;
 
@@ -37,12 +36,14 @@ class Event implements CreatableFromArray
 
     /**
      * @param \DateTime $createdAt
+     *
      * @return Event
      */
     public function setCreatedAt(\DateTime $createdAt)
     {
         $new = clone $this;
         $new->createdAt = $createdAt;
+
         return $new;
     }
 
@@ -56,12 +57,14 @@ class Event implements CreatableFromArray
 
     /**
      * @param string $type
+     *
      * @return Event
      */
     public function setType(string $type)
     {
         $new = clone $this;
         $new->type = $type;
+
         return $new;
     }
 
@@ -75,12 +78,14 @@ class Event implements CreatableFromArray
 
     /**
      * @param EventData $data
+     *
      * @return Event
      */
     public function setDate(EventData $data)
     {
         $new = clone $this;
         $new->data = $data;
+
         return $new;
     }
 
@@ -96,6 +101,7 @@ class Event implements CreatableFromArray
         if ($this->data !== null) {
             $data['data'] = $this->data->toArray() ?? null;
         }
+
         return $data;
     }
 
@@ -112,6 +118,7 @@ class Event implements CreatableFromArray
         $event->type = $data['type'];
         $event->createdAt = $data['created_at'];
         $event->data = EventData::createFromArray($data['data']);
+
         return $event;
     }
 }

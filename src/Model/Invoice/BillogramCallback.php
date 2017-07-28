@@ -1,33 +1,33 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class BillogramCallback implements CreatableFromArray
 {
     /**
-     * @var string $url
+     * @var string
      */
     private $url;
 
     /**
-     * @var string $custom
+     * @var string
      */
     private $custom;
 
     /**
-     * @var string $signKey
+     * @var string
      */
     private $signKey;
 
-    public function __construct(){
+    public function __construct()
+    {
     }
 
     /**
@@ -40,12 +40,14 @@ class BillogramCallback implements CreatableFromArray
 
     /**
      * @param string $url
+     *
      * @return BillogramCallback
      */
     public function withUrl(string $url)
     {
         $new = clone $this;
         $new->url = $url;
+
         return $new;
     }
 
@@ -59,12 +61,14 @@ class BillogramCallback implements CreatableFromArray
 
     /**
      * @param string $custom
+     *
      * @return BillogramCallback
      */
     public function withCustom(string $custom)
     {
         $new = clone $this;
         $new->custom = $custom;
+
         return $new;
     }
 
@@ -78,12 +82,14 @@ class BillogramCallback implements CreatableFromArray
 
     /**
      * @param string $signKey
+     *
      * @return BillogramCallback
      */
     public function withSignKey(string $signKey)
     {
         $new = clone $this;
         $new->signKey = $signKey;
+
         return $new;
     }
 
@@ -114,6 +120,7 @@ class BillogramCallback implements CreatableFromArray
         $billogramCallback->url = $data['url'];
         $billogramCallback->custom = $data['custom'];
         $billogramCallback->signKey = $data['sign_key'];
+
         return $billogramCallback;
     }
 }

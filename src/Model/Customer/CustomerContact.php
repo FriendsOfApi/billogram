@@ -1,12 +1,12 @@
 <?php
 
 namespace Billogram\Model\Customer;
+
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class CustomerContact implements CreatableFromArray
 {
     /**
@@ -120,6 +120,7 @@ class CustomerContact implements CreatableFromArray
         $contact->name = $data['name'];
         $contact->email = $data['email'];
         $contact->phone = $data['phone'];
+
         return $contact;
     }
 }

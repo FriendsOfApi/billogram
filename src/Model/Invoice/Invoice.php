@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
@@ -9,80 +10,79 @@ use Billogram\Model\Customer\Customer;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class Invoice implements CreatableFromArray
 {
     /**
-     * @var string $id
+     * @var string
      */
     private $id;
 
     /**
-     * @var int $invoiceNo
+     * @var int
      */
     private $invoiceNo;
 
     /**
-     * @var int $ocrNumber
+     * @var int
      */
     private $ocrNumber;
 
     /**
-     * @var Customer $customer
+     * @var Customer
      */
     private $customer;
 
     /**
-     * @var \Billogram\Model\Invoice\Item[] $items
+     * @var \Billogram\Model\Invoice\Item[]
      */
     private $items;
 
     /**
-     * @var $invoiceDate $invoiceDate
+     * @var
      */
     private $invoiceDate;
 
     /**
-     * @var \DateTime $dueDate
+     * @var \DateTime
      */
     private $dueDate;
 
     /**
-     * @var int $dueDays
+     * @var int
      */
     private $dueDays;
 
     /**
-     * @var int $invoiceFee
+     * @var int
      */
     private $invoiceFee;
     /**
-     * @var int $invoiceFeeVat
+     * @var int
      */
     private $invoiceFeeVat;
 
     /**
-     * @var int $reminderFee
+     * @var int
      */
     private $reminderFee;
 
     /**
-     * @var int $interestRate
+     * @var int
      */
     private $interestRate;
 
     /**
-     * @var int $interestFee
+     * @var int
      */
     private $interestFee;
 
     /**
-     * @var string $currency
+     * @var string
      */
     private $currency;
 
     /**
-     * @var AdditionalInformation $info
+     * @var AdditionalInformation
      */
     private $info;
 
@@ -92,72 +92,72 @@ class Invoice implements CreatableFromArray
     private $regionalSweden;
 
     /**
-     * @var string $deliveryMethod
+     * @var string
      */
     private $deliveryMethod;
 
     /**
-     * @var string $state
+     * @var string
      */
     private $state;
 
     /**
-     * @var string $url
+     * @var string
      */
     private $url;
 
     /**
-     * @var array $flags
+     * @var array
      */
     private $flags;
 
     /**
-     * @var EventData $events
+     * @var EventData
      */
     private $events;
 
     /**
-     * @var int $remainingSum
+     * @var int
      */
     private $remainingSum;
 
     /**
-     * @var int $totalSum
+     * @var int
      */
     private $totalSum;
 
     /**
-     * @var int $roundingValue
+     * @var int
      */
     private $roundingValue;
 
     /**
-     * @var bool $automaticReminders
+     * @var bool
      */
     private $automaticReminders = true;
 
     /**
-     * @var AutomaticReminder[] $automaticRemindersSettings
+     * @var AutomaticReminder[]
      */
     private $automaticRemindersSettings;
 
     /**
-     * @var int $reminderCount
+     * @var int
      */
     private $reminderCount;
 
     /**
-     * @var \DateTime $createdAt
+     * @var \DateTime
      */
     private $createdAt;
 
     /**
-     * @var \DateTime $attestedAt
+     * @var \DateTime
      */
     private $attestedAt;
 
     /**
-     * @var \DateTime $updateAt
+     * @var \DateTime
      */
     private $updateAt;
 
@@ -167,12 +167,12 @@ class Invoice implements CreatableFromArray
     private $callbacks;
 
     /**
-     * @var DetailedSums $subStructure
+     * @var DetailedSums
      */
     private $detailedSums;
 
     /**
-     * @var string $attachment
+     * @var string
      */
     private $attachment;
 
@@ -180,7 +180,6 @@ class Invoice implements CreatableFromArray
      * @var AutomaticCollection
      */
     private $automaticCollection;
-
 
     public function __construct()
     {
@@ -196,12 +195,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param string $id
+     *
      * @return Invoice
      */
     public function withId(string $id)
     {
         $new = clone $this;
         $new->id = $id;
+
         return $new;
     }
 
@@ -215,12 +216,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $invoiceNo
+     *
      * @return Invoice
      */
     public function withInvoiceNo(int $invoiceNo)
     {
         $new = clone $this;
         $new->invoiceNo = $invoiceNo;
+
         return $new;
     }
 
@@ -234,12 +237,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $ocrNumber
+     *
      * @return Invoice
      */
     public function withOcrNumber(int $ocrNumber)
     {
         $new = clone $this;
         $new->ocrNumber = $ocrNumber;
+
         return $new;
     }
 
@@ -253,12 +258,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param Customer $customer
+     *
      * @return Invoice
      */
     public function withCustomer(Customer $customer)
     {
         $new = clone $this;
         $new->customer = $customer;
+
         return $new;
     }
 
@@ -272,12 +279,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param \Billogram\Model\Invoice\Item[] $items
+     *
      * @return Invoice
      */
     public function withItems(array $items)
     {
         $new = clone $this;
         $new->items = $items;
+
         return $new;
     }
 
@@ -291,12 +300,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param string $invoiceDate
+     *
      * @return Invoice
      */
     public function withInvoiceDate(string $invoiceDate)
     {
         $new = clone $this;
         $new->invoiceDate = $invoiceDate;
+
         return $new;
     }
 
@@ -310,12 +321,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param \DateTime $dueDate
+     *
      * @return Invoice
      */
     public function withDueDate(\DateTime $dueDate)
     {
         $new = clone $this;
         $new->dueDate = $dueDate;
+
         return $new;
     }
 
@@ -329,12 +342,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $dueDays
+     *
      * @return Invoice
      */
     public function withDueDays(int $dueDays)
     {
         $new = clone $this;
         $new->dueDays = $dueDays;
+
         return $new;
     }
 
@@ -348,12 +363,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $invoiceFee
+     *
      * @return Invoice
      */
     public function withInvoiceFee(int $invoiceFee)
     {
         $new = clone $this;
         $new->invoiceFee = $invoiceFee;
+
         return $new;
     }
 
@@ -367,12 +384,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $invoiceFeeVat
+     *
      * @return Invoice
      */
     public function withInvoiceFeeVat(int $invoiceFeeVat)
     {
         $new = clone $this;
         $new->invoiceFeeVat = $invoiceFeeVat;
+
         return $new;
     }
 
@@ -386,12 +405,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $reminderFee
+     *
      * @return Invoice
      */
     public function withReminderFee(int $reminderFee)
     {
         $new = clone $this;
         $new->reminderFee = $reminderFee;
+
         return $new;
     }
 
@@ -405,12 +426,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $interestRate
+     *
      * @return Invoice
      */
     public function withInterestRate(int $interestRate)
     {
         $new = clone $this;
         $new->interestRate = $interestRate;
+
         return $new;
     }
 
@@ -424,12 +447,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $interestFee
+     *
      * @return Invoice
      */
     public function withInterestFee(int $interestFee)
     {
         $new = clone $this;
         $new->interestFee = $interestFee;
+
         return $new;
     }
 
@@ -443,12 +468,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param string $currency
+     *
      * @return Invoice
      */
     public function withCurrency(string $currency)
     {
         $new = clone $this;
         $this->currency = $currency;
+
         return $new;
     }
 
@@ -462,12 +489,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param AdditionalInformation $info
+     *
      * @return Invoice
      */
     public function withInfo(AdditionalInformation $info)
     {
         $new = clone $this;
         $new->info = $info;
+
         return $new;
     }
 
@@ -481,12 +510,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param RegionalInformation $regionalSweden
+     *
      * @return Invoice
      */
     public function withRegionalSweden(RegionalInformation $regionalSweden)
     {
         $new = clone $this;
         $new->regionalSweden = $regionalSweden;
+
         return $new;
     }
 
@@ -500,12 +531,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param string $deliveryMethod
+     *
      * @return Invoice
      */
     public function withDeliveryMethod(string $deliveryMethod)
     {
         $new = clone $this;
         $new->deliveryMethod = $deliveryMethod;
+
         return $new;
     }
 
@@ -519,12 +552,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param string $state
+     *
      * @return Invoice
      */
     public function swithState(string $state)
     {
         $new = clone $this;
         $new->state = $state;
+
         return $new;
     }
 
@@ -538,12 +573,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param string $url
+     *
      * @return Invoice
      */
     public function withUrl(string $url)
     {
         $new = clone $this;
         $new->url = $url;
+
         return $new;
     }
 
@@ -557,12 +594,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param array $flags
+     *
      * @return Invoice
      */
     public function withFlags(array $flags)
     {
         $new = clone $this;
         $new->flags = $flags;
+
         return $new;
     }
 
@@ -576,12 +615,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param EventData $events
+     *
      * @return Invoice
      */
     public function withEvents(EventData $events)
     {
         $new = clone $this;
         $new->events = $events;
+
         return $new;
     }
 
@@ -595,12 +636,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $remainingSum
+     *
      * @return Invoice
      */
     public function withRemainingSum(int $remainingSum)
     {
         $new = clone $this;
         $new->remainingSum = $remainingSum;
+
         return $new;
     }
 
@@ -614,12 +657,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $totalSum
+     *
      * @return Invoice
      */
     public function withTotalSum(int $totalSum)
     {
         $new = clone $this;
         $new->totalSum = $totalSum;
+
         return $new;
     }
 
@@ -633,12 +678,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param bool $automaticReminders
+     *
      * @return Invoice
      */
     public function withAutomaticReminders(bool $automaticReminders)
     {
         $new = clone $this;
         $new->automaticReminders = $automaticReminders;
+
         return $new;
     }
 
@@ -652,12 +699,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param AutomaticReminder[] $automaticRemindersSettings
+     *
      * @return Invoice
      */
     public function withAutomaticRemindersSettings(array $automaticRemindersSettings)
     {
         $new = clone $this;
         $new->automaticRemindersSettings = $automaticRemindersSettings;
+
         return $new;
     }
 
@@ -671,12 +720,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param int $reminderCount
+     *
      * @return Invoice
      */
     public function withReminderCount(int $reminderCount)
     {
         $new = clone $this;
         $new->reminderCount = $reminderCount;
+
         return $new;
     }
 
@@ -690,12 +741,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param \DateTime $createdAt
+     *
      * @return Invoice
      */
     public function withCreatedAt(\DateTime $createdAt)
     {
         $new = clone $this;
         $new->createdAt = $createdAt;
+
         return $new;
     }
 
@@ -709,12 +762,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param \DateTime $attestedAt
+     *
      * @return Invoice
      */
     public function withAttestedAt(\DateTime $attestedAt)
     {
         $new = clone $this;
         $new->attestedAt = $attestedAt;
+
         return $new;
     }
 
@@ -728,12 +783,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param \DateTime $updateAt
+     *
      * @return Invoice
      */
     public function withUpdateAt(\DateTime $updateAt)
     {
         $new = clone $this;
         $new->updateAt = $updateAt;
+
         return $new;
     }
 
@@ -747,12 +804,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param BillogramCallback $callbacks
+     *
      * @return Invoice
      */
     public function withCallbacks(BillogramCallback $callbacks)
     {
         $new = clone $this;
         $new->callbacks = $callbacks;
+
         return $new;
     }
 
@@ -766,12 +825,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param DetailedSums $detailedSums
+     *
      * @return Invoice
      */
     public function withDetailedSums(DetailedSums $detailedSums)
     {
         $new = clone $this;
         $new->detailedSums = $detailedSums;
+
         return $new;
     }
 
@@ -785,12 +846,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param string $attachment
+     *
      * @return Invoice
      */
     public function withAttachment(string $attachment)
     {
         $new = clone $this;
         $new->attachment = $attachment;
+
         return $new;
     }
 
@@ -804,12 +867,14 @@ class Invoice implements CreatableFromArray
 
     /**
      * @param AutomaticCollection $automaticCollection
+     *
      * @return Invoice
      */
     public function withAutomaticCollection(AutomaticCollection $automaticCollection)
     {
         $new = clone $this;
         $new->automaticCollection = $automaticCollection;
+
         return $new;
     }
 
@@ -821,23 +886,23 @@ class Invoice implements CreatableFromArray
         return $this->roundingValue;
     }
 
-
-
-    public function toArray(){
+    public function toArray()
+    {
         $data = [];
         if ($this->customer !== null) {
             $data['customer'] = $this->customer->toArray();
         }
         if ($this->items !== null) {
-            foreach ($this->items as $item){
-            $data['items'][] = $item->toArray() ;}
+            foreach ($this->items as $item) {
+                $data['items'][] = $item->toArray();
+            }
         }
         if ($this->invoiceDate !== null) {
-                $data['invoice_date'] = $this->invoiceDate ?? null;
+            $data['invoice_date'] = $this->invoiceDate ?? null;
         }
+
         return $data;
     }
-
 
     /**
      * Create an API response object from the HTTP response from the API server.
@@ -850,62 +915,63 @@ class Invoice implements CreatableFromArray
     {
         $invoice = new self();
         $invoice->id = $data['data']['id'] ?? null;
-        $invoice->createdAt = $data['data']['created_at']?? null;
-        $invoice->updateAt = $data['data']['updated_at']?? null;
-        $invoice->attestedAt = $data['data']['attested_at']?? null;
-        $invoice->currency = $data['data']['currency']?? null;
-        $invoice->reminderFee = $data['data']['reminder_fee']?? null;
-        $invoice->interestRate = $data['data']['interest_rate']?? null;
-        $invoice->state = $data['data']['state']?? null;
-        $invoice->attachment = $data['data']['attachment']?? null;
-        $invoice->automaticReminders = $data['data']['automatic_reminders']?? null;
-        if (key_exists('automatic_reminders_settings',$data['data'])){
-            foreach ($data['data']['automatic_reminders_settings'] as $setting){
-                $automaticReminder = AutomaticReminder::createFromArray($setting)?? null;
-                $invoice->automaticRemindersSettings [] = $automaticReminder;
+        $invoice->createdAt = $data['data']['created_at'] ?? null;
+        $invoice->updateAt = $data['data']['updated_at'] ?? null;
+        $invoice->attestedAt = $data['data']['attested_at'] ?? null;
+        $invoice->currency = $data['data']['currency'] ?? null;
+        $invoice->reminderFee = $data['data']['reminder_fee'] ?? null;
+        $invoice->interestRate = $data['data']['interest_rate'] ?? null;
+        $invoice->state = $data['data']['state'] ?? null;
+        $invoice->attachment = $data['data']['attachment'] ?? null;
+        $invoice->automaticReminders = $data['data']['automatic_reminders'] ?? null;
+        if (array_key_exists('automatic_reminders_settings', $data['data'])) {
+            foreach ($data['data']['automatic_reminders_settings'] as $setting) {
+                $automaticReminder = AutomaticReminder::createFromArray($setting) ?? null;
+                $invoice->automaticRemindersSettings[] = $automaticReminder;
             }
         }
-        if (key_exists('automatic_collection',$data['data'])){
-             $invoice->automaticCollection = AutomaticCollection::createFromArray($data['data']['automatic_collection'])?? null;
+        if (array_key_exists('automatic_collection', $data['data'])) {
+            $invoice->automaticCollection = AutomaticCollection::createFromArray($data['data']['automatic_collection']) ?? null;
         }
-        $invoice->roundingValue = $data['data']['rounding_value']?? null;
-        $invoice->ocrNumber = $data['data']['ocr_number']?? null;
-        if (key_exists('events',$data['data'])){
-            foreach ($data['data']['events'] as $eventArray){
-                $event = Event::createFromArray($eventArray)?? null;
-                $invoice->events [] = $event;
+        $invoice->roundingValue = $data['data']['rounding_value'] ?? null;
+        $invoice->ocrNumber = $data['data']['ocr_number'] ?? null;
+        if (array_key_exists('events', $data['data'])) {
+            foreach ($data['data']['events'] as $eventArray) {
+                $event = Event::createFromArray($eventArray) ?? null;
+                $invoice->events[] = $event;
             }
         }
-        $invoice->dueDate = $data['data']['due_date']?? null;
-        $invoice->dueDays = $data['data']['due_days']?? null;
-        $invoice->invoiceDate = $data['data']['invoice_date']?? null;
-        if (key_exists('callbacks',$data['data'])) {
-            $invoice->callbacks = BillogramCallback::createFromArray($data['data']['callbacks'])?? null;
+        $invoice->dueDate = $data['data']['due_date'] ?? null;
+        $invoice->dueDays = $data['data']['due_days'] ?? null;
+        $invoice->invoiceDate = $data['data']['invoice_date'] ?? null;
+        if (array_key_exists('callbacks', $data['data'])) {
+            $invoice->callbacks = BillogramCallback::createFromArray($data['data']['callbacks']) ?? null;
         }
-        $invoice->interestFee = $data['data']['interest_fee']?? null;
-        $invoice->invoiceNo = $data['data']['invoice_no']?? null;
-        $invoice->customer = Customer::createFromArray($data['data']['customer'])?? null;
-        if (key_exists('info',$data['data'])) {
-            $invoice->info = AdditionalInformation::createFromArray($data['data']['info'])?? null;
+        $invoice->interestFee = $data['data']['interest_fee'] ?? null;
+        $invoice->invoiceNo = $data['data']['invoice_no'] ?? null;
+        $invoice->customer = Customer::createFromArray($data['data']['customer']) ?? null;
+        if (array_key_exists('info', $data['data'])) {
+            $invoice->info = AdditionalInformation::createFromArray($data['data']['info']) ?? null;
         }
-        $invoice->invoiceFee = $data['data']['invoice_fee']?? null;
-        $invoice->invoiceFeeVat = $data['data']['invoice_fee_vat']?? null;
-        if (key_exists('items',$data['data'])) {
-            foreach ($data['data']['items'] as $item){
-                $item = \Billogram\Model\Invoice\Item::createFromArray($item)?? null;
-                $invoice->items [] = $item;
+        $invoice->invoiceFee = $data['data']['invoice_fee'] ?? null;
+        $invoice->invoiceFeeVat = $data['data']['invoice_fee_vat'] ?? null;
+        if (array_key_exists('items', $data['data'])) {
+            foreach ($data['data']['items'] as $item) {
+                $item = \Billogram\Model\Invoice\Item::createFromArray($item) ?? null;
+                $invoice->items[] = $item;
             }
         }
-        $invoice->totalSum = $data['data']['total_sum']?? null;
-        $invoice->remainingSum = $data['data']['remaining_sum']?? null;
-        $invoice->reminderCount = $data['data']['reminder_count']?? null;
-        $invoice->deliveryMethod = $data['data']['delivery_method']?? null;
-        $invoice->url = $data['data']['url']?? null;
-        $invoice->flags = $data['data']['flags']?? null;
-        if (key_exists('regional_sweden',$data['data']) && key_exists('regional_sweden',$data['data'])){
-        $invoice->regionalSweden = RegionalInformation::createFromArray($data['data']['regional_sweden'])?? null;
-        $invoice->detailedSums = DetailedSums::createFromArray($data['data']['detailed_sums'])?? null;
+        $invoice->totalSum = $data['data']['total_sum'] ?? null;
+        $invoice->remainingSum = $data['data']['remaining_sum'] ?? null;
+        $invoice->reminderCount = $data['data']['reminder_count'] ?? null;
+        $invoice->deliveryMethod = $data['data']['delivery_method'] ?? null;
+        $invoice->url = $data['data']['url'] ?? null;
+        $invoice->flags = $data['data']['flags'] ?? null;
+        if (array_key_exists('regional_sweden', $data['data']) && array_key_exists('regional_sweden', $data['data'])) {
+            $invoice->regionalSweden = RegionalInformation::createFromArray($data['data']['regional_sweden']) ?? null;
+            $invoice->detailedSums = DetailedSums::createFromArray($data['data']['detailed_sums']) ?? null;
         }
+
         return $invoice;
     }
 }

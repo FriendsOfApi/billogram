@@ -1,15 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Item;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class Bookkeeping implements CreatableFromArray
 {
     /**
@@ -36,12 +35,14 @@ class Bookkeeping implements CreatableFromArray
 
     /**
      * @param string $incomeAccount
+     *
      * @return Bookkeeping
      */
     public function withIncomeAccount(string $incomeAccount)
     {
         $new = clone $this;
         $new->incomeAccount = $incomeAccount;
+
         return $new;
     }
 
@@ -55,20 +56,23 @@ class Bookkeeping implements CreatableFromArray
 
     /**
      * @param string $vatAccount
+     *
      * @return Bookkeeping
      */
     public function withVatAccount(string $vatAccount)
     {
         $new = clone $this;
         $new->vatAccount = $vatAccount;
+
         return $new;
     }
 
-    public function toArray(){
-        $data=['income_account' => $this->incomeAccount , 'vat_account' => $this->vatAccount];
+    public function toArray()
+    {
+        $data = ['income_account' => $this->incomeAccount, 'vat_account' => $this->vatAccount];
+
         return $data;
     }
-
 
     /**
      * Create an API response object from the HTTP response from the API server.
@@ -80,8 +84,9 @@ class Bookkeeping implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $bookkeeping = new self();
-        $bookkeeping->incomeAccount = $data=['income_account'];
-        $bookkeeping->vatAccount = $data=['vat_account'];
+        $bookkeeping->incomeAccount = $data = ['income_account'];
+        $bookkeeping->vatAccount = $data = ['vat_account'];
+
         return $bookkeeping;
     }
 }

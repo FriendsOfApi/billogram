@@ -1,14 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Item;
+
 use Billogram\Model\CreatableFromArray;
-use Billogram\Model\Item\Bookkeeping;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class Item implements CreatableFromArray
 {
     /**
@@ -70,12 +70,14 @@ class Item implements CreatableFromArray
 
     /**
      * @param int $itemNo
+     *
      * @return Item
      */
     public function withItemNo(int $itemNo)
     {
         $new = clone $this;
         $new->itemNo = $itemNo;
+
         return $new;
     }
 
@@ -89,12 +91,14 @@ class Item implements CreatableFromArray
 
     /**
      * @param string $title
+     *
      * @return Item
      */
     public function withTitle(string $title)
     {
         $new = clone $this;
         $new->title = $title;
+
         return $new;
     }
 
@@ -108,12 +112,14 @@ class Item implements CreatableFromArray
 
     /**
      * @param string $description
+     *
      * @return Item
      */
     public function withDescription(string $description)
     {
         $new = clone $this;
         $new->description = $description;
+
         return $new;
     }
 
@@ -127,12 +133,14 @@ class Item implements CreatableFromArray
 
     /**
      * @param float $price
+     *
      * @return Item
      */
     public function withPrice(float $price)
     {
         $new = clone $this;
         $new->price = $price;
+
         return $new;
     }
 
@@ -146,12 +154,14 @@ class Item implements CreatableFromArray
 
     /**
      * @param float $vat
+     *
      * @return Item
      */
     public function withVat(float $vat)
     {
         $new = clone $this;
         $new->vat = $vat;
+
         return $new;
     }
 
@@ -165,12 +175,14 @@ class Item implements CreatableFromArray
 
     /**
      * @param string $unit
+     *
      * @return Item
      */
     public function withUnit(string $unit)
     {
         $new = clone $this;
         $new->unit = $unit;
+
         return $new;
     }
 
@@ -184,12 +196,14 @@ class Item implements CreatableFromArray
 
     /**
      * @param Bookkeeping $bookkeeping
+     *
      * @return Item
      */
     public function withBookkeeping(Bookkeeping $bookkeeping)
     {
         $new = clone $this;
         $new->bookkeeping = $bookkeeping;
+
         return $new;
     }
 
@@ -225,7 +239,6 @@ class Item implements CreatableFromArray
         $this->updatedAt = $updatedAt;
     }
 
-
     /**
      * Create an API response object from the HTTP response from the API server.
      *
@@ -235,9 +248,9 @@ class Item implements CreatableFromArray
      */
     public static function createFromArray(array $data)
     {
-        if (key_exists('data',$data)){
+        if (array_key_exists('data', $data)) {
             $itemArray = $data['data'];
-        }else{
+        } else {
             $itemArray = $data;
         }
         $item = new self();
@@ -250,10 +263,12 @@ class Item implements CreatableFromArray
         $item->bookkeeping = Bookkeeping::createFromArray($itemArray['bookkeeping']);
         $item->createdAt = $itemArray['created_at'] ?? null;
         $item->updatedAt = $itemArray['updated_at'] ?? null;
+
         return $item;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         $data = [];
         if ($this->title !== null) {
             $data['title'] = $this->title;
@@ -262,22 +277,21 @@ class Item implements CreatableFromArray
             $data['item_no'] = $this->itemNo;
         }
         if ($this->description !== null) {
-        $data['description'] = $this->description ?? null;
+            $data['description'] = $this->description ?? null;
         }
         if ($this->price !== null) {
-        $data['price'] = $this->price ?? null;
+            $data['price'] = $this->price ?? null;
         }
         if ($this->vat !== null) {
-        $data['vat'] = $this->vat ?? null;
+            $data['vat'] = $this->vat ?? null;
         }
         if ($this->unit !== null) {
-        $data['unit'] = $this->unit;
+            $data['unit'] = $this->unit;
         }
         if ($this->bookkeeping !== null) {
             $data['bookkeeping'] = $this->bookkeeping->toArray();
         }
+
         return $data;
     }
-
-
 }

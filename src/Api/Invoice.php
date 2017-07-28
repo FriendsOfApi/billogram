@@ -1,8 +1,9 @@
 <?php
+
 declare(strict_types=1);
 
-
 namespace Billogram\Api;
+
 use Billogram\Exception\Domain\ValidationException;
 use Billogram\Model\Invoice\Invoice as Model;
 use Billogram\Model\Invoice\Invoices;
@@ -10,18 +11,19 @@ use Billogram\Model\Invoice\Invoices;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class Invoice extends HttpApi
 {
     /**
      * @param array $param
+     *
      * @return string|array
-     * @link https://billogram.com/api/documentation#billogram_call_create
+     *
+     * @see https://billogram.com/api/documentation#billogram_call_create
      */
     public function search(array $param = [])
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
-        $response= $this->httpget('/billogram', $param);
+        $response = $this->httpget('/billogram', $param);
         $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
@@ -29,20 +31,22 @@ class Invoice extends HttpApi
 
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response,$body);
+            $this->handleErrors($response, $body);
         }
+
         return $this->hydrator->hydrate($response, Invoices::class);
     }
 
     /**
      * @param string $invoiceId
-     * @param array $param
+     * @param array  $param
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @link https://billogram.com/api/documentation#billogram_call_create
+     *
+     * @see https://billogram.com/api/documentation#billogram_call_create
      */
     public function fetch(string $invoiceId, array $param = [])
     {
-
         $response = $this->httpGet('/billogram/'.$invoiceId, $param);
         $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
@@ -50,16 +54,19 @@ class Invoice extends HttpApi
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response,$body);
+            $this->handleErrors($response, $body);
         }
-        return $this->hydrator->hydrate($response, Model::class);
 
+        return $this->hydrator->hydrate($response, Model::class);
     }
 
     /**
      * @param Model $invoice
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @link https://billogram.com/api/documentation#billogram_call_create
+     *
+     * @see https://billogram.com/api/documentation#billogram_call_create
+     *
      * @throws ValidationException
      */
     public function create(Model $invoice)
@@ -72,16 +79,20 @@ class Invoice extends HttpApi
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 201) {
-            $this->handleErrors($response,$body);
+            $this->handleErrors($response, $body);
         }
+
         return $this->hydrator->hydrate($response, Model::class);
     }
 
     /**
      * @param string $invoiceId
-     * @param Model $invoice
+     * @param Model  $invoice
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
-     * @link https://billogram.com/api/documentation#billogram_call_create
+     *
+     * @see https://billogram.com/api/documentation#billogram_call_create
+     *
      * @throws ValidationException
      */
     public function update(string $invoiceId, Model $invoice)
@@ -93,9 +104,9 @@ class Invoice extends HttpApi
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response,$body);
+            $this->handleErrors($response, $body);
         }
+
         return $this->hydrator->hydrate($response, Model::class);
     }
-
 }

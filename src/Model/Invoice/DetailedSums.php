@@ -1,75 +1,71 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class DetailedSums implements CreatableFromArray
 {
     /**
-     * @var float $invoiceFee
+     * @var float
      */
     private $invoiceFee;
 
     /**
-     * @var float $invoiceFeeVat
+     * @var float
      */
     private $invoiceFeeVat;
 
     /**
-     * @var float $netSum
+     * @var float
      */
     private $netSum;
 
     /**
-     * @var float $vatSum
+     * @var float
      */
     private $vatSum;
 
     /**
-     * @var float $grossSum
+     * @var float
      */
     private $grossSum;
 
     /**
-     * @var float $rounding
+     * @var float
      */
     private $rounding;
 
     /**
-     * @var float $rounding
+     * @var float
      */
     private $reminderFee;
 
     /**
-     * @var float $interestFee
+     * @var float
      */
     private $interestFee;
 
     /**
-     * @var float $paidSum
+     * @var float
      */
     private $paidSum;
 
     /**
-     * @var float $collectorPaidSum
+     * @var float
      */
     private $collectorPaidSum;
 
     /**
-     * @var float $remainingSum
+     * @var float
      */
     private $remainingSum;
 
-    /**
-     *
-     */
     public function __construct()
     {
     }
@@ -84,12 +80,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $invoiceFee
+     *
      * @return DetailedSums
      */
     public function withInvoiceFee(float $invoiceFee)
     {
         $new = clone $this;
         $new->invoiceFee = $invoiceFee;
+
         return $new;
     }
 
@@ -103,12 +101,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $invoiceFeeVat
+     *
      * @return DetailedSums
      */
     public function withInvoiceFeeVat(float $invoiceFeeVat)
     {
         $new = clone $this;
         $new->invoiceFeeVat = $invoiceFeeVat;
+
         return $new;
     }
 
@@ -122,12 +122,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $netSum
+     *
      * @return DetailedSums
      */
     public function wiNetSum(float $netSum)
     {
         $new = clone $this;
         $new->netSum = $netSum;
+
         return $new;
     }
 
@@ -141,12 +143,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $vatSum
+     *
      * @return DetailedSums
      */
     public function withVatSum(float $vatSum)
     {
         $new = clone $this;
         $new->vatSum = $vatSum;
+
         return $new;
     }
 
@@ -160,12 +164,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $grossSum
+     *
      * @return DetailedSums
      */
     public function withGrossSum(float $grossSum)
     {
         $new = clone $this;
         $new->grossSum = $grossSum;
+
         return $new;
     }
 
@@ -179,12 +185,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $rounding
+     *
      * @return DetailedSums
      */
     public function withRounding(float $rounding)
     {
         $new = clone $this;
         $new->rounding = $rounding;
+
         return $new;
     }
 
@@ -198,12 +206,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $reminderFee
+     *
      * @return DetailedSums
      */
     public function withReminderFee(float $reminderFee)
     {
         $new = clone $this;
         $new->reminderFee = $reminderFee;
+
         return $new;
     }
 
@@ -217,12 +227,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $interestFee
+     *
      * @return DetailedSums
      */
     public function withInterestFee(float $interestFee)
     {
         $new = clone $this;
         $new->interestFee = $interestFee;
+
         return $new;
     }
 
@@ -236,12 +248,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $paidSum
+     *
      * @return DetailedSums
      */
     public function withPaidSum(float $paidSum)
     {
         $new = clone $this;
         $new->paidSum = $paidSum;
+
         return $new;
     }
 
@@ -255,12 +269,14 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $collectorPaidSum
+     *
      * @return DetailedSums
      */
     public function withCollectorPaidSum(float $collectorPaidSum)
     {
         $new = clone $this;
         $new->collectorPaidSum = $collectorPaidSum;
+
         return $new;
     }
 
@@ -274,16 +290,19 @@ class DetailedSums implements CreatableFromArray
 
     /**
      * @param float $remainingSum
+     *
      * @return DetailedSums
      */
     public function withRemainingSum(float $remainingSum)
     {
         $new = clone $this;
         $new->remainingSum = $remainingSum;
+
         return $new;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         $data = [];
         if ($this->invoiceFee !== null) {
             $data['invoice_fee'] = $this->invoiceFee;
@@ -320,8 +339,6 @@ class DetailedSums implements CreatableFromArray
         }
     }
 
-
-
     /**
      * Create an API response object from the HTTP response from the API server.
      *
@@ -342,6 +359,7 @@ class DetailedSums implements CreatableFromArray
         $detail->interestFee = $data['interest_fee'] ?? null;
         $detail->paidSum = $data['paid_sum'] ?? null;
         $detail->collectorPaidSum = $data['collector_paid_sum'] ?? null;
+
         return $detail;
     }
 }

@@ -12,7 +12,6 @@ use Billogram\Model\Customer\Customers;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class Customer extends HttpApi
 {
     /**
@@ -31,15 +30,18 @@ class Customer extends HttpApi
             return $response;
         }
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response,$body);
+            $this->handleErrors($response, $body);
         }
+
         return $this->hydrator->hydrate($response, Customers::class);
     }
 
     /**
-     * @param int $customerNo
+     * @param int   $customerNo
      * @param array $param
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
+     *
      * @throws NotFoundException
      */
     public function fetch(int $customerNo, array $param = [])
@@ -51,8 +53,9 @@ class Customer extends HttpApi
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response,$body);
+            $this->handleErrors($response, $body);
         }
+
         return $this->hydrator->hydrate($response, Model::class);
     }
 
@@ -72,15 +75,18 @@ class Customer extends HttpApi
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response,$body);
+            $this->handleErrors($response, $body);
         }
+
         return $this->hydrator->hydrate($response, Model::class);
     }
 
     /**
-     * @param int $customerNo
+     * @param int   $customerNo
      * @param Model $costumer
+     *
      * @return mixed|\Psr\Http\Message\ResponseInterface
+     *
      * @throws NotFoundException
      * @throws ValidationException
      */
@@ -93,8 +99,9 @@ class Customer extends HttpApi
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response,$body);
+            $this->handleErrors($response, $body);
         }
+
         return $this->hydrator->hydrate($response, Model::class);
     }
 }

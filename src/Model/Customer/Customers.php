@@ -9,7 +9,6 @@ use Billogram\Model\CreatableFromArray;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class Customers implements CreatableFromArray
 {
     /**
@@ -25,9 +24,9 @@ class Customers implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $customers = [];
-        if (isset($data['$customers'])) {
-            foreach ($data['$customers'] as $item) {
-                $customers[] = Customer::createFromArray($item);
+        if (isset($data['data'])) {
+            foreach ($data['data'] as $item) {
+                $customers[] = Customer::createFromArray(['data' => $item]);
             }
         }
 

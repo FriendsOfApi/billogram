@@ -1,159 +1,158 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Billogram\Model\Invoice;
-
 
 use Billogram\Model\CreatableFromArray;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class EventData implements CreatableFromArray
 {
     /**
-     * @var string $invoiceNo
+     * @var string
      */
     private $invoiceNo;
 
     /**
-     * @var string $deliveryMethod
+     * @var string
      */
     private $deliveryMethod;
 
     /**
-     * @var string $letterId
+     * @var string
      */
     private $letterId;
 
     /**
-     * @var int $amount
+     * @var int
      */
     private $amount;
 
     /**
-     * @var string $payerName
+     * @var string
      */
     private $payerName;
 
     /**
-     * @var array $paymentFlags
+     * @var array
      */
     private $paymentFlags = [];
 
     /**
-     * @var int $bankingAmount
+     * @var int
      */
     private $bankingAmount;
 
     /**
-     * @var bool $manual
+     * @var bool
      */
     private $manual;
 
     /**
-     * @var int $reminderFee
+     * @var int
      */
     private $reminderFee;
 
     /**
-     * @var int $reminderCount
+     * @var int
      */
     private $reminderCount;
 
     /**
-     * @var int $interestRate
+     * @var int
      */
     private $interestRate;
 
     /**
-     * @var string $customerEmail
+     * @var string
      */
     private $customerEmail;
 
     /**
-     * @var string $customerPhone
+     * @var string
      */
     private $customerPhone;
 
     /**
-     * @var string $ip
+     * @var string
      */
     private $ip;
 
     /**
-     * @var string $type
+     * @var string
      */
     private $type;
 
     /**
-     * @var string[] $message
+     * @var string[]
      */
     private $message;
 
     /**
-     * @var string $fullStatus
+     * @var string
      */
     private $fullStatus;
 
     /**
-     * @var string $collectorMethod
+     * @var string
      */
     private $collectorMethod;
 
     /**
-     * @var string $collectorReference
+     * @var string
      */
     private $collectorReference;
 
     /**
-     * @var string $factoringMethod
+     * @var string
      */
     private $factoringMethod;
 
     /**
-     * @var string $factoringReference
+     * @var string
      */
     private $factoringReference;
 
     /**
-     * @var int $sellsFor
+     * @var int
      */
     private $sellsFor;
 
     /**
-     * @var int $soldFor
+     * @var int
      */
     private $soldFor;
 
     /**
-     * @var string $bankgiro
+     * @var string
      */
     private $bankgiro;
 
     /**
-     * @var string $recipientIdentifier
+     * @var string
      */
     private $recipientIdentifier;
 
     /**
-     * @var string $errorStatus
+     * @var string
      */
     private $errorStatus;
 
     /**
-     * @var int $totalSum
+     * @var int
      */
     private $totalSum;
 
     /**
-     * @var int $remainingSum
+     * @var int
      */
     private $remainingSum;
 
     /**
-     * @var bool $scanningCentral
+     * @var bool
      */
     private $scanningCentral;
 
@@ -171,12 +170,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $invoiceNo
+     *
      * @return EventData
      */
     public function withInvoiceNo(string $invoiceNo)
     {
         $new = clone $this;
         $new->invoiceNo = $invoiceNo;
+
         return $new;
     }
 
@@ -190,12 +191,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $deliveryMethod
+     *
      * @return EventData
      */
     public function withDeliveryMethod(string $deliveryMethod)
     {
         $new = clone $this;
         $new->deliveryMethod = $deliveryMethod;
+
         return $new;
     }
 
@@ -209,12 +212,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $letterId
+     *
      * @return EventData
      */
     public function withLetterId(string $letterId)
     {
         $new = clone $this;
         $new->letterId = $letterId;
+
         return $new;
     }
 
@@ -228,12 +233,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $amount
+     *
      * @return EventData
      */
     public function withAmount(int $amount)
     {
         $new = clone $this;
         $new->amount = $amount;
+
         return $new;
     }
 
@@ -247,12 +254,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $payerName
+     *
      * @return EventData
      */
     public function withPayerName(string $payerName)
     {
         $new = clone $this;
         $new->payerName = $payerName;
+
         return $new;
     }
 
@@ -266,12 +275,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param array $paymentFlags
+     *
      * @return EventData
      */
     public function withPaymentFlags(array $paymentFlags)
     {
         $new = clone $this;
         $new->paymentFlags = $paymentFlags;
+
         return $new;
     }
 
@@ -285,12 +296,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $bankingAmount
+     *
      * @return EventData
      */
     public function withBankingAmount(int $bankingAmount)
     {
         $new = clone $this;
         $new->bankingAmount = $bankingAmount;
+
         return $new;
     }
 
@@ -304,13 +317,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param bool $manual
+     *
      * @return EventData
      */
     public function withManual(bool $manual)
     {
-
         $new = clone $this;
         $new->manual = $manual;
+
         return $new;
     }
 
@@ -324,12 +338,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $reminderFee
+     *
      * @return EventData
      */
     public function withReminderFee(int $reminderFee)
     {
         $new = clone $this;
         $new->reminderFee = $reminderFee;
+
         return $new;
     }
 
@@ -343,12 +359,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $reminderCount
+     *
      * @return EventData
      */
     public function withReminderCount(int $reminderCount)
     {
         $new = clone $this;
         $new->reminderCount = $reminderCount;
+
         return $new;
     }
 
@@ -362,12 +380,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $interestRate
+     *
      * @return EventData
      */
     public function withInterestRate(int $interestRate)
     {
         $new = clone $this;
         $new->interestRate = $interestRate;
+
         return $new;
     }
 
@@ -381,12 +401,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $customerEmail
+     *
      * @return EventData
      */
     public function withCustomerEmail(string $customerEmail)
     {
         $new = clone $this;
         $new->customerEmail = $customerEmail;
+
         return $new;
     }
 
@@ -400,12 +422,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $customerPhone
+     *
      * @return EventData
      */
     public function withCustomerPhone(string $customerPhone)
     {
         $new = clone $this;
         $new->customerPhone = $customerPhone;
+
         return $new;
     }
 
@@ -419,12 +443,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $ip
+     *
      * @return EventData
      */
     public function withIp(string $ip)
     {
         $new = clone $this;
         $new->ip = $ip;
+
         return $new;
     }
 
@@ -438,12 +464,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $type
+     *
      * @return EventData
      */
     public function withType(string $type)
     {
         $new = clone $this;
         $new->type = $type;
+
         return $new;
     }
 
@@ -457,12 +485,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param \string[] $message
+     *
      * @return EventData
      */
     public function withMessage(array $message)
     {
         $new = clone $this;
         $new->message = $message;
+
         return $new;
     }
 
@@ -476,12 +506,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $fullStatus
+     *
      * @return EventData
      */
     public function withFullStatus(string $fullStatus)
     {
         $new = clone $this;
         $new->fullStatus = $fullStatus;
+
         return $new;
     }
 
@@ -495,15 +527,16 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $collectorMethod
+     *
      * @return EventData
      */
     public function setCollectorMethod(string $collectorMethod)
     {
         $new = clone $this;
         $new->collectorMethod = $collectorMethod;
+
         return $new;
     }
-
 
     /**
      * @return string
@@ -515,12 +548,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $collectorReference
+     *
      * @return EventData
      */
     public function withCollectorReference(string $collectorReference)
     {
         $new = clone $this;
         $new->collectorReference = $collectorReference;
+
         return $new;
     }
 
@@ -534,12 +569,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $factoringMethod
+     *
      * @return EventData
      */
     public function withFactoringMethod(string $factoringMethod)
     {
         $new = clone $this;
         $new->factoringMethod = $factoringMethod;
+
         return $new;
     }
 
@@ -553,12 +590,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $factoringReference
+     *
      * @return EventData
      */
     public function withFactoringReference(string $factoringReference)
     {
         $new = clone $this;
         $new->factoringReference = $factoringReference;
+
         return $new;
     }
 
@@ -572,12 +611,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $sellsFor
+     *
      * @return EventData
      */
     public function withSellsFor(int $sellsFor)
     {
         $new = clone $this;
         $new->sellsFor = $sellsFor;
+
         return $new;
     }
 
@@ -591,12 +632,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $soldFor
+     *
      * @return EventData
      */
     public function withSoldFor(int $soldFor)
     {
         $new = clone $this;
         $new->soldFor = $soldFor;
+
         return $new;
     }
 
@@ -610,12 +653,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $bankgiro
+     *
      * @return EventData
      */
     public function withBankgiro(string $bankgiro)
     {
         $new = clone $this;
         $new->bankgiro = $bankgiro;
+
         return $new;
     }
 
@@ -629,12 +674,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $recipientIdentifier
+     *
      * @return EventData
      */
     public function withRecipientIdentifier(string $recipientIdentifier)
     {
         $new = clone $this;
         $new->recipientIdentifier = $recipientIdentifier;
+
         return $new;
     }
 
@@ -648,12 +695,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param string $errorStatus
+     *
      * @return EventData
      */
     public function withErrorStatus(string $errorStatus)
     {
         $new = clone $this;
         $new->errorStatus = $errorStatus;
+
         return $new;
     }
 
@@ -667,12 +716,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $totalSum
+     *
      * @return EventData
      */
     public function withTotalSum(int $totalSum)
     {
         $new = clone $this;
         $new->totalSum = $totalSum;
+
         return $new;
     }
 
@@ -686,12 +737,14 @@ class EventData implements CreatableFromArray
 
     /**
      * @param int $remainingSum
+     *
      * @return EventData
      */
     public function withRemainingSum(int $remainingSum)
     {
         $new = clone $this;
         $new->remainingSum = $remainingSum;
+
         return $new;
     }
 
@@ -705,16 +758,19 @@ class EventData implements CreatableFromArray
 
     /**
      * @param bool $scanningCentral
+     *
      * @return EventData
      */
     public function withScanningCentral(bool $scanningCentral)
     {
         $new = clone $this;
         $new->scanningCentral = $scanningCentral;
+
         return $new;
     }
 
-    public function toArray(){
+    public function toArray()
+    {
         $data = [];
         if ($this->invoiceNo !== null) {
             $data['invoice_no'] = $this->invoiceNo;
@@ -800,6 +856,7 @@ class EventData implements CreatableFromArray
         if ($this->scanningCentral !== null) {
             $data['scanning_central'] = $this->scanningCentral;
         }
+
         return $data;
     }
 
@@ -841,6 +898,7 @@ class EventData implements CreatableFromArray
         $eventData->totalSum = $data['total_sum'];
         $eventData->remainingSum = $data['remaining_sum'];
         $eventData->scanningCentral = $data['scanning_central'];
+
         return $eventData;
     }
 }

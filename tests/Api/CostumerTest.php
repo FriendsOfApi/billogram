@@ -11,6 +11,11 @@ use Billogram\Model\Customer\CustomerBillingAddress;
 use Billogram\Model\Customer\CustomerDeliveryAddress;
 use PHPUnit\Framework\TestCase;
 
+
+/**
+ * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
+ */
+
 class CostumerTest extends TestCase
 {
     /*public function testPost(){
@@ -57,6 +62,6 @@ class CostumerTest extends TestCase
     public function testSearch()
     {
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $custumers = $apiClient->customers()->search(['name' => 'foo', 'page' => 2]);
+        $custumers = $apiClient->customers()->search(['page' => 'a50']);
     }
 }
