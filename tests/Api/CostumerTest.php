@@ -11,11 +11,9 @@ use Billogram\Model\Customer\CustomerBillingAddress;
 use Billogram\Model\Customer\CustomerDeliveryAddress;
 use PHPUnit\Framework\TestCase;
 
-
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-
 class CostumerTest extends TestCase
 {
     /*public function testPost(){

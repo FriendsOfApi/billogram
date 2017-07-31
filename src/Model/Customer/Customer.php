@@ -312,6 +312,7 @@ class Customer implements CreatableFromArray
         $customer->createdAt = $customerArray['created_at'] ?? null;
         $customer->updatedAt = $customerArray['updated_at'] ?? null;
         $customer->companyType = $customerArray['company_type'] ?? null;
+
         return $customer;
     }
 
@@ -342,6 +343,7 @@ class Customer implements CreatableFromArray
         if ($this->deliveryAddress !== null) {
             $data['delivery_address'] = $this->deliveryAddress->toArray();
         }
+
         return $data;
     }
 }

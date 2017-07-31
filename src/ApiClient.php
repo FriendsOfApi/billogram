@@ -105,5 +105,4 @@ final class ApiClient
     {
         return new Api\Invoice($this->httpClient, $this->hydrator, $this->requestBuilder);
     }
-
 }
