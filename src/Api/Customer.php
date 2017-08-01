@@ -8,6 +8,7 @@ use Billogram\Exception\Domain\NotFoundException;
 use Billogram\Exception\Domain\ValidationException;
 use Billogram\Model\Customer\Customer as Model;
 use Billogram\Model\Customer\Customers;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
@@ -39,7 +40,7 @@ class Customer extends HttpApi
      * @param int   $customerNo
      * @param array $param
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return Model|ResponseInterface
      *
      * @throws NotFoundException
      * @see https://billogram.com/api/documentation#customers_fetch
@@ -61,7 +62,7 @@ class Customer extends HttpApi
     /**
      * @param Model $customer
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return Model|ResponseInterface
      *
      * @throws ValidationException
      * @https://billogram.com/api/documentation#customers_create
@@ -84,7 +85,7 @@ class Customer extends HttpApi
      * @param int   $customerNo
      * @param Model $costumer
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return Model|ResponseInterface
      *
      * @throws NotFoundException
      * @throws ValidationException
