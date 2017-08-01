@@ -18,7 +18,7 @@ use Http\Client\HttpClient;
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
-final class ApiClient
+final class BillogramClient
 {
     /**
      * @var HttpClient
@@ -58,7 +58,7 @@ final class ApiClient
      * @param Hydrator|null          $hydrator
      * @param RequestBuilder|null    $requestBuilder
      *
-     * @return ApiClient
+     * @return BillogramClient
      */
     public static function configure(
         HttpClientConfigurator $httpClientConfigurator,
@@ -73,9 +73,9 @@ final class ApiClient
     /**
      * @param string $apiKey
      *
-     * @return ApiClient
+     * @return BillogramClient
      */
-    public static function create(string $username, string $apiKey): ApiClient
+    public static function create(string $username, string $apiKey): BillogramClient
     {
         $httpClientConfigurator = (new HttpClientConfigurator())->setAuth($username, $apiKey);
 

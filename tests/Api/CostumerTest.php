@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\ApiClient;
+use Billogram\BillogramClient;
 use Billogram\HttpClientConfigurator;
 use Billogram\Model\Customer\Customer as Model;
 use Billogram\Model\Customer\Customer;
@@ -45,7 +45,7 @@ class CostumerTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $customerFinal = $apiClient->customers()->create($customer);
         $this->assertInstanceOf(Customer::class, $customerFinal);
     }
@@ -67,7 +67,7 @@ class CostumerTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $customerUpdated = $apiClient->customers()->update(22, $customer);
         $this->assertInstanceOf(Customer::class, $customerUpdated);
     }
@@ -77,7 +77,7 @@ class CostumerTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $customerFetched = $apiClient->customers()->fetch($customerNo, ['customer_no']);
         $this->assertInstanceOf(Customer::class, $customerFetched);
 
@@ -89,7 +89,7 @@ class CostumerTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $customers = $apiClient->customers()->search(['page' => '1']);
         $this->assertInstanceOf(Customers::class, $customers);
     }

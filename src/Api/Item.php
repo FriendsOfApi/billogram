@@ -23,7 +23,7 @@ class Item extends HttpApi
     public function search(array $param = [])
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
-        $response = $this->httpget('/item', $param);
+        $response = $this->httpGet('/item', $param);
         if (!$this->hydrator) {
             return $response;
         }

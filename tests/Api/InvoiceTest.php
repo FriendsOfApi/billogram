@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\ApiClient;
+use Billogram\BillogramClient;
 use Billogram\HttpClientConfigurator;
 use Billogram\Model\Customer\Customer;
 use Billogram\Model\Invoice\Invoice as Model;
@@ -39,7 +39,7 @@ class InvoiceTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $invoiceCreated = $apiClient->invoices()->create($invoice);
         $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class, $invoiceCreated);
     }
@@ -56,7 +56,7 @@ class InvoiceTest extends BaseTestCase
         $item2 = $item2->withItemNo(2);
         $item2 = $item2->withCount(2);
         $item2 = $item2->withDiscount(1);
-        $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
+        $apiClient = BillogramClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $invoice = $apiClient->invoices()->fetch('W436pWt', ['']);
         $invoice = $invoice->withCustomer($customer);
         $invoice = $invoice->withItems([$item1, $item2]);
@@ -64,7 +64,7 @@ class InvoiceTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $invoiceFinal = $apiClient->invoices()->update('W436pWt', $invoice);
         $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class, $invoiceFinal);
     }
@@ -74,7 +74,7 @@ class InvoiceTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $invoice = $apiClient->invoices()->fetch('W436pWt', ['']);
         $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class, $invoice);
     }
@@ -84,7 +84,7 @@ class InvoiceTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $invoices = $apiClient->invoices()->search(['page' => 1]);
         $this->assertInstanceOf(\Billogram\Model\Invoice\Invoices::class, $invoices);
     }

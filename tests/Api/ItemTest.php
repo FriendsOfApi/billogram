@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\ApiClient;
+use Billogram\BillogramClient;
 use Billogram\HttpClientConfigurator;
 use Billogram\Model\Item\Bookkeeping;
 use Billogram\Model\Item\Item as Model;
@@ -38,7 +38,7 @@ class ItemTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $itemCreated = $apiClient->items()->create($item);
         $this->assertInstanceOf(Item::class, $itemCreated);
     }
@@ -56,7 +56,7 @@ class ItemTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $itemUpdated = $apiClient->items()->update(3, $item);
         $this->assertInstanceOf(Item::class, $itemUpdated);
     }
@@ -67,7 +67,7 @@ class ItemTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $customerDeleted = $apiClient->items()->delete($itemNo, $item);
         $this->assertInstanceOf(Item::class, $customerDeleted);
     }
@@ -77,7 +77,7 @@ class ItemTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $itemFetched = $apiClient->items()->fetch($itemNo, ['']);
         $this->assertInstanceOf(Item::class, $itemFetched);
 
@@ -89,7 +89,7 @@ class ItemTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = ApiClient::configure($httpClientConfigurator);
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
         $items = $apiClient->items()->search(['page' => 1]);
         $this->assertInstanceOf(Items::class, $items);
     }

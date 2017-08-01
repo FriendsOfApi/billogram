@@ -23,7 +23,7 @@ class Invoice extends HttpApi
     public function search(array $param = [])
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
-        $response = $this->httpget('/billogram', $param);
+        $response = $this->httpGet('/billogram', $param);
         if (!$this->hydrator) {
             return $response;
         }
