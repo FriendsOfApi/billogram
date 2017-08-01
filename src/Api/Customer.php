@@ -39,9 +39,7 @@ class Customer extends HttpApi
     /**
      * @param int   $customerNo
      * @param array $param
-     *
      * @return Model|ResponseInterface
-     *
      * @throws NotFoundException
      * @see https://billogram.com/api/documentation#customers_fetch
      */
@@ -65,7 +63,7 @@ class Customer extends HttpApi
      * @return Model|ResponseInterface
      *
      * @throws ValidationException
-     * @https://billogram.com/api/documentation#customers_create
+     * @see https://billogram.com/api/documentation#customers_create
      */
     public function create(Model $customer)
     {
@@ -89,7 +87,7 @@ class Customer extends HttpApi
      *
      * @throws NotFoundException
      * @throws ValidationException
-     * @https://billogram.com/api/documentation#customers_edit
+     * @see https://billogram.com/api/documentation#customers_edit
      */
     public function update(int $customerNo, Model $costumer)
     {
