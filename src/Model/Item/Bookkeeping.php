@@ -69,8 +69,13 @@ class Bookkeeping implements CreatableFromArray
 
     public function toArray()
     {
-        $data = ['income_account' => $this->incomeAccount, 'vat_account' => $this->vatAccount];
-
+        $data = [];
+        if ($this->incomeAccount !== null) {
+            $data['income_account'] = $this->incomeAccount;
+        }
+        if ($this->vatAccount !== null) {
+            $data['vat_account'] = $this->vatAccount;
+        }
         return $data;
     }
 
@@ -84,8 +89,8 @@ class Bookkeeping implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $bookkeeping = new self();
-        $bookkeeping->incomeAccount = $data = ['income_account'];
-        $bookkeeping->vatAccount = $data = ['vat_account'];
+        $bookkeeping->incomeAccount = $data['income_account'];
+        $bookkeeping->vatAccount = $data['vat_account'];
 
         return $bookkeeping;
     }

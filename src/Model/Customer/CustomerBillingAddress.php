@@ -207,7 +207,7 @@ class CustomerBillingAddress implements CreatableFromArray
         $customerBillingAddress->careOf = $data['careof'];
         $customerBillingAddress->useCareOfAsAttention = $data['use_careof_as_attention'];
         $customerBillingAddress->streetAddress = $data['street_address'];
-        $customerBillingAddress->zipCode = $data['zipCode'];
+        $customerBillingAddress->zipCode = $data['zipcode'];
         $customerBillingAddress->city = $data['city'];
         $customerBillingAddress->country = $data['country'];
 

@@ -78,7 +78,7 @@ class Invoice extends HttpApi
             return $response;
         }
         // Use any valid status code here
-        if ($response->getStatusCode() !== 201) {
+        if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response, $body);
         }
 
