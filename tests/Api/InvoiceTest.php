@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-
 use Billogram\ApiClient;
 use Billogram\HttpClientConfigurator;
 use Billogram\Model\Customer\Customer;
@@ -22,10 +21,11 @@ class InvoiceTest extends BaseTestCase
      */
     protected function getCacheDir()
     {
-        return dirname(__DIR__)."/.cache";
+        return dirname(__DIR__).'/.cache';
     }
 
-    public function testCreate(){
+    public function testCreate()
+    {
         $customer = new Customer();
         $customer = $customer->withCustomerNo(23);
         $item2 = new Item();
@@ -35,16 +35,17 @@ class InvoiceTest extends BaseTestCase
         $invoice = new Model();
         $invoice = $invoice->withCustomer($customer);
         $invoice = $invoice->withItems([$item2]);
-        $invoice = $invoice->withInvoiceDate("2013-11-14");
+        $invoice = $invoice->withInvoiceDate('2013-11-14');
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
         $invoiceCreated = $apiClient->invoices()->create($invoice);
-        $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class,$invoiceCreated);
+        $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class, $invoiceCreated);
     }
 
-    public function testPut(){
+    public function testPut()
+    {
         $customer = new Customer();
         $customer = $customer->withCustomerNo(2);
         $item1 = new Item();
@@ -56,25 +57,26 @@ class InvoiceTest extends BaseTestCase
         $item2 = $item2->withCount(2);
         $item2 = $item2->withDiscount(1);
         $apiClient = ApiClient::create('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $invoice=$apiClient->invoices()->fetch('W436pWt',['']);
+        $invoice = $apiClient->invoices()->fetch('W436pWt', ['']);
         $invoice = $invoice->withCustomer($customer);
-        $invoice = $invoice->withItems([$item1,$item2]);
-        $invoice = $invoice->withInvoiceDate("2013-11-14");
+        $invoice = $invoice->withItems([$item1, $item2]);
+        $invoice = $invoice->withInvoiceDate('2013-11-14');
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
-        $invoiceFinal = $apiClient->invoices()->update('W436pWt',$invoice);
-        $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class,$invoiceFinal);
+        $invoiceFinal = $apiClient->invoices()->update('W436pWt', $invoice);
+        $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class, $invoiceFinal);
     }
 
-    public function testFetch(){
+    public function testFetch()
+    {
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
-        $invoice=$apiClient->invoices()->fetch('W436pWt',['']);
-        $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class,$invoice);
+        $invoice = $apiClient->invoices()->fetch('W436pWt', ['']);
+        $this->assertInstanceOf(\Billogram\Model\Invoice\Invoice::class, $invoice);
     }
 
     public function testSearch()
@@ -83,7 +85,7 @@ class InvoiceTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
-        $invoices=$apiClient->invoices()->search(['page' => 1]);
-        $this->assertInstanceOf(\Billogram\Model\Invoice\Invoices::class,$invoices);
+        $invoices = $apiClient->invoices()->search(['page' => 1]);
+        $this->assertInstanceOf(\Billogram\Model\Invoice\Invoices::class, $invoices);
     }
 }

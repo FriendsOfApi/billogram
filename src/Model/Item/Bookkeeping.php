@@ -76,6 +76,7 @@ class Bookkeeping implements CreatableFromArray
         if ($this->vatAccount !== null) {
             $data['vat_account'] = $this->vatAccount;
         }
+
         return $data;
     }
 

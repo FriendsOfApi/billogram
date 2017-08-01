@@ -97,6 +97,7 @@ class Customer extends HttpApi
         if ($response->getStatusCode() !== 200) {
             $this->handleErrors($response);
         }
+
         return $this->hydrator->hydrate($response, Model::class);
     }
 }

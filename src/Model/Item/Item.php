@@ -260,7 +260,7 @@ class Item implements CreatableFromArray
         $item->price = $itemArray['price'] ?? null;
         $item->vat = $itemArray['vat'] ?? null;
         $item->unit = $itemArray['unit'] ?? null;
-        if (array_key_exists('bookkeeping',$itemArray) ){
+        if (array_key_exists('bookkeeping', $itemArray)) {
             $item->bookkeeping = Bookkeeping::createFromArray($itemArray['bookkeeping']);
         }
         $item->createdAt = $itemArray['created_at'] ?? null;
