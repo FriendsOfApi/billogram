@@ -54,25 +54,4 @@ abstract class BaseTestCase extends TestCase
         $client->addResponse(new Response($statusCode, [], $body));
         return $client;
     }
-
-    /**
-     * Get a mocked HTTP client where you may do tests on the request.
-     * @param callable $requestCallback
-     * @return \PHPUnit_Framework_MockObject_MockObject
-     */
-    protected function getMockedHttpClientCallback(callable $requestCallback)
-    {
-        $client = $this->getMockBuilder(HttpClient::class)->getMock();
-        $client
-            ->expects($this->once())
-            ->method('sendRequest')
-            ->willReturnCallback(function (RequestInterface $request) use ($requestCallback) {
-                $response = $requestCallback($request);
-                if (!$response instanceof ResponseInterface) {
-                    $response = new Response(200, [], (string) $response);
-                }
-                return $response;
-            });
-        return $client;
-    }
 }

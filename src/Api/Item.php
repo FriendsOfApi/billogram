@@ -24,13 +24,12 @@ class Item extends HttpApi
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
         $response = $this->httpget('/item', $param);
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Items::class);
@@ -47,13 +46,12 @@ class Item extends HttpApi
     public function fetch(int $itemNo, array $param = [])
     {
         $response = $this->httpGet('/item/'.$itemNo, $param);
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);
@@ -71,13 +69,12 @@ class Item extends HttpApi
     public function create(Model $item)
     {
         $response = $this->httpPost('/item', $item->toArray());
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);
@@ -96,13 +93,12 @@ class Item extends HttpApi
     public function update(int $itemNo, Model $item)
     {
         $response = $this->httpPut('/item/'.$itemNo, $item->toArray());
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);
@@ -121,13 +117,12 @@ class Item extends HttpApi
     public function delete(int $itemNo, Model $item)
     {
         $response = $this->httpDelete('/item/'.$itemNo, $item->toArray());
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);

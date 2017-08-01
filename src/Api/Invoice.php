@@ -72,14 +72,12 @@ class Invoice extends HttpApi
     public function create(Model $invoice)
     {
         $response = $this->httpPost('/billogram', $invoice->toArray());
-        $body = $response->getBody()->__toString();
-
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);
@@ -98,13 +96,12 @@ class Invoice extends HttpApi
     public function update(string $invoiceId, Model $invoice)
     {
         $response = $this->httpPut('/billogram/'.$invoiceId, $invoice->toArray());
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);

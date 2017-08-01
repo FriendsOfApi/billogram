@@ -25,12 +25,11 @@ class Customer extends HttpApi
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
         $response = $this->httpGet('/customer', $param);
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Customers::class);
@@ -47,13 +46,12 @@ class Customer extends HttpApi
     public function fetch(int $customerNo, array $param = [])
     {
         $response = $this->httpGet('/customer/'.$customerNo, $param);
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);
@@ -69,13 +67,12 @@ class Customer extends HttpApi
     public function create(Model $customer)
     {
         $response = $this->httpPost('/customer', $customer->toArray());
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);
@@ -93,15 +90,13 @@ class Customer extends HttpApi
     public function update(int $customerNo, Model $costumer)
     {
         $response = $this->httpPut('/customer/'.$customerNo, $costumer->toArray());
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
-
         return $this->hydrator->hydrate($response, Model::class);
     }
 }
