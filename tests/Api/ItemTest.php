@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace tests\Api;
+namespace Billogram\Tests\Api;
 
 use Billogram\ApiClient;
-use Billogram\BaseTestCase;
 use Billogram\HttpClientConfigurator;
 use Billogram\Model\Item\Bookkeeping;
 use Billogram\Model\Item\Item as Model;
-use PHPUnit\Framework\TestCase;
+use Billogram\Model\Item\Item;
+use Billogram\Model\Item\Items;
+use Billogram\Tests\BaseTestCase;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
@@ -23,7 +24,7 @@ class ItemTest extends BaseTestCase
     {
         return dirname(__DIR__)."/.cache";
     }
-    public function testPost()
+    public function testCreate()
     {
         $bookkeeping =  Bookkeeping::createFromArray(['income_account' => "302" , 'vat_account' =>"303"]);
         $item = new Model();
@@ -37,7 +38,9 @@ class ItemTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
-        $apiClient->items()->create($item);
+        $itemCreated = $apiClient->items()->create($item);
+        $this->assertInstanceOf(Item::class,$itemCreated);
+
     }
 
     public function testUpdate()
@@ -54,7 +57,8 @@ class ItemTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
-        $apiClient->items()->update(3, $item);
+        $itemUpdated = $apiClient->items()->update(3, $item);
+        $this->assertInstanceOf(Item::class,$itemUpdated);
     }
 
     public function testDelete(int $itemNo = 1)
@@ -64,7 +68,8 @@ class ItemTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
-        $apiClient->items()->delete($itemNo, $item);
+        $customerDeleted = $apiClient->items()->delete($itemNo, $item);
+        $this->assertInstanceOf(Item::class,$customerDeleted);
     }
 
     public function testFetch(int $itemNo = 1)
@@ -73,7 +78,9 @@ class ItemTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
-        return $apiClient->items()->fetch($itemNo, ['']);
+        $itemFetched = $apiClient->items()->fetch($itemNo, ['']);
+        $this->assertInstanceOf(Item::class,$itemFetched);
+        return $itemFetched;
     }
 
     public function testSearch()
@@ -83,5 +90,6 @@ class ItemTest extends BaseTestCase
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = ApiClient::configure($httpClientConfigurator);
         $items = $apiClient->items()->search(['page' => 1]);
+        $this->assertInstanceOf(Items::class,$items);
     }
 }

@@ -6,7 +6,7 @@
  *
  * @license    MIT License
  */
-namespace Billogram;
+namespace Billogram\Tests;
 use Http\Client\HttpClient;
 use Nyholm\Psr7\Factory\StreamFactory;
 use Nyholm\Psr7\Response;
@@ -55,12 +55,12 @@ class CachedResponseClient implements HttpClient
         }
         $file = sprintf('%s/%s_%s', $this->cacheDir, $host, sha1($url));
         if (is_file($file) && is_readable($file)) {
-            $header = unserialize(file_get_contents("tests/.cache/headers.txt"));
-            return new Response(200, ['Content-Type' => $header['Content-Type'][0]], (new StreamFactory())->createStream(unserialize(file_get_contents($file))));
+            $header = json_decode(file_get_contents($file."headers.txt"),true);
+            return new Response(200, $header, (new StreamFactory())->createStream(unserialize(file_get_contents($file))));
         }
         $response = $this->delegate->sendRequest($request);
         file_put_contents($file, serialize($response->getBody()->getContents()));
-        file_put_contents("tests/.cache/headers.txt", serialize(($response->getHeaders())));
+        file_put_contents($file."headers.txt", json_encode($response->getHeaders()));
         return $response;
     }
 }

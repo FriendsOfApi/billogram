@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Billogram;
-
+namespace Billogram\Tests;
 
 use Http\Client\Curl\Client as HttplugClient;
 use Http\Client\HttpClient;
@@ -10,11 +9,11 @@ use Http\Discovery\ClassDiscovery;
 use Http\Mock\Client as MockedHttpClient;
 use Nyholm\Psr7\Response;
 use PHPUnit\Framework\TestCase;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
+
 /**
  * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
+
 abstract class BaseTestCase extends TestCase
 {
     /**
