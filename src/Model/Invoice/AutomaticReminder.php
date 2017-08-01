@@ -21,10 +21,6 @@ class AutomaticReminder implements CreatableFromArray
      */
     private $message;
 
-    public function __construct()
-    {
-    }
-
     public function toArray()
     {
         $data = [];

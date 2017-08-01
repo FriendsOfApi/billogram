@@ -24,14 +24,13 @@ class Invoice extends HttpApi
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
         $response = $this->httpget('/billogram', $param);
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
 
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Invoices::class);
@@ -48,13 +47,12 @@ class Invoice extends HttpApi
     public function fetch(string $invoiceId, array $param = [])
     {
         $response = $this->httpGet('/billogram/'.$invoiceId, $param);
-        $body = $response->getBody()->__toString();
         if (!$this->hydrator) {
             return $response;
         }
         // Use any valid status code here
         if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response, $body);
+            $this->handleErrors($response);
         }
 
         return $this->hydrator->hydrate($response, Model::class);

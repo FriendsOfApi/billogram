@@ -96,10 +96,6 @@ class RegionalInformation implements CreatableFromArray
      */
     private $collectionForElectricityInvoices;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return int
      */

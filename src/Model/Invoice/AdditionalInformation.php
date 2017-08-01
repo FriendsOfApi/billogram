@@ -51,10 +51,6 @@ class AdditionalInformation implements CreatableFromArray
      */
     private $message;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return string
      */

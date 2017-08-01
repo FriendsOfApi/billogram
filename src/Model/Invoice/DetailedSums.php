@@ -66,10 +66,6 @@ class DetailedSums implements CreatableFromArray
      */
     private $remainingSum;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return float
      */

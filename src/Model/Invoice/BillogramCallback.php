@@ -26,10 +26,6 @@ class BillogramCallback implements CreatableFromArray
      */
     private $signKey;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return string
      */

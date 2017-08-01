@@ -181,10 +181,6 @@ class Invoice implements CreatableFromArray
      */
     private $automaticCollection;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return string
      */

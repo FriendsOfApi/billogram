@@ -156,10 +156,6 @@ class EventData implements CreatableFromArray
      */
     private $scanningCentral;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return string
      */

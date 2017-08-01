@@ -21,10 +21,6 @@ class AutomaticCollection implements CreatableFromArray
      */
     private $amount;
 
-    public function __construct()
-    {
-    }
-
     public function toArray()
     {
         $data = [];
