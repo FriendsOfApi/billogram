@@ -66,7 +66,6 @@ class ItemTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-
         $apiClient = BillogramClient::configure($httpClientConfigurator);
         $customerDeleted = $apiClient->items()->delete($itemNo);
         $this->assertInstanceOf(Item::class, $customerDeleted);

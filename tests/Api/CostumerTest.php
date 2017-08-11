@@ -33,7 +33,7 @@ class CostumerTest /*extends BaseTestCase*/
         $addressCustomer = CustomerBillingAddress::createFromArray(['careof' => 'ibrahim', 'use_careof_as_attention' => false, 'street_address' => 'Flygarvägen 189B', 'zipcode' => '175 69', 'city' => 'Järfälla', 'country' => 'SE']);
         $addressDelivery = CustomerDeliveryAddress::createFromArray(['name' => 'ibrahim', 'street_address' => 'Flygarvägen 189B', 'careof' => 'ibrahim', 'zipcode' => '175 69', 'city' => 'Järfälla', 'country' => 'SE']);
         $customer = new Model();
-        $customer = $customer->withCustomerNo(25);
+        $customer = $customer->withCustomerNo(29);
         $customer = $customer->withName('Ibrahim AA');
         $customer = $customer->withNotes('aa');
         $customer = $customer->withOrgNo('556801-7155');
@@ -72,7 +72,7 @@ class CostumerTest /*extends BaseTestCase*/
         $this->assertInstanceOf(Customer::class, $customerUpdated);
     }
 
-    public function testFetch(int $customerNo = 1)
+    public function testFetch(int $customerNo = 22)
     {
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
