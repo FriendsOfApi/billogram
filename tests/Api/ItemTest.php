@@ -17,7 +17,7 @@ use Billogram\Tests\BaseTestCase;
  */
 class ItemTest extends BaseTestCase
 {
-    /**
+    /*
      * @return string|null the directory where cached responses are stored
      */
     protected function getCacheDir()
