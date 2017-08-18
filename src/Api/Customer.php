@@ -85,7 +85,7 @@ class Customer extends HttpApi
 
     /**
      * @param int   $customerNo
-     * @param Model $costumer
+     * @param Model $customer
      *
      * @return Model|ResponseInterface
      *
@@ -94,9 +94,9 @@ class Customer extends HttpApi
      *
      * @see https://billogram.com/api/documentation#customers_edit
      */
-    public function update(int $customerNo, Model $costumer)
+    public function update(int $customerNo, Model $customer)
     {
-        $response = $this->httpPut('/customer/'.$customerNo, $costumer->toArray());
+        $response = $this->httpPut('/customer/'.$customerNo, $customer->toArray());
         if (!$this->hydrator) {
             return $response;
         }

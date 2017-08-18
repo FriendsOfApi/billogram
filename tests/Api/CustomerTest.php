@@ -17,7 +17,7 @@ use Billogram\Tests\BaseTestCase;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-class CostumerTest /*extends BaseTestCase*/
+class CustomerTest /*extends BaseTestCase*/
 {
     /*
      * @return string|null the directory where cached responses are stored
