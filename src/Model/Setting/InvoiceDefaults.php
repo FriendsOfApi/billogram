@@ -39,7 +39,7 @@ class InvoiceDefaults implements CreatableFromArray
     private $automaticReminders;
 
     /**
-     * @var AutomaticReminderWriteOff
+     * @var AutomaticWriteOff
      */
     private $automaticWriteoff;
 
@@ -154,7 +154,7 @@ class InvoiceDefaults implements CreatableFromArray
     }
 
     /**
-     * @return AutomaticReminderWriteOff
+     * @return AutomaticWriteOff
      */
     public function getAutomaticReminderWriteOff()
     {
@@ -162,11 +162,11 @@ class InvoiceDefaults implements CreatableFromArray
     }
 
     /**
-     * @param AutomaticReminderWriteOff $automaticWriteoff
+     * @param AutomaticWriteOff $automaticWriteoff
      *
      * @return InvoiceDefaults
      */
-    public function withAutomaticWriteoff(AutomaticReminderWriteOff $automaticWriteoff)
+    public function withAutomaticWriteoff(AutomaticWriteOff $automaticWriteoff)
     {
         $new = clone $this;
         $new->automaticWriteoff = $automaticWriteoff;
@@ -210,7 +210,7 @@ class InvoiceDefaults implements CreatableFromArray
         $invoiceDefault->defaultReminderFee = $data['default_reminder_fee'] ?? null;
         $invoiceDefault->defaultInvoiceFee = $data['default_invoice_fee'] ?? null;
         $invoiceDefault->automaticReminders = AutomaticReminder::createFromArray($data['automatic_reminders']);
-        $invoiceDefault->automaticWriteoff = AutomaticReminderWriteOff::createFromArray($data['automatic_writeoff']);
+        $invoiceDefault->automaticWriteoff = AutomaticWriteOff::createFromArray($data['automatic_writeoff']);
         $invoiceDefault->reminderCollection = ReminderCollection::createFromArray($data['automatic_collection']);
 
         return $invoiceDefault;

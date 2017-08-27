@@ -20,15 +20,8 @@ class LogoType extends HttpApi
     public function get()
     {
         $response = $this->httpGet('/logotype');
-        if (!$this->hydrator) {
-            return $response;
-        }
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
 
-        return $this->hydrator->hydrate($response, Model::class);
+        return $this->handleResponse($response, Model::class);
     }
 
     /**
@@ -41,10 +34,7 @@ class LogoType extends HttpApi
     public function upload(array $logoType)
     {
         $response = $this->httpPost('/logotype', $logoType);
-        if (!$this->hydrator) {
-            return $response;
-        }
 
-        return $this->hydrator->hydrate($response, Model::class);
+        return $this->handleResponse($response, Model::class);
     }
 }

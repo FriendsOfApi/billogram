@@ -20,15 +20,8 @@ class Settings extends HttpApi
     public function fetch()
     {
         $response = $this->httpGet('/settings');
-        if (!$this->hydrator) {
-            return $response;
-        }
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
 
-        return $this->hydrator->hydrate($response, Setting::class);
+        return $this->handleResponse($response, Setting::class);
     }
 
     /**
@@ -41,14 +34,7 @@ class Settings extends HttpApi
     public function update(array $setting)
     {
         $response = $this->httpPUT('/settings', $setting);
-        if (!$this->hydrator) {
-            return $response;
-        }
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
 
-        return $this->hydrator->hydrate($response, Setting::class);
+        return $this->handleResponse($response, Setting::class);
     }
 }

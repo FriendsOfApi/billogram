@@ -25,16 +25,8 @@ class Invoice extends HttpApi
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
         $response = $this->httpGet('/billogram', $param);
-        if (!$this->hydrator) {
-            return $response;
-        }
 
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
-
-        return $this->hydrator->hydrate($response, InvoiceCollection::class);
+        return $this->handleResponse($response, InvoiceCollection::class);
     }
 
     /**
@@ -47,15 +39,8 @@ class Invoice extends HttpApi
     public function fetch(string $invoiceId)
     {
         $response = $this->httpGet('/billogram/'.$invoiceId);
-        if (!$this->hydrator) {
-            return $response;
-        }
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
 
-        return $this->hydrator->hydrate($response, Model::class);
+        return $this->handleResponse($response, Model::class);
     }
 
     /**
@@ -70,15 +55,8 @@ class Invoice extends HttpApi
     public function create(array $invoice)
     {
         $response = $this->httpPost('/billogram', $invoice);
-        if (!$this->hydrator) {
-            return $response;
-        }
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
 
-        return $this->hydrator->hydrate($response, Model::class);
+        return $this->handleResponse($response, Model::class);
     }
 
     /**
@@ -94,14 +72,7 @@ class Invoice extends HttpApi
     public function update(string $invoiceId, array $invoice)
     {
         $response = $this->httpPut('/billogram/'.$invoiceId, $invoice);
-        if (!$this->hydrator) {
-            return $response;
-        }
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
 
-        return $this->hydrator->hydrate($response, Model::class);
+        return $this->handleResponse($response, Model::class);
     }
 }

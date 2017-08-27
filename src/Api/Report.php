@@ -20,15 +20,8 @@ class Report extends HttpApi
     public function fetch(string $fileName)
     {
         $response = $this->httpGet('/report/'.$fileName);
-        if (!$this->hydrator) {
-            return $response;
-        }
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
 
-        return $this->hydrator->hydrate($response, Model::class);
+        return $this->handleResponse($response, Model::class);
     }
 
     /**
@@ -42,14 +35,7 @@ class Report extends HttpApi
     {
         $param = array_merge(['page' => 1, 'page_size' => 100], $param);
         $response = $this->httpGet('/report', $param);
-        if (!$this->hydrator) {
-            return $response;
-        }
-        // Use any valid status code here
-        if ($response->getStatusCode() !== 200) {
-            $this->handleErrors($response);
-        }
 
-        return $this->hydrator->hydrate($response, ReportCollection::class);
+        return $this->handleResponse($response, ReportCollection::class);
     }
 }

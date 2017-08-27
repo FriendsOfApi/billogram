@@ -149,7 +149,7 @@ abstract class HttpApi
      *
      * @param ResponseInterface $response
      *
-     * @throws DomainException
+     * @throws \DomainException
      */
     protected function handleErrors(ResponseInterface $response)
     {
@@ -164,5 +164,27 @@ abstract class HttpApi
                 throw new DomainExceptions\UnknownErrorException($response->getBody()->__toString());
                 break;
         }
+    }
+
+
+    /**
+     * @param ResponseInterface $response
+     * @param string $class to hydrate
+     *
+     * @return mixed
+     *
+     * @throws \DomainException
+     */
+    protected function handleResponse(ResponseInterface $response, $class)
+    {
+        if (!$this->hydrator) {
+            return $response;
+        }
+
+        if ($response->getStatusCode() !== 200) {
+            $this->handleErrors($response);
+        }
+
+        return $this->hydrator->hydrate($response, $class);
     }
 }

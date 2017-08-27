@@ -9,7 +9,7 @@ use Billogram\Model\CreatableFromArray;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-class AutomaticReminderWriteOff implements CreatableFromArray
+class AutomaticWriteOff implements CreatableFromArray
 {
     /**
      * @var string
@@ -32,7 +32,7 @@ class AutomaticReminderWriteOff implements CreatableFromArray
     /**
      * @param string $setting
      *
-     * @return AutomaticReminderWriteOff
+     * @return AutomaticWriteOff
      */
     public function withSetting(string $setting)
     {
@@ -53,7 +53,7 @@ class AutomaticReminderWriteOff implements CreatableFromArray
     /**
      * @param int $amount
      *
-     * @return AutomaticReminderWriteOff
+     * @return AutomaticWriteOff
      */
     public function withAmount(int $amount)
     {
