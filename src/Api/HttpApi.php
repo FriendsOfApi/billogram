@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace Billogram\Api;
 
-use Billogram\Exception\Domain as DomainExceptions;
+use Billogram\Exception\Domain as DomainException;
 use Billogram\Hydrator\NoopHydrator;
 use Http\Client\HttpClient;
 use Billogram\Hydrator\Hydrator;
@@ -148,19 +148,19 @@ abstract class HttpApi
      *
      * @param ResponseInterface $response
      *
-     * @throws \DomainException
+     * @throws \Billogram\Exception\DomainException
      */
     protected function handleErrors(ResponseInterface $response)
     {
         switch ($response->getStatusCode()) {
             case 404:
-                throw new DomainExceptions\NotFoundException($response->getBody()->__toString());
+                throw new DomainException\NotFoundException($response->getBody()->__toString());
                 break;
             case 400:
-                throw new DomainExceptions\ValidationException($response->getBody()->__toString());
+                throw new DomainException\ValidationException($response->getBody()->__toString());
                 break;
             default:
-                throw new DomainExceptions\UnknownErrorException($response->getBody()->__toString());
+                throw new DomainException\UnknownErrorException($response->getBody()->__toString());
                 break;
         }
     }
@@ -171,7 +171,7 @@ abstract class HttpApi
      *
      * @return mixed
      *
-     * @throws \DomainException
+     * @throws \Billogram\Exception
      */
     protected function handleResponse(ResponseInterface $response, $class)
     {
