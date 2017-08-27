@@ -37,7 +37,7 @@ class Customer extends HttpApi
     }
 
     /**
-     * @param int   $customerNo
+     * @param int $customerNo
      *
      * @return Model|ResponseInterface
      *
