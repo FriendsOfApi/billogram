@@ -16,10 +16,7 @@ class ReminderCollection implements CreatableFromArray
      */
     private $reminders;
 
-
-
     /**
-     *
      * @param AutomaticReminder[] $reminders
      */
     public function __construct(array $reminders)
@@ -46,7 +43,6 @@ class ReminderCollection implements CreatableFromArray
     {
         return $this->reminders;
     }
-
 
     public function toArray()
     {

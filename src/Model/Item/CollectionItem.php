@@ -18,7 +18,6 @@ class CollectionItem implements CreatableFromArray
     private $items;
 
     /**
-     *
      * @param Item[] $items
      */
     private function __construct(array $items)

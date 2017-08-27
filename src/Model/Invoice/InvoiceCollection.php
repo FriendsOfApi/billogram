@@ -17,7 +17,6 @@ class InvoiceCollection implements CreatableFromArray
     private $invoices;
 
     /**
-     *
      * @param Invoice[] $invoices
      */
     private function __construct(array $invoices)

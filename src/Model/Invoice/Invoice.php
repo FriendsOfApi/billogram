@@ -913,9 +913,9 @@ class Invoice implements CreatableFromArray
         $data = $data['data'];
         $invoice = new self();
         $invoice->id = $data['id'] ?? null;
-        $invoice->createdAt =  isset($data['created_at']) ? new \DateTime($data['created_at']) : null;
-        $invoice->updateAt =  isset($data['update_at']) ? new \DateTime($data['update_at']) : null;
-        $invoice->attestedAt =  isset($data['attested_at']) ? new \DateTime($data['attested_at']) : null;
+        $invoice->createdAt = isset($data['created_at']) ? new \DateTime($data['created_at']) : null;
+        $invoice->updateAt = isset($data['update_at']) ? new \DateTime($data['update_at']) : null;
+        $invoice->attestedAt = isset($data['attested_at']) ? new \DateTime($data['attested_at']) : null;
         $invoice->currency = $data['currency'] ?? null;
         $invoice->reminderFee = $data['reminder_fee'] ?? null;
         $invoice->interestRate = $data['interest_rate'] ?? null;

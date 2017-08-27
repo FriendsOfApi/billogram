@@ -17,7 +17,6 @@ class CustomerCollection implements CreatableFromArray
     private $customers;
 
     /**
-     *
      * @param Customer[] $customers
      */
     private function __construct(array $customers)
