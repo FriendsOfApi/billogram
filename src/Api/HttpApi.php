@@ -9,7 +9,6 @@ declare(strict_types=1);
 namespace Billogram\Api;
 
 use Billogram\Exception\Domain as DomainExceptions;
-use Billogram\Exception\DomainException;
 use Billogram\Hydrator\NoopHydrator;
 use Http\Client\HttpClient;
 use Billogram\Hydrator\Hydrator;
@@ -166,10 +165,9 @@ abstract class HttpApi
         }
     }
 
-
     /**
      * @param ResponseInterface $response
-     * @param string $class to hydrate
+     * @param string            $class    to hydrate
      *
      * @return mixed
      *
