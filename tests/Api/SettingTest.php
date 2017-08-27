@@ -63,15 +63,7 @@ class SettingTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $settingFinal = $apiClient->settings()->update($setting);
+        $settingFinal = $apiClient->settings()->update($setting->toArray());
         $this->assertInstanceOf(Setting::class, $settingFinal);
-    }
-
-    /**
-     * @return string|null the directory where cached responses are stored
-     */
-    protected function getCacheDir()
-    {
-        return dirname(__DIR__).'/.cache';
     }
 }

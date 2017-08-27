@@ -203,14 +203,14 @@ class CustomerBillingAddress implements CreatableFromArray
      */
     public static function createFromArray(array $data)
     {
-        $customerBillingAddress = new self();
-        $customerBillingAddress->careOf = $data['careof'];
-        $customerBillingAddress->useCareOfAsAttention = $data['use_careof_as_attention'];
-        $customerBillingAddress->streetAddress = $data['street_address'];
-        $customerBillingAddress->zipCode = $data['zipcode'];
-        $customerBillingAddress->city = $data['city'];
-        $customerBillingAddress->country = $data['country'];
+        $model = new self();
+        $model->careOf = $data['careof'] ?? null;
+        $model->useCareOfAsAttention = $data['use_careof_as_attention'] ?? null;
+        $model->streetAddress = $data['street_address'] ?? null;
+        $model->zipCode = $data['zipcode'] ?? null;
+        $model->city = $data['city'] ?? null;
+        $model->country = $data['country'] ?? null;
 
-        return $customerBillingAddress;
+        return $model;
     }
 }

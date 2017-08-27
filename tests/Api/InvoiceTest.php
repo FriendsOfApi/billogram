@@ -17,14 +17,6 @@ use Billogram\Tests\BaseTestCase;
  */
 class InvoiceTest extends BaseTestCase
 {
-    /*
-     * @return string|null the directory where cached responses are stored
-     */
-    protected function getCacheDir()
-    {
-        return dirname(__DIR__).'/.cache';
-    }
-
     public function testCreate()
     {
         $customer = new Customer();
@@ -40,8 +32,9 @@ class InvoiceTest extends BaseTestCase
         $cacheClient = $this->getHttpClient();
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
+
         $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $invoiceCreated = $apiClient->invoices()->create($invoice);
+        $invoiceCreated = $apiClient->invoices()->create($invoice->toArray());
         $this->assertInstanceOf(Invoice::class, $invoiceCreated);
     }
 
@@ -66,7 +59,7 @@ class InvoiceTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $invoiceFinal = $apiClient->invoices()->update('W436pWt', $invoice);
+        $invoiceFinal = $apiClient->invoices()->update('W436pWt', $invoice->toArray());
         $this->assertInstanceOf(Invoice::class, $invoiceFinal);
     }
 
@@ -76,7 +69,7 @@ class InvoiceTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $invoice = $apiClient->invoices()->fetch('W436pWt', ['']);
+        $invoice = $apiClient->invoices()->fetch('W436pWt');
         $this->assertInstanceOf(Invoice::class, $invoice);
     }
 

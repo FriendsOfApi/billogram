@@ -14,13 +14,6 @@ use Billogram\Tests\BaseTestCase;
  */
 class LogoTypeTest extends BaseTestCase
 {
-    /**
-     * @return string|null the directory where cached responses are stored
-     */
-    protected function getCacheDir()
-    {
-        return dirname(__DIR__).'/.cache';
-    }
 
     public function testUpload()
     {
@@ -33,7 +26,7 @@ class LogoTypeTest extends BaseTestCase
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $logoTypeCreated = $apiClient->logotype()->upload($logoType);
+        $logoTypeCreated = $apiClient->logotype()->upload($logoType->toArray());
         $this->assertInstanceOf(LogoType::class, $logoTypeCreated);
     }
 

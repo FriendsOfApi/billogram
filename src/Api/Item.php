@@ -81,7 +81,7 @@ class Item extends HttpApi
     }
 
     /**
-     * @param int   $itemNo
+     * @param string   $itemNo
      * @param array $item
      *
      * @return Model|ResponseInterface
@@ -90,7 +90,7 @@ class Item extends HttpApi
      *
      * @see https://billogram.com/api/documentation#items_edit
      */
-    public function update(int $itemNo, array $item)
+    public function update(string $itemNo, array $item)
     {
         $response = $this->httpPut('/item/'.$itemNo, $item);
         if (!$this->hydrator) {
@@ -105,7 +105,7 @@ class Item extends HttpApi
     }
 
     /**
-     * @param int $itemNo
+     * @param string $itemNo
      *
      * @return Model|ResponseInterface
      *
@@ -113,7 +113,7 @@ class Item extends HttpApi
      *
      * @see https://billogram.com/api/documentation#items_delete
      */
-    public function delete(int $itemNo)
+    public function delete(string $itemNo)
     {
         $response = $this->httpDelete('/item/'.$itemNo);
         if (!$this->hydrator) {

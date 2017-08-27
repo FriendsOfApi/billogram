@@ -15,25 +15,24 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class BaseTestCase extends TestCase
 {
-    /**
+    /*
      * @return string|null the directory where cached responses are stored
      */
-    abstract protected function getCacheDir();
+    protected function getCacheDir()
+    {
+        return __DIR__.'/.cache';
+    }
 
     /**
      * Get a real HTTP client. If a cache dir is set to a path it will use cached responses.
      *
      * @param null $apiKey
      *
-     * @return CachedResponseClient|HttplugClient
+     * @return CachedResponseClient
      */
     protected function getHttpClient($apiKey = null)
     {
-        if (null !== $cacheDir = $this->getCacheDir()) {
-            return new CachedResponseClient(new HttplugClient(), $cacheDir, $apiKey);
-        } else {
-            return new HttplugClient();
-        }
+        return new CachedResponseClient(new HttplugClient(), $this->getCacheDir(), $apiKey);
     }
 
     /**

@@ -12,14 +12,6 @@ use Billogram\Tests\BaseTestCase;
 
 class ReportTest extends BaseTestCase
 {
-    /**
-     * @return string|null the directory where cached responses are stored
-     */
-    protected function getCacheDir()
-    {
-        return dirname(__DIR__).'/.cache';
-    }
-
     public function testGet()
     {
         $httpClient = $this->getHttpClient();

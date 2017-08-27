@@ -17,23 +17,14 @@ use Billogram\Tests\BaseTestCase;
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
  */
-class CustomerTest /*extends BaseTestCase*/
+class CustomerTest extends BaseTestCase
 {
-    /*
-     * @return string|null the directory where cached responses are stored
-     */
-    /*protected function getCacheDir()
-    {
-        return dirname(__DIR__).'/.cache';
-    }
-
     public function testCreate()
     {
         $contact = CustomerContact::createFromArray(['name' => 'ib92g', 'email' => 'ib922@gmail.com', 'phone' => '0712223344']);
         $addressCustomer = CustomerBillingAddress::createFromArray(['careof' => 'ibrahim', 'use_careof_as_attention' => false, 'street_address' => 'Flygarvägen 189B', 'zipcode' => '175 69', 'city' => 'Järfälla', 'country' => 'SE']);
         $addressDelivery = CustomerDeliveryAddress::createFromArray(['name' => 'ibrahim', 'street_address' => 'Flygarvägen 189B', 'careof' => 'ibrahim', 'zipcode' => '175 69', 'city' => 'Järfälla', 'country' => 'SE']);
         $customer = new Model();
-        $customer = $customer->withCustomerNo(29);
         $customer = $customer->withName('Ibrahim AA');
         $customer = $customer->withNotes('aa');
         $customer = $customer->withOrgNo('556801-7155');
@@ -46,7 +37,7 @@ class CustomerTest /*extends BaseTestCase*/
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $customerFinal = $apiClient->customers()->create($customer);
+        $customerFinal = $apiClient->customers()->create($customer->toArray());
         $this->assertInstanceOf(Customer::class, $customerFinal);
     }
 
@@ -68,7 +59,7 @@ class CustomerTest /*extends BaseTestCase*/
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $customerUpdated = $apiClient->customers()->update(22, $customer);
+        $customerUpdated = $apiClient->customers()->update(22, $customer->toArray());
         $this->assertInstanceOf(Customer::class, $customerUpdated);
     }
 
@@ -78,7 +69,7 @@ class CustomerTest /*extends BaseTestCase*/
         $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
         $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
         $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $customerFetched = $apiClient->customers()->fetch($customerNo, ['customer_no']);
+        $customerFetched = $apiClient->customers()->fetch($customerNo);
         $this->assertInstanceOf(Customer::class, $customerFetched);
 
         return $customerFetched;
@@ -92,5 +83,5 @@ class CustomerTest /*extends BaseTestCase*/
         $apiClient = BillogramClient::configure($httpClientConfigurator);
         $customers = $apiClient->customers()->search(['page' => '1']);
         $this->assertInstanceOf(CustomerCollection::class, $customers);
-    }*/
+    }
 }

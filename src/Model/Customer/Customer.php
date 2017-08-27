@@ -285,24 +285,19 @@ class Customer implements CreatableFromArray
     {
         $customer = new self();
         if (array_key_exists('data', $data)) {
-            $customerArray = $data['data'];
-            $contactArray = $customerArray['contact'];
-            $addressArray = $customerArray['address'];
-            $deliveryAddressArray = $customerArray['delivery_address'];
-
-            $contact = CustomerContact::createFromArray($contactArray);
-            $address = CustomerBillingAddress::createFromArray($addressArray);
-            $deliveryAddress = CustomerDeliveryAddress::createFromArray($deliveryAddressArray);
-            $customer->contact = $contact;
-            $customer->address = $address;
-        } else {
-            $customerArray = $data;
-            $deliveryAddressArray = $customerArray['address'] ?? null;
-            $deliveryAddress = CustomerDeliveryAddress::createFromArray(['name' => $customerArray['name'] ?? null, 'street_address' => $deliveryAddressArray['street_address'], 'careof' => $deliveryAddressArray['careof'], 'zipcode' => $deliveryAddressArray['zipcode'], 'city' => $deliveryAddressArray['city'], 'country' => $deliveryAddressArray['country']]) ?? null;
-            $contact = CustomerContact::createFromArray(['name' => $customerArray['name'], 'email' => $customerArray['email'], 'phone' => $customerArray['phone'] ?? null]) ?? null;
+            $data = $data['data'];
         }
-        $customer->deliveryAddress = $deliveryAddress ?? null;
-        $customer->contact = $contact ?? null;
+
+        if (isset($data['address'])) {
+            $customer->address = CustomerBillingAddress::createFromArray($data['address']);
+        }
+        if (isset($data['contact'])) {
+            $customer->contact = CustomerContact::createFromArray($data['contact']);
+        }
+        if (isset($data['delivery_address'])) {
+            $customer->deliveryAddress = CustomerDeliveryAddress::createFromArray($data['delivery_address']);
+        }
+
         $customer->customerNo = $customerArray['customer_no'] ?? null;
         $customer->name = $customerArray['name'] ?? null;
         $customer->notes = $customerArray['notes'] ?? null;
