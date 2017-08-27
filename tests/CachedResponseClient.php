@@ -27,8 +27,8 @@ class CachedResponseClient implements HttpClient
     private $cacheDir;
 
     /**
-     * @param HttpClient  $delegate
-     * @param string      $cacheDir
+     * @param HttpClient $delegate
+     * @param string     $cacheDir
      */
     public function __construct(HttpClient $delegate, $cacheDir)
     {

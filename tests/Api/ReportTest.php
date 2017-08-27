@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\BillogramClient;
-use Billogram\HttpClientConfigurator;
 use Billogram\Model\Report\Report;
 use Billogram\Model\Report\ReportCollection;
 use Billogram\Tests\BaseTestCase;

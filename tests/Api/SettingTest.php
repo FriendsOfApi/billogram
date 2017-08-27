@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\BillogramClient;
-use Billogram\HttpClientConfigurator;
 use Billogram\Model\Setting\BookkeepingSetting;
 use Billogram\Model\Setting\BusinessAddress;
 use Billogram\Model\Setting\Contact;

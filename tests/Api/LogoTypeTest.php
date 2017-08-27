@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\BillogramClient;
-use Billogram\HttpClientConfigurator;
 use Billogram\Model\LogoType\LogoType;
 use Billogram\Tests\BaseTestCase;
 
@@ -21,7 +19,6 @@ class LogoTypeTest extends BaseTestCase
         $image = __DIR__.'/../test.png';
         $logoType = $logoType->withContent(base64_encode(file_get_contents($image)));
         $logoType = $logoType->withFileType(mime_content_type($image));
-
 
         $billogram = $this->getBillogram();
         $logoTypeCreated = $billogram->logotype()->upload($logoType->toArray());

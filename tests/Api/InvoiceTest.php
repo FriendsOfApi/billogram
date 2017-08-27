@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\BillogramClient;
-use Billogram\HttpClientConfigurator;
 use Billogram\Model\Customer\Customer;
 use Billogram\Model\Invoice\Invoice;
 use Billogram\Model\Invoice\InvoiceCollection;
@@ -47,7 +45,6 @@ class InvoiceTest extends BaseTestCase
         $item2 = $item2->withItemNo('2');
         $item2 = $item2->withCount(2);
         $item2 = $item2->withDiscount(1);
-
 
         $billogram = $this->getBillogram();
         $invoice = $billogram->invoices()->fetch('W436pWt', ['']);

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\BillogramClient;
-use Billogram\HttpClientConfigurator;
 use Billogram\Model\Item\Bookkeeping;
 use Billogram\Model\Item\Item as Model;
 use Billogram\Model\Item\CollectionItem;
@@ -27,7 +25,6 @@ class ItemTest extends BaseTestCase
         $item = $item->withVat(12);
         $item = $item->withUnit('hour');
         $item = $item->withBookkeeping($bookkeeping);
-
 
         $billogram = $this->getBillogram();
         $itemCreated = $billogram->items()->create($item->toArray());

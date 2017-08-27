@@ -41,7 +41,6 @@ abstract class BaseTestCase extends TestCase
         return $client;
     }
 
-
     /**
      * @return BillogramClient
      */

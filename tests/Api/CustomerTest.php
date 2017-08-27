@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Billogram\Tests\Api;
 
-use Billogram\BillogramClient;
-use Billogram\HttpClientConfigurator;
 use Billogram\Model\Customer\Customer as Model;
 use Billogram\Model\Customer\Customer;
 use Billogram\Model\Customer\CustomerContact;
