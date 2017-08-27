@@ -54,7 +54,7 @@ $customer = $customer->withAddress($addressCustomer);
 $customer = $customer->withDeliveryAddress($addressDelivery);
 $customer = $customer->withCompanyType('individual');
 
-$customer = $billogram->customers()->create($customer);
+$customer = $billogram->customers()->create($customer->toArray());
 ```
 
 ##### Fetch a customer:
@@ -62,7 +62,6 @@ $customer = $billogram->customers()->create($customer);
 ```php
 $customer = $billogram->customers()->fetch($customerNo);    
 ```
-
 
 ##### Create an item:
 
@@ -79,7 +78,7 @@ $item = $item->withVat(12);
 $item = $item->withUnit('hour');
 $item = $item->withBookkeeping($bookkeeping);
 
-$item = $billogram->items()->create($item);
+$item = $billogram->items()->create($item->toArray());
 ```
 
 ##### Fetch items:
@@ -114,39 +113,12 @@ $invoice = $invoice->withCustomer($customer);
 $invoice = $invoice->withItems([$itemOfinvoice]);
 $invoice = $invoice->withInvoiceDate('2013-11-14');
 
-$invoice = $billogram->invoices()->create($invoice);
+$invoice = $billogram->invoices()->create($invoice->toArray());
 ```
-
-## Endpoints
-This repository contains an example API client for Billogram. The API for Billogram has the following endpoints
-
-| Method | URI | Parameters |
-| ------ | --- | ---------- |
-| GET | api/v2/customer | (array) param |
-| GET | api/v2/customer/{id} | (array) param |
-| POST | api/v2/customer | (Customer) customer |
-| PUT | api/v2/customer/{id} | (Customer) customer |
-| GET | api/v2/item | (array) param |
-| GET | api/v2/item/{id} | (array) param |
-| POST | api/v2/item | (Item) item |
-| PUT | api/v2/item/{id} | (Item) item |
-| Delete | api/v2/item/{id} | |
-| GET | api/v2/item | (array) param |
-| GET | api/v2/item/{id} | (array) param |
-| POST | api/v2/item | (Item) item |
-| PUT | api/v2/item/{id} | (Item) item |
-| Delete | api/v2/item/{id} | |
-| GET | api/v2/settings |  |
-| PUT | api/v2/settings | (Item) item |
-| GET | api/v2/logotype |  |
-| POST | api/v2/logotype | (Item) item |
-| GET | api/v2/report | (array) param |
-| GET | api/v2/report/{filename} |  |
-
 
 ## API documentation
 
-The [Billogram API documentation](https://billogram.com/api/documentation)  is a good place to start if you want to 
+The [Billogram API documentation](https://billogram.com/api/documentation) is a good place to start if you want to 
 learn more of the API. 
 
 ## Contribute
