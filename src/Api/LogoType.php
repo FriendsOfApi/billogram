@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Billogram\Api;
 
 use Billogram\Model\LogoType\LogoType as Model;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
@@ -31,15 +32,15 @@ class LogoType extends HttpApi
     }
 
     /**
-     * @param Model $logoType
+     * @param array $logoType
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return Model|ResponseInterface
      *
      * @see https://billogram.com/api/documentation#logotype_calls
      */
-    public function upload(Model $logoType)
+    public function upload(array $logoType)
     {
-        $response = $this->httpPost('/logotype', $logoType->toArray());
+        $response = $this->httpPost('/logotype', $logoType);
         if (!$this->hydrator) {
             return $response;
         }

@@ -18,7 +18,7 @@ class Customer extends HttpApi
     /**
      * @param array $param
      *
-     * @return string|array
+     * @return CustomerCollection|ResponseInterface
      *
      * @see https://billogram.com/api/documentation#customers_list
      */
@@ -38,7 +38,6 @@ class Customer extends HttpApi
 
     /**
      * @param int   $customerNo
-     * @param array $param
      *
      * @return Model|ResponseInterface
      *
@@ -46,9 +45,9 @@ class Customer extends HttpApi
      *
      * @see https://billogram.com/api/documentation#customers_fetch
      */
-    public function fetch(int $customerNo, array $param = [])
+    public function fetch(int $customerNo)
     {
-        $response = $this->httpGet('/customer/'.$customerNo, $param);
+        $response = $this->httpGet('/customer/'.$customerNo);
         if (!$this->hydrator) {
             return $response;
         }
@@ -61,7 +60,7 @@ class Customer extends HttpApi
     }
 
     /**
-     * @param Model $customer
+     * @param array $customer
      *
      * @return Model|ResponseInterface
      *
@@ -69,9 +68,9 @@ class Customer extends HttpApi
      *
      * @see https://billogram.com/api/documentation#customers_create
      */
-    public function create(Model $customer)
+    public function create(array $customer)
     {
-        $response = $this->httpPost('/customer', $customer->toArray());
+        $response = $this->httpPost('/customer', $customer);
         if (!$this->hydrator) {
             return $response;
         }
@@ -85,7 +84,7 @@ class Customer extends HttpApi
 
     /**
      * @param int   $customerNo
-     * @param Model $customer
+     * @param array $customer
      *
      * @return Model|ResponseInterface
      *
@@ -94,9 +93,9 @@ class Customer extends HttpApi
      *
      * @see https://billogram.com/api/documentation#customers_edit
      */
-    public function update(int $customerNo, Model $customer)
+    public function update(int $customerNo, array $customer)
     {
-        $response = $this->httpPut('/customer/'.$customerNo, $customer->toArray());
+        $response = $this->httpPut('/customer/'.$customerNo, $customer);
         if (!$this->hydrator) {
             return $response;
         }

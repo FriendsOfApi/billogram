@@ -6,13 +6,14 @@ namespace Billogram\Api;
 
 use Billogram\Model\Report\ReportCollection;
 use Billogram\Model\Report\Report as Model;
+use Psr\Http\Message\ResponseInterface;
 
 class Report extends HttpApi
 {
     /**
      * @param string $fileName
      *
-     * @return string|array
+     * @return Model|ResponseInterface
      *
      * @see https://billogram.com/api/documentation#reports
      */
@@ -33,7 +34,7 @@ class Report extends HttpApi
     /**
      * @param array $param
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return ReportCollection|ResponseInterface
      *
      * @see https://billogram.com/api/documentation#reports
      */

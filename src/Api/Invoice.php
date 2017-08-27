@@ -7,6 +7,7 @@ namespace Billogram\Api;
 use Billogram\Exception\Domain\ValidationException;
 use Billogram\Model\Invoice\Invoice as Model;
 use Billogram\Model\Invoice\InvoiceCollection;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
@@ -16,7 +17,7 @@ class Invoice extends HttpApi
     /**
      * @param array $param
      *
-     * @return string|array
+     * @return InvoiceCollection|ResponseInterface
      *
      * @see https://billogram.com/api/documentation#billogram_call_create
      */
@@ -38,15 +39,14 @@ class Invoice extends HttpApi
 
     /**
      * @param string $invoiceId
-     * @param array  $param
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return Model|ResponseInterface
      *
      * @see https://billogram.com/api/documentation#billogram_call_create
      */
-    public function fetch(string $invoiceId, array $param = [])
+    public function fetch(string $invoiceId)
     {
-        $response = $this->httpGet('/billogram/'.$invoiceId, $param);
+        $response = $this->httpGet('/billogram/'.$invoiceId);
         if (!$this->hydrator) {
             return $response;
         }
@@ -59,17 +59,17 @@ class Invoice extends HttpApi
     }
 
     /**
-     * @param Model $invoice
+     * @param array $invoice
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return Model|ResponseInterface
      *
      * @see https://billogram.com/api/documentation#billogram_call_create
      *
      * @throws ValidationException
      */
-    public function create(Model $invoice)
+    public function create(array $invoice)
     {
-        $response = $this->httpPost('/billogram', $invoice->toArray());
+        $response = $this->httpPost('/billogram', $invoice);
         if (!$this->hydrator) {
             return $response;
         }
@@ -83,17 +83,17 @@ class Invoice extends HttpApi
 
     /**
      * @param string $invoiceId
-     * @param Model  $invoice
+     * @param array  $invoice
      *
-     * @return mixed|\Psr\Http\Message\ResponseInterface
+     * @return Model|ResponseInterface
      *
      * @see https://billogram.com/api/documentation#billogram_call_create
      *
      * @throws ValidationException
      */
-    public function update(string $invoiceId, Model $invoice)
+    public function update(string $invoiceId, array $invoice)
     {
-        $response = $this->httpPut('/billogram/'.$invoiceId, $invoice->toArray());
+        $response = $this->httpPut('/billogram/'.$invoiceId, $invoice);
         if (!$this->hydrator) {
             return $response;
         }
