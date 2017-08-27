@@ -44,8 +44,8 @@ class AutomaticReminder implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $automaticReminder = new self();
-        $automaticReminder->delayDays = $data['delay_days'];
-        $automaticReminder->message = $data['message'];
+        $automaticReminder->delayDays = $data['delay_days'] ?? null;
+        $automaticReminder->message = $data['message'] ?? null;
 
         return $automaticReminder;
     }

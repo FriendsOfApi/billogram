@@ -24,10 +24,6 @@ class CustomerContact implements CreatableFromArray
      */
     private $phone;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return string
      */
@@ -117,9 +113,9 @@ class CustomerContact implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $contact = new self();
-        $contact->name = $data['name'];
-        $contact->email = $data['email'];
-        $contact->phone = $data['phone'];
+        $contact->name = $data['name'] ?? null;
+        $contact->email = $data['email'] ?? null;
+        $contact->phone = $data['phone'] ?? null;
 
         return $contact;
     }

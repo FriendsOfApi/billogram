@@ -16,6 +16,10 @@ class CustomerCollection implements CreatableFromArray
      */
     private $customers;
 
+    /**
+     *
+     * @param Customer[] $customers
+     */
     private function __construct(array $customers)
     {
         $this->customers = $customers;
@@ -36,7 +40,7 @@ class CustomerCollection implements CreatableFromArray
     /**
      * @return Customer[]
      */
-    public function getCustomer()
+    public function getCustomers()
     {
         return $this->customers;
     }

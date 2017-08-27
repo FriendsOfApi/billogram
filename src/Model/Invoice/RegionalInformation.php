@@ -460,13 +460,13 @@ class RegionalInformation implements CreatableFromArray
             $data['rotavdrag'] = $this->rotavdrag;
         }
         if ($this->rotavdragPersonalNumber !== null) {
-            $data['rotavdrag_personal_number'] = $this->rotavdragPersonalNumber ?? null;
+            $data['rotavdrag_personal_number'] = $this->rotavdragPersonalNumber;
         }
         if ($this->rotavdragDescription !== null) {
-            $data['rotavdrag_description'] = $this->rotavdragDescription ?? null;
+            $data['rotavdrag_description'] = $this->rotavdragDescription;
         }
         if ($this->reversedVat !== null) {
-            $data['reversed_vat'] = $this->reversedVat ?? null;
+            $data['reversed_vat'] = $this->reversedVat;
         }
         if ($this->autogiroBetalarnummer !== null) {
             $data['autogiro_betalarnummer'] = $this->autogiroBetalarnummer;
@@ -498,7 +498,6 @@ class RegionalInformation implements CreatableFromArray
         if ($this->efakturaRecipientBankCode !== null) {
             $data['efaktura_recipient_bank_code'] = $this->efakturaRecipientBankCode;
         }
-        //
         if ($this->efakturaRecipientIdNumber !== null) {
             $data['efaktura_recipient_id_number'] = $this->efakturaRecipientIdNumber;
         }

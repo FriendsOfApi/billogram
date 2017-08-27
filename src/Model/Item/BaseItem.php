@@ -67,7 +67,7 @@ abstract class BaseItem implements CreatableFromArray
     /**
      * @param string $itemNo
      *
-     * @return Item
+     * @return self
      */
     public function withItemNo(string $itemNo)
     {
@@ -88,7 +88,7 @@ abstract class BaseItem implements CreatableFromArray
     /**
      * @param string $title
      *
-     * @return Item
+     * @return self
      */
     public function withTitle(string $title)
     {
@@ -109,7 +109,7 @@ abstract class BaseItem implements CreatableFromArray
     /**
      * @param string $description
      *
-     * @return Item
+     * @return self
      */
     public function withDescription(string $description)
     {
@@ -130,7 +130,7 @@ abstract class BaseItem implements CreatableFromArray
     /**
      * @param float $price
      *
-     * @return Item
+     * @return self
      */
     public function withPrice(float $price)
     {
@@ -151,7 +151,7 @@ abstract class BaseItem implements CreatableFromArray
     /**
      * @param float $vat
      *
-     * @return Item
+     * @return self
      */
     public function withVat(float $vat)
     {
@@ -172,7 +172,7 @@ abstract class BaseItem implements CreatableFromArray
     /**
      * @param string $unit
      *
-     * @return Item
+     * @return self
      */
     public function withUnit(string $unit)
     {
@@ -193,7 +193,7 @@ abstract class BaseItem implements CreatableFromArray
     /**
      * @param Bookkeeping $bookkeeping
      *
-     * @return Item
+     * @return self
      */
     public function withBookkeeping(Bookkeeping $bookkeeping)
     {
@@ -250,13 +250,13 @@ abstract class BaseItem implements CreatableFromArray
             $data['item_no'] = $this->itemNo;
         }
         if ($this->description !== null) {
-            $data['description'] = $this->description ?? null;
+            $data['description'] = $this->description;
         }
         if ($this->price !== null) {
-            $data['price'] = $this->price ?? null;
+            $data['price'] = $this->price;
         }
         if ($this->vat !== null) {
-            $data['vat'] = $this->vat ?? null;
+            $data['vat'] = $this->vat;
         }
         if ($this->unit !== null) {
             $data['unit'] = $this->unit;

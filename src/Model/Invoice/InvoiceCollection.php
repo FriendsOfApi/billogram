@@ -16,6 +16,10 @@ class InvoiceCollection implements CreatableFromArray
      */
     private $invoices;
 
+    /**
+     *
+     * @param Invoice[] $invoices
+     */
     private function __construct(array $invoices)
     {
         $this->invoices = $invoices;
@@ -36,7 +40,7 @@ class InvoiceCollection implements CreatableFromArray
     /**
      * @return Invoice[]
      */
-    public function getCustomer()
+    public function getInvoices()
     {
         return $this->invoices;
     }

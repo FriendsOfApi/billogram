@@ -226,13 +226,13 @@ class AdditionalInformation implements CreatableFromArray
             $data['order_no'] = $this->orderNo;
         }
         if ($this->orderDate !== null) {
-            $data['order_date'] = $this->orderDate ?? null;
+            $data['order_date'] = $this->orderDate;
         }
         if ($this->ourReference !== null) {
-            $data['our_reference'] = $this->ourReference ?? null;
+            $data['our_reference'] = $this->ourReference;
         }
         if ($this->yourReference !== null) {
-            $data['your_reference'] = $this->yourReference ?? null;
+            $data['your_reference'] = $this->yourReference;
         }
         if ($this->shippingDate !== null) {
             $data['shipping_date'] = $this->shippingDate;
@@ -260,13 +260,13 @@ class AdditionalInformation implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $info = new self();
-        $info->orderNo = $data['order_no'];
-        $info->orderDate = $data['order_date'];
-        $info->ourReference = $data['our_reference'];
-        $info->yourReference = $data['your_reference'];
-        $info->shippingDate = $data['shipping_date'];
-        $info->deliveryDate = $data['delivery_date'];
-        $info->referenceNumber = $data['reference_number'];
-        $info->message = $data['message'];
+        $info->orderNo = $data['order_no'] ?? null;
+        $info->orderDate = $data['order_date'] ?? null;
+        $info->ourReference = $data['our_reference'] ?? null;
+        $info->yourReference = $data['your_reference'] ?? null;
+        $info->shippingDate = $data['shipping_date'] ?? null;
+        $info->deliveryDate = $data['delivery_date'] ?? null;
+        $info->referenceNumber = $data['reference_number'] ?? null;
+        $info->message = $data['message'] ?? null;
     }
 }

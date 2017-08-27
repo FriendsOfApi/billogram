@@ -17,6 +17,10 @@ class CollectionItem implements CreatableFromArray
      */
     private $items;
 
+    /**
+     *
+     * @param Item[] $items
+     */
     private function __construct(array $items)
     {
         foreach ($items as $item) {
@@ -40,7 +44,7 @@ class CollectionItem implements CreatableFromArray
     }
 
     /**
-     * @return CollectionItem[]
+     * @return Item[]
      */
     public function getItems()
     {

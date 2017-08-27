@@ -39,10 +39,6 @@ class CustomerBillingAddress implements CreatableFromArray
      */
     private $country;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return string
      */

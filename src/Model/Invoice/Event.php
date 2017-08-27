@@ -93,13 +93,13 @@ class Event implements CreatableFromArray
     {
         $data = [];
         if ($this->createdAt !== null) {
-            $data['created_at'] = $this->createdAt;
+            $data['created_at'] = $this->createdAt->getTimestamp();
         }
         if ($this->type !== null) {
-            $data['type'] = $this->type ?? null;
+            $data['type'] = $this->type;
         }
         if ($this->data !== null) {
-            $data['data'] = $this->data->toArray() ?? null;
+            $data['data'] = $this->data->toArray();
         }
 
         return $data;
@@ -115,9 +115,9 @@ class Event implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $event = new self();
-        $event->type = $data['type'];
-        $event->createdAt = $data['created_at'];
-        $event->data = EventData::createFromArray($data['data']);
+        $event->type = $data['type'] ?? null;
+        $event->createdAt = isset($data['created_at']) ? new \DateTime($data['created_at']) : null;
+        $event->data = isset($data['data']) ? EventData::createFromArray($data['data']) : null;
 
         return $event;
     }

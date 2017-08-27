@@ -356,25 +356,22 @@ class CollectionForElectricityInvoices implements CreatableFromArray
             $data['kommunkod'] = $this->kommunkod;
         }
         if ($this->naringsidkare !== null) {
-            $data['naringsidkare'] = $this->naringsidkare ?? null;
+            $data['naringsidkare'] = $this->naringsidkare;
         }
         if ($this->avflyttad !== null) {
-            $data['our_reference'] = $this->ourReference ?? null;
-        }
-        if ($this->avflyttad !== null) {
-            $data['your_reference'] = $this->avflyttad ?? null;
+            $data['avflyttad'] = $this->avflyttad;
         }
         if ($this->avflyttadDatum !== null) {
-            $data['shipping_date'] = $this->avflyttadDatum;
+            $data['avflyttad_datum'] = $this->avflyttadDatum;
         }
         if ($this->frankopplad !== null) {
-            $data['delivery_date'] = $this->frankopplad;
+            $data['frankopplad'] = $this->frankopplad;
         }
         if ($this->frankoppladDatum !== null) {
-            $data['frankoppladDatum'] = $this->frankoppladDatum;
+            $data['frankopplad_datum'] = $this->frankoppladDatum;
         }
         if ($this->anladr !== null) {
-            $data['message'] = $this->anladr;
+            $data['anladr'] = $this->anladr;
         }
         if ($this->natom !== null) {
             $data['natom'] = $this->natom;
@@ -409,18 +406,18 @@ class CollectionForElectricityInvoices implements CreatableFromArray
     {
         $collection = new self();
         $collection->kommunkod = $data['kommunkod'] ?? null;
-        $collection->slutfaktura = $data['slutfaktura'] ?? null;
-        $collection->kravmall = $data['kravmall'] ?? null;
-        $collection->frankopplad = $data['frankopplad'] ?? null;
-        $collection->arsforb = $data['arsforb'] ?? null;
-        $collection->plombkod = $data['plombkod'] ?? null;
-        $collection->natom = $data['natom'] ?? null;
+        $collection->naringsidkare = $data['naringsidkare'] ?? null;
+        $collection->avflyttad = $data['avflyttad'] ?? null;
         $collection->avflyttadDatum = $data['avflyttad_datum'] ?? null;
+        $collection->frankopplad = $data['frankopplad'] ?? null;
         $collection->frankoppladDatum = $data['frankopplad_datum'] ?? null;
         $collection->anladr = $data['anladr'] ?? null;
+        $collection->natom = $data['natom'] ?? null;
+        $collection->arsforb = $data['arsforb'] ?? null;
         $collection->anlid = $data['anlid'] ?? null;
-        $collection->avflyttad = $data['avflyttad'] ?? null;
-        $collection->naringsidkare = $data['naringsidkare'] ?? null;
+        $collection->kravmall = $data['kravmall'] ?? null;
+        $collection->plombkod = $data['plombkod'] ?? null;
+        $collection->slutfaktura = $data['slutfaktura'] ?? null;
 
         return $collection;
     }

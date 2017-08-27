@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Billogram\Model\Setting;
 
 use Billogram\Model\CreatableFromArray;
+use Billogram\Model\Invoice\AutomaticReminder;
+use Billogram\Model\Invoice\ReminderCollection;
 
 /**
  * @author Ibrahim Hizeoui <ibrahimhizeoui@gmail.com>
@@ -42,9 +44,9 @@ class InvoiceDefaults implements CreatableFromArray
     private $automaticWriteoff;
 
     /**
-     * @var AutomaticReminderCollection
+     * @var ReminderCollection
      */
-    private $automaticCollection;
+    private $reminderCollection;
 
     /**
      * @return string
@@ -173,22 +175,22 @@ class InvoiceDefaults implements CreatableFromArray
     }
 
     /**
-     * @return AutomaticReminderCollection
+     * @return ReminderCollection
      */
     public function getAutomaticReminderCollection()
     {
-        return $this->automaticCollection;
+        return $this->reminderCollection;
     }
 
     /**
-     * @param AutomaticReminderCollection $automaticCollection
+     * @param ReminderCollection $automaticCollection
      *
      * @return InvoiceDefaults
      */
-    public function withAutomaticCollection(AutomaticReminderCollection $automaticCollection)
+    public function withAutomaticCollection(ReminderCollection $automaticCollection)
     {
         $new = clone $this;
-        $new->automaticCollection = $automaticCollection;
+        $new->reminderCollection = $automaticCollection;
 
         return $new;
     }
@@ -209,7 +211,7 @@ class InvoiceDefaults implements CreatableFromArray
         $invoiceDefault->defaultInvoiceFee = $data['default_invoice_fee'] ?? null;
         $invoiceDefault->automaticReminders = AutomaticReminder::createFromArray($data['automatic_reminders']);
         $invoiceDefault->automaticWriteoff = AutomaticReminderWriteOff::createFromArray($data['automatic_writeoff']);
-        $invoiceDefault->automaticCollection = AutomaticReminderCollection::createFromArray($data['automatic_collection']);
+        $invoiceDefault->reminderCollection = ReminderCollection::createFromArray($data['automatic_collection']);
 
         return $invoiceDefault;
     }
@@ -235,8 +237,8 @@ class InvoiceDefaults implements CreatableFromArray
         if ($this->automaticWriteoff !== null) {
             $data['automatic_reminders'] = $this->automaticWriteoff->toArray();
         }
-        if ($this->automaticCollection !== null) {
-            $data['automatic_reminders'] = $this->automaticCollection->toArray();
+        if ($this->reminderCollection !== null) {
+            $data['automatic_reminders'] = $this->reminderCollection->toArray();
         }
 
         return $data;

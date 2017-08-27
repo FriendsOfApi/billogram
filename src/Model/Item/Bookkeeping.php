@@ -21,10 +21,6 @@ class Bookkeeping implements CreatableFromArray
      */
     private $vatAccount;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return string
      */
@@ -90,8 +86,8 @@ class Bookkeeping implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $bookkeeping = new self();
-        $bookkeeping->incomeAccount = $data['income_account'];
-        $bookkeeping->vatAccount = $data['vat_account'];
+        $bookkeeping->incomeAccount = $data['income_account'] ?? null;
+        $bookkeeping->vatAccount = $data['vat_account'] ?? null;
 
         return $bookkeeping;
     }

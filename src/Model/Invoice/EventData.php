@@ -772,13 +772,13 @@ class EventData implements CreatableFromArray
             $data['invoice_no'] = $this->invoiceNo;
         }
         if ($this->deliveryMethod !== null) {
-            $data['delivery_method'] = $this->deliveryMethod ?? null;
+            $data['delivery_method'] = $this->deliveryMethod;
         }
         if ($this->letterId !== null) {
-            $data['letter_id'] = $this->letterId ?? null;
+            $data['letter_id'] = $this->letterId;
         }
         if ($this->amount !== null) {
-            $data['amount'] = $this->amount ?? null;
+            $data['amount'] = $this->amount;
         }
         if ($this->paymentFlags !== null) {
             $data['payment_flags'] = $this->paymentFlags;
@@ -787,13 +787,13 @@ class EventData implements CreatableFromArray
             $data['banking_amount'] = $this->bankingAmount;
         }
         if ($this->manual !== null) {
-            $data['manual'] = $this->manual ?? null;
+            $data['manual'] = $this->manual;
         }
         if ($this->reminderFee !== null) {
-            $data['reminder_fee'] = $this->reminderFee ?? null;
+            $data['reminder_fee'] = $this->reminderFee;
         }
         if ($this->reminderCount !== null) {
-            $data['reminder_count'] = $this->reminderCount ?? null;
+            $data['reminder_count'] = $this->reminderCount;
         }
         if ($this->interestRate !== null) {
             $data['interest_rate'] = $this->interestRate;
@@ -802,13 +802,13 @@ class EventData implements CreatableFromArray
             $data['customer_phone'] = $this->customerPhone;
         }
         if ($this->customerEmail !== null) {
-            $data['customer_email'] = $this->customerEmail ?? null;
+            $data['customer_email'] = $this->customerEmail;
         }
         if ($this->ip !== null) {
-            $data['ip'] = $this->ip ?? null;
+            $data['ip'] = $this->ip;
         }
         if ($this->type !== null) {
-            $data['type'] = $this->type ?? null;
+            $data['type'] = $this->type;
         }
         if ($this->message !== null) {
             $data['message'] = $this->message;
@@ -817,37 +817,37 @@ class EventData implements CreatableFromArray
             $data['full_status'] = $this->fullStatus;
         }
         if ($this->collectorMethod !== null) {
-            $data['collector_method'] = $this->collectorMethod ?? null;
+            $data['collector_method'] = $this->collectorMethod;
         }
         if ($this->collectorReference !== null) {
-            $data['collector_reference'] = $this->collectorReference ?? null;
+            $data['collector_reference'] = $this->collectorReference;
         }
         if ($this->factoringMethod !== null) {
-            $data['factoring_method'] = $this->factoringMethod ?? null;
+            $data['factoring_method'] = $this->factoringMethod;
         }
         if ($this->factoringReference !== null) {
             $data['factoring_reference'] = $this->factoringReference;
         }
         if ($this->sellsFor !== null) {
-            $data['sells_for'] = $this->sellsFor ?? null;
+            $data['sells_for'] = $this->sellsFor;
         }
         if ($this->soldFor !== null) {
-            $data['sold_for'] = $this->soldFor ?? null;
+            $data['sold_for'] = $this->soldFor;
         }
         if ($this->bankgiro !== null) {
             $data['bankgiro'] = $this->bankgiro;
         }
         if ($this->recipientIdentifier !== null) {
-            $data['recipient_identifier'] = $this->recipientIdentifier ?? null;
+            $data['recipient_identifier'] = $this->recipientIdentifier;
         }
         if ($this->errorStatus !== null) {
             $data['error_status'] = $this->errorStatus;
         }
         if ($this->totalSum !== null) {
-            $data['total_sum'] = $this->totalSum ?? null;
+            $data['total_sum'] = $this->totalSum;
         }
         if ($this->remainingSum !== null) {
-            $data['remaining_sum'] = $this->remainingSum ?? null;
+            $data['remaining_sum'] = $this->remainingSum;
         }
         if ($this->scanningCentral !== null) {
             $data['scanning_central'] = $this->scanningCentral;
@@ -866,34 +866,34 @@ class EventData implements CreatableFromArray
     public static function createFromArray(array $data = null)
     {
         $eventData = new self();
-        $eventData->invoiceNo = $data['invoice_no'];
-        $eventData->deliveryMethod = $data['delivery_method'];
-        $eventData->letterId = $data['letter_id'];
-        $eventData->amount = $data['amount'];
-        $eventData->payerName = $data['payer_name'];
-        $eventData->paymentFlags = $data['payment_flags'];
-        $eventData->bankingAmount = $data['banking_amount'];
-        $eventData->manual = $data['manual'];
-        $eventData->reminderFee = $data['reminder_fee'];
-        $eventData->reminderCount = $data['reminder_count'];
-        $eventData->interestRate = $data['interest_rate'];
-        $eventData->customerPhone = $data['customer_phone'];
-        $eventData->ip = $data['ip'];
-        $eventData->type = $data['type'];
-        //$eventData->message = $data['message'];
-        $eventData->fullStatus = $data['full_status'];
-        $eventData->collectorMethod = $data['collector_method'];
-        $eventData->collectorReference = $data['collector_reference'];
-        $eventData->factoringMethod = $data['factoring_method'];
-        $eventData->factoringReference = $data['factoring_reference'];
-        $eventData->sellsFor = $data['sells_for'];
-        $eventData->soldFor = $data['sold_for'];
-        $eventData->bankgiro = $data['bankgiro'];
-        $eventData->recipientIdentifier = $data['recipient_identifier'];
-        $eventData->errorStatus = $data['error_status'];
-        $eventData->totalSum = $data['total_sum'];
-        $eventData->remainingSum = $data['remaining_sum'];
-        $eventData->scanningCentral = $data['scanning_central'];
+        $eventData->invoiceNo = $data['invoice_no'] ?? null;
+        $eventData->deliveryMethod = $data['delivery_method'] ?? null;
+        $eventData->letterId = $data['letter_id'] ?? null;
+        $eventData->amount = $data['amount'] ?? null;
+        $eventData->payerName = $data['payer_name'] ?? null;
+        $eventData->paymentFlags = $data['payment_flags'] ?? null;
+        $eventData->bankingAmount = $data['banking_amount'] ?? null;
+        $eventData->manual = $data['manual'] ?? null;
+        $eventData->reminderFee = $data['reminder_fee'] ?? null;
+        $eventData->reminderCount = $data['reminder_count'] ?? null;
+        $eventData->interestRate = $data['interest_rate'] ?? null;
+        $eventData->customerPhone = $data['customer_phone'] ?? null;
+        $eventData->ip = $data['ip'] ?? null;
+        $eventData->type = $data['type'] ?? null;
+        $eventData->message = $data['message'] ?? [];
+        $eventData->fullStatus = $data['full_status'] ?? null;
+        $eventData->collectorMethod = $data['collector_method'] ?? null;
+        $eventData->collectorReference = $data['collector_reference'] ?? null;
+        $eventData->factoringMethod = $data['factoring_method'] ?? null;
+        $eventData->factoringReference = $data['factoring_reference'] ?? null;
+        $eventData->sellsFor = $data['sells_for'] ?? null;
+        $eventData->soldFor = $data['sold_for'] ?? null;
+        $eventData->bankgiro = $data['bankgiro'] ?? null;
+        $eventData->recipientIdentifier = $data['recipient_identifier'] ?? null;
+        $eventData->errorStatus = $data['error_status'] ?? null;
+        $eventData->totalSum = $data['total_sum'] ?? null;
+        $eventData->remainingSum = $data['remaining_sum'] ?? null;
+        $eventData->scanningCentral = $data['scanning_central'] ?? null;
 
         return $eventData;
     }

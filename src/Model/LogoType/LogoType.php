@@ -75,6 +75,7 @@ class LogoType implements CreatableFromArray
         if ($data['status'] === 'INVALID_PARAMETER' && array_key_exists('message', $data['data'])) {
             throw new ValidationException($data['data']['message']);
         }
+
         $logoType = new self();
         $logoType->content = $data['content'] ?? null;
         $logoType->fileType = $data['file_type'] ?? null;

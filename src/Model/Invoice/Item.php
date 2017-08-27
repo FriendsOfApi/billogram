@@ -23,10 +23,6 @@ class Item extends BaseItem implements CreatableFromArray
      */
     private $discount;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return int
      */
@@ -85,9 +81,8 @@ class Item extends BaseItem implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $item = new self();
-        $item->count = $data['count'];
-        $item->discount = $data['discount'];
-        //$item = $item->withItemNo($data['item_no']) ?? null;
+        $item->count = $data['count'] ?? null;
+        $item->discount = $data['discount'] ?? null;
         $item->itemNo = $data['item_no'] ?? null;
         $item->title = $data['title'] ?? null;
         $item->description = $data['description'] ?? null;

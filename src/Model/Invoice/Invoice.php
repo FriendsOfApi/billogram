@@ -177,7 +177,7 @@ class Invoice implements CreatableFromArray
     private $attachment;
 
     /**
-     * @var AutomaticCollection
+     * @var ReminderCollection
      */
     private $automaticCollection;
 
@@ -854,19 +854,19 @@ class Invoice implements CreatableFromArray
     }
 
     /**
-     * @return AutomaticCollection
+     * @return ReminderCollection
      */
-    public function getAutomaticCollection(): AutomaticCollection
+    public function getAutomaticCollection(): ReminderCollection
     {
         return $this->automaticCollection;
     }
 
     /**
-     * @param AutomaticCollection $automaticCollection
+     * @param ReminderCollection $automaticCollection
      *
      * @return Invoice
      */
-    public function withAutomaticCollection(AutomaticCollection $automaticCollection)
+    public function withAutomaticCollection(ReminderCollection $automaticCollection)
     {
         $new = clone $this;
         $new->automaticCollection = $automaticCollection;
@@ -884,6 +884,7 @@ class Invoice implements CreatableFromArray
 
     public function toArray()
     {
+        // TODO write me
         $data = [];
         if ($this->customer !== null) {
             $data['customer'] = $this->customer->toArray();
@@ -894,7 +895,7 @@ class Invoice implements CreatableFromArray
             }
         }
         if ($this->invoiceDate !== null) {
-            $data['invoice_date'] = $this->invoiceDate ?? null;
+            $data['invoice_date'] = $this->invoiceDate;
         }
 
         return $data;
@@ -909,63 +910,64 @@ class Invoice implements CreatableFromArray
      */
     public static function createFromArray(array $data)
     {
+        $data = $data['data'];
         $invoice = new self();
-        $invoice->id = $data['data']['id'] ?? null;
-        $invoice->createdAt = $data['data']['created_at'] ?? null;
-        $invoice->updateAt = $data['data']['updated_at'] ?? null;
-        $invoice->attestedAt = $data['data']['attested_at'] ?? null;
-        $invoice->currency = $data['data']['currency'] ?? null;
-        $invoice->reminderFee = $data['data']['reminder_fee'] ?? null;
-        $invoice->interestRate = $data['data']['interest_rate'] ?? null;
-        $invoice->state = $data['data']['state'] ?? null;
-        $invoice->attachment = $data['data']['attachment'] ?? null;
-        $invoice->automaticReminders = $data['data']['automatic_reminders'] ?? null;
-        if (array_key_exists('automatic_reminders_settings', $data['data'])) {
-            foreach ($data['data']['automatic_reminders_settings'] as $setting) {
+        $invoice->id = $data['id'] ?? null;
+        $invoice->createdAt =  isset($data['created_at']) ? new \DateTime($data['created_at']) : null;
+        $invoice->updateAt =  isset($data['update_at']) ? new \DateTime($data['update_at']) : null;
+        $invoice->attestedAt =  isset($data['attested_at']) ? new \DateTime($data['attested_at']) : null;
+        $invoice->currency = $data['currency'] ?? null;
+        $invoice->reminderFee = $data['reminder_fee'] ?? null;
+        $invoice->interestRate = $data['interest_rate'] ?? null;
+        $invoice->state = $data['state'] ?? null;
+        $invoice->attachment = $data['attachment'] ?? null;
+        $invoice->automaticReminders = $data['automatic_reminders'] ?? null;
+        if (array_key_exists('automatic_reminders_settings', $data)) {
+            foreach ($data['automatic_reminders_settings'] as $setting) {
                 $automaticReminder = AutomaticReminder::createFromArray($setting) ?? null;
                 $invoice->automaticRemindersSettings[] = $automaticReminder;
             }
         }
-        if (array_key_exists('automatic_collection', $data['data'])) {
-            $invoice->automaticCollection = AutomaticCollection::createFromArray($data['data']['automatic_collection']) ?? null;
+        if (array_key_exists('automatic_collection', $data)) {
+            $invoice->automaticCollection = ReminderCollection::createFromArray($data['automatic_collection']) ?? null;
         }
-        $invoice->roundingValue = $data['data']['rounding_value'] ?? null;
-        $invoice->ocrNumber = $data['data']['ocr_number'] ?? null;
-        if (array_key_exists('events', $data['data'])) {
-            foreach ($data['data']['events'] as $eventArray) {
+        $invoice->roundingValue = $data['rounding_value'] ?? null;
+        $invoice->ocrNumber = $data['ocr_number'] ?? null;
+        if (array_key_exists('events', $data)) {
+            foreach ($data['events'] as $eventArray) {
                 $event = Event::createFromArray($eventArray) ?? null;
                 $invoice->events[] = $event;
             }
         }
-        $invoice->dueDate = $data['data']['due_date'] ?? null;
-        $invoice->dueDays = $data['data']['due_days'] ?? null;
-        $invoice->invoiceDate = $data['data']['invoice_date'] ?? null;
-        if (array_key_exists('callbacks', $data['data'])) {
-            $invoice->callbacks = BillogramCallback::createFromArray($data['data']['callbacks']) ?? null;
+        $invoice->dueDate = $data['due_date'] ?? null;
+        $invoice->dueDays = $data['due_days'] ?? null;
+        $invoice->invoiceDate = $data['invoice_date'] ?? null;
+        if (array_key_exists('callbacks', $data)) {
+            $invoice->callbacks = BillogramCallback::createFromArray($data['callbacks']) ?? null;
         }
-        $invoice->interestFee = $data['data']['interest_fee'] ?? null;
-        $invoice->invoiceNo = $data['data']['invoice_no'] ?? null;
-        $invoice->customer = Customer::createFromArray($data['data']['customer']) ?? null;
-        if (array_key_exists('info', $data['data'])) {
-            $invoice->info = AdditionalInformation::createFromArray($data['data']['info']) ?? null;
+        $invoice->interestFee = $data['interest_fee'] ?? null;
+        $invoice->invoiceNo = $data['invoice_no'] ?? null;
+        $invoice->customer = Customer::createFromArray($data['customer']) ?? null;
+        if (array_key_exists('info', $data)) {
+            $invoice->info = AdditionalInformation::createFromArray($data['info']) ?? null;
         }
-        $invoice->invoiceFee = $data['data']['invoice_fee'] ?? null;
-        $invoice->invoiceFeeVat = $data['data']['invoice_fee_vat'] ?? null;
-        if (array_key_exists('items', $data['data'])) {
-            foreach ($data['data']['items'] as $item) {
+        $invoice->invoiceFee = $data['invoice_fee'] ?? null;
+        $invoice->invoiceFeeVat = $data['invoice_fee_vat'] ?? null;
+        if (array_key_exists('items', $data)) {
+            foreach ($data['items'] as $item) {
                 $item = \Billogram\Model\Invoice\Item::createFromArray($item) ?? null;
                 $invoice->items[] = $item;
             }
         }
-        $invoice->totalSum = $data['data']['total_sum'] ?? null;
-        $invoice->remainingSum = $data['data']['remaining_sum'] ?? null;
-        $invoice->reminderCount = $data['data']['reminder_count'] ?? null;
-        $invoice->deliveryMethod = $data['data']['delivery_method'] ?? null;
-        $invoice->url = $data['data']['url'] ?? null;
-        $invoice->flags = $data['data']['flags'] ?? null;
-        if (array_key_exists('regional_sweden', $data['data']) && array_key_exists('regional_sweden', $data['data'])) {
-            $invoice->regionalSweden = RegionalInformation::createFromArray($data['data']['regional_sweden']) ?? null;
-            $invoice->detailedSums = DetailedSums::createFromArray($data['data']['detailed_sums']) ?? null;
+        $invoice->totalSum = $data['total_sum'] ?? null;
+        $invoice->remainingSum = $data['remaining_sum'] ?? null;
+        $invoice->reminderCount = $data['reminder_count'] ?? null;
+        $invoice->deliveryMethod = $data['delivery_method'] ?? null;
+        $invoice->url = $data['url'] ?? null;
+        $invoice->flags = $data['flags'] ?? null;
+        if (array_key_exists('regional_sweden', $data) && array_key_exists('regional_sweden', $data)) {
+            $invoice->regionalSweden = RegionalInformation::createFromArray($data['regional_sweden']) ?? null;
+            $invoice->detailedSums = DetailedSums::createFromArray($data['detailed_sums']) ?? null;
         }
 
         return $invoice;

@@ -39,10 +39,6 @@ class CustomerDeliveryAddress implements CreatableFromArray
      */
     private $country;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return string
      */
@@ -204,12 +200,12 @@ class CustomerDeliveryAddress implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $customerDeliveryAddress = new self();
-        $customerDeliveryAddress->name = $data['name'];
-        $customerDeliveryAddress->streetAddress = $data['street_address'];
-        $customerDeliveryAddress->careOf = $data['careof'];
-        $customerDeliveryAddress->zipCode = $data['zipcode'];
-        $customerDeliveryAddress->city = $data['city'];
-        $customerDeliveryAddress->country = $data['country'];
+        $customerDeliveryAddress->name = $data['name'] ?? null;
+        $customerDeliveryAddress->streetAddress = $data['street_address'] ?? null;
+        $customerDeliveryAddress->careOf = $data['careof'] ?? null;
+        $customerDeliveryAddress->zipCode = $data['zipcode'] ?? null;
+        $customerDeliveryAddress->city = $data['city'] ?? null;
+        $customerDeliveryAddress->country = $data['country'] ?? null;
 
         return $customerDeliveryAddress;
     }

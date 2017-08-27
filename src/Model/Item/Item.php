@@ -12,22 +12,22 @@ class Item extends BaseItem
     public static function createFromArray(array $data)
     {
         if (array_key_exists('data', $data)) {
-            $itemArray = $data['data'];
-        } else {
-            $itemArray = $data;
+            $data = $data['data'];
         }
+
         $item = new self();
-        $item->itemNo = $itemArray['item_no'] ?? null;
-        $item->title = $itemArray['title'] ?? null;
-        $item->description = $itemArray['description'] ?? null;
-        $item->price = $itemArray['price'] ?? null;
-        $item->vat = $itemArray['vat'] ?? null;
-        $item->unit = $itemArray['unit'] ?? null;
-        if (array_key_exists('bookkeeping', $itemArray)) {
-            $item->bookkeeping = Bookkeeping::createFromArray($itemArray['bookkeeping']);
+        $item->itemNo = $data['item_no'] ?? null;
+        $item->title = $data['title'] ?? null;
+        $item->description = $data['description'] ?? null;
+        $item->price = $data['price'] ?? null;
+        $item->vat = $data['vat'] ?? null;
+        $item->unit = $data['unit'] ?? null;
+        $item->createdAt = isset($data['created_at']) ? new \DateTime($data['created_at']) : null;
+        $item->updatedAt = isset($data['updated_at']) ? new \DateTime($data['updated_at']) : null;
+
+        if (array_key_exists('bookkeeping', $data)) {
+            $item->bookkeeping = Bookkeeping::createFromArray($data['bookkeeping']);
         }
-        $item->createdAt = $itemArray['created_at'] ?? null;
-        $item->updatedAt = $itemArray['updated_at'] ?? null;
 
         return $item;
     }

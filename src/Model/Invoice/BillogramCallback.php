@@ -96,10 +96,10 @@ class BillogramCallback implements CreatableFromArray
             $data['url'] = $this->url;
         }
         if ($this->custom !== null) {
-            $data['custom'] = $this->custom ?? null;
+            $data['custom'] = $this->custom;
         }
         if ($this->signKey !== null) {
-            $data['sign_key'] = $this->signKey ?? null;
+            $data['sign_key'] = $this->signKey;
         }
     }
 
@@ -113,9 +113,9 @@ class BillogramCallback implements CreatableFromArray
     public static function createFromArray(array $data)
     {
         $billogramCallback = new self();
-        $billogramCallback->url = $data['url'];
-        $billogramCallback->custom = $data['custom'];
-        $billogramCallback->signKey = $data['sign_key'];
+        $billogramCallback->url = $data['url'] ?? null;
+        $billogramCallback->custom = $data['custom'] ?? null;
+        $billogramCallback->signKey = $data['sign_key'] ?? null;
 
         return $billogramCallback;
     }

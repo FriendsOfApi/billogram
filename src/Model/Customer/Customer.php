@@ -64,10 +64,6 @@ class Customer implements CreatableFromArray
      */
     private $companyType;
 
-    public function __construct()
-    {
-    }
-
     /**
      * @return int
      */
@@ -304,7 +300,7 @@ class Customer implements CreatableFromArray
         $customer->orgNo = $customerArray['org_no'] ?? null;
         $customer->vatNo = $customerArray['vat_no'] ?? null;
 
-        $customer->createdAt = $customerArray['created_at'] ?? null;
+        $customer->createdAt = isset($data['created_at']) ? new \DateTime($data['created_at']) : null;
         $customer->updatedAt = $customerArray['updated_at'] ?? null;
         $customer->companyType = $customerArray['company_type'] ?? null;
 

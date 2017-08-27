@@ -184,9 +184,14 @@ class Report implements CreatableFromArray
         $report->type = $data['type'] ?? null;
         $report->fileType = $data['file_type'] ?? null;
         $report->info = $data['info'] ?? null;
-        $report->createdAt = $data['created_at'] ?? null;
+        $report->createdAt = isset($data['created_at']) ? new \DateTime($data['created_at']) : null;
         $report->content = $data['content'] ?? null;
 
         return $report;
+    }
+
+    public function toArray()
+    {
+        // TODO write me
     }
 }
