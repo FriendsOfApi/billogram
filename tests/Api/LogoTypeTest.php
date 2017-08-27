@@ -16,7 +16,7 @@ class LogoTypeTest extends BaseTestCase
     {
         $logoType = new LogoType();
 
-        $image = __DIR__.'/../test.png';
+        $image = __DIR__.'/../Fixtures/logo.png';
         $logoType = $logoType->withContent(base64_encode(file_get_contents($image)));
         $logoType = $logoType->withFileType(mime_content_type($image));
 
