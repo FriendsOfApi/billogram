@@ -24,11 +24,8 @@ class SettingTest extends BaseTestCase
 {
     public function testFetch()
     {
-        $cacheClient = $this->getHttpClient();
-        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
-        $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $settingFinal = $apiClient->settings()->fetch();
+        $billogram = $this->getBillogram();
+        $settingFinal = $billogram->settings()->fetch();
         $this->assertInstanceOf(Setting::class, $settingFinal);
     }
 
@@ -41,14 +38,39 @@ class SettingTest extends BaseTestCase
         $visitingAddress = VisitingAddress::createFromArray(['street_address' => 'Finlandsgatan 36', 'careof' => 'Microsoft', 'zipcode' => '164 74', 'city' => 'Kista', 'country' => 'Sweden']);
         $payment = PaymentSetting::createFromArray(['bankgiro' => '', 'plusgiro' => '', 'domestic_bank_account' => ['account_no' => '', 'clearing_no' => ''], 'international_bank_account' => ['bank' => '', 'iban' => '', 'bic' => '', 'swift' => '']]);
         $tax = TaxSetting::createFromArray(['is_vat_registered' => '', 'has_fskatt' => '', 'vat_no' => '']);
-        $bookkeeping = BookkeepingSetting::createFromArray(['income_account_for_vat_25' => '', 'income_account_for_vat_12' => '', 'income_account_for_vat_6' => '', 'income_account_for_vat_0' => '', 'reversed_vat_account' => '', 'vat_account_for_vat_25' => '',
-                                                            'vat_account_for_vat_12' => '', 'vat_account_for_vat_6' => '', 'account_receivable_account' => '', 'client_funds_account' => '', 'banking_account' => '', 'interest_fee_account' => '', 'reminder_fee_account' => '',
-                                                            'rounding_account' => '', 'factoring_receivable_account' => '', 'non_allocated_account' => '', 'income_payout_account' => '', 'written_down_receivables_account' => '', 'expected_loss_account' => '',
-                                                            'regional_sweden' => ['rotavdrag_account' => ''], ]);
-        $invoices = InvoiceDefaults::createFromArray(['default_message' => 'hey hey', 'default_messagedefault_message' => 8.5, 'default_reminder_fee' => 10, 'default_invoice_fee' => 30,
-                                                            'automatic_reminders' => ['delay_days' => 5, 'message' => 'HEY'],
-                                                            'automatic_writeoff' => ['settings' => 'all_fees', 'amount' => 100],
-                                                            'automatic_collection' => ['delay_days' => 5, 'amount' => 100], ]);
+        $bookkeeping = BookkeepingSetting::createFromArray([
+            'income_account_for_vat_25' => '',
+            'income_account_for_vat_12' => '', '
+            income_account_for_vat_6' => '',
+            'income_account_for_vat_0' => '',
+            'reversed_vat_account' => '',
+            'vat_account_for_vat_25' => '',
+            'vat_account_for_vat_12' => '',
+            'vat_account_for_vat_6' => '',
+            'account_receivable_account' => '',
+            'client_funds_account' => '',
+            'banking_account' => '',
+            'interest_fee_account' => '',
+            'reminder_fee_account' => '',
+            'rounding_account' => '',
+            'factoring_receivable_account' => '',
+            'non_allocated_account' => '',
+            'income_payout_account' => '',
+            'written_down_receivables_account' => '',
+            'expected_loss_account' => '',
+            'regional_sweden' => ['rotavdrag_account' => ''],
+        ]);
+
+        $invoices = InvoiceDefaults::createFromArray([
+            'default_message' => 'hey hey',
+            'default_messagedefault_message' => 8.5,
+            'default_reminder_fee' => 10,
+            'default_invoice_fee' => 30,
+            'automatic_reminders' => ['delay_days' => 5, 'message' => 'HEY'],
+            'automatic_writeoff' => ['settings' => 'all_fees', 'amount' => 100],
+            'automatic_collection' => ['delay_days' => 5, 'amount' => 100],
+        ]);
+
         $setting = $setting->withName('debg');
         $setting = $setting->withOrgNo('556667-0591');
         $setting = $setting->withContact($contact);
@@ -59,11 +81,9 @@ class SettingTest extends BaseTestCase
         $setting = $setting->withTax($tax);
         $setting = $setting->withBookkeeping($bookkeeping);
         $setting = $setting->withInvoices($invoices);
-        $cacheClient = $this->getHttpClient();
-        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
-        $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $settingFinal = $apiClient->settings()->update($setting->toArray());
+
+        $billogram = $this->getBillogram();
+        $settingFinal = $billogram->settings()->update($setting->toArray());
         $this->assertInstanceOf(Setting::class, $settingFinal);
     }
 }

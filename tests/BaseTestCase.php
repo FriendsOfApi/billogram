@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Billogram\Tests;
 
+use Billogram\BillogramClient;
+use Billogram\HttpClientConfigurator;
 use Http\Client\Curl\Client as HttplugClient;
 use Http\Client\HttpClient;
 use Http\Mock\Client as MockedHttpClient;
@@ -24,18 +26,6 @@ abstract class BaseTestCase extends TestCase
     }
 
     /**
-     * Get a real HTTP client. If a cache dir is set to a path it will use cached responses.
-     *
-     * @param null $apiKey
-     *
-     * @return CachedResponseClient
-     */
-    protected function getHttpClient($apiKey = null)
-    {
-        return new CachedResponseClient(new HttplugClient(), $this->getCacheDir(), $apiKey);
-    }
-
-    /**
      * Get a mocked HTTP client that never do calls over the internet. Use this is you want to control the response data.
      *
      * @param string|null $body
@@ -49,5 +39,20 @@ abstract class BaseTestCase extends TestCase
         $client->addResponse(new Response($statusCode, [], $body));
 
         return $client;
+    }
+
+
+    /**
+     * @return BillogramClient
+     */
+    protected function getBillogram(): BillogramClient
+    {
+        $cacheClient = new CachedResponseClient(new HttplugClient(), $this->getCacheDir());
+        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
+
+        $httpClientConfigurator->setAuth(getenv('API_USER'), getenv('API_KEY'));
+        $apiClient = BillogramClient::configure($httpClientConfigurator);
+
+        return $apiClient;
     }
 }

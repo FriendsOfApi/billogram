@@ -20,10 +20,7 @@ class CachedResponseClient implements HttpClient
      * @var HttpClient
      */
     private $delegate;
-    /**
-     * @var null|string
-     */
-    private $apiKey;
+
     /**
      * @var string
      */
@@ -32,13 +29,11 @@ class CachedResponseClient implements HttpClient
     /**
      * @param HttpClient  $delegate
      * @param string      $cacheDir
-     * @param string|null $apiKey
      */
-    public function __construct(HttpClient $delegate, $cacheDir, $apiKey = null)
+    public function __construct(HttpClient $delegate, $cacheDir)
     {
         $this->delegate = $delegate;
         $this->cacheDir = $cacheDir;
-        $this->apiKey = $apiKey;
     }
 
     /**
@@ -47,16 +42,14 @@ class CachedResponseClient implements HttpClient
     public function sendRequest(RequestInterface $request)
     {
         $url = (string) $request->getUri();
-        $host = (string) $request->getUri()->getHost();
-        if (!empty($this->apiKey)) {
-            $url = str_replace($this->apiKey, '[apikey]', $url);
-        }
-        $file = sprintf('%s/%s_%s', $this->cacheDir, $host, sha1($url));
+        $file = sprintf('%s/%s', $this->cacheDir, sha1($url));
+
         if (is_file($file) && is_readable($file)) {
             $header = json_decode(file_get_contents($file.'headers.txt'), true);
 
             return new Response(200, $header, (new GuzzleStreamFactory())->createStream(unserialize(file_get_contents($file))));
         }
+
         $response = $this->delegate->sendRequest($request);
         file_put_contents($file, serialize($response->getBody()->getContents()));
         file_put_contents($file.'headers.txt', json_encode($response->getHeaders()));

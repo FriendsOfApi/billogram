@@ -96,14 +96,14 @@ final class HttpClientConfigurator
 
     /**
      * @param string $username
-     * @param string $password
+     * @param string $authKey
      *
      * @return HttpClientConfigurator
      */
-    public function setAuth(string $username, string $password): HttpClientConfigurator
+    public function setAuth(string $username, string $authKey): HttpClientConfigurator
     {
-        $this->authKey = $password;
         $this->authUser = $username;
+        $this->authKey = $authKey;
 
         return $this;
     }

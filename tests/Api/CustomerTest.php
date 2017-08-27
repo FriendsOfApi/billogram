@@ -33,11 +33,9 @@ class CustomerTest extends BaseTestCase
         $customer = $customer->withAddress($addressCustomer);
         $customer = $customer->withDeliveryAddress($addressDelivery);
         $customer = $customer->withCompanyType('individual');
-        $cacheClient = $this->getHttpClient();
-        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
-        $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $customerFinal = $apiClient->customers()->create($customer->toArray());
+
+        $billogram = $this->getBillogram();
+        $customerFinal = $billogram->customers()->create($customer->toArray());
         $this->assertInstanceOf(Customer::class, $customerFinal);
     }
 
@@ -46,7 +44,7 @@ class CustomerTest extends BaseTestCase
         $contact = CustomerContact::createFromArray(['name' => 'ib92g', 'email' => 'zlatan@gmail.com', 'phone' => '0712223344']);
         $addressCustomer = CustomerBillingAddress::createFromArray(['careof' => 'ibrahim', 'use_careof_as_attention' => false, 'street_address' => 'Flygarvägen 189B', 'zipcode' => '175 69', 'city' => 'Järfälla', 'country' => 'SE']);
         $addressDelivery = CustomerDeliveryAddress::createFromArray(['name' => 'ibrahim', 'street_address' => 'Flygarvägen 189B', 'careof' => 'ibrahim', 'zipcode' => '175 69', 'city' => 'Järfälla', 'country' => 'SE']);
-        $customer = $this->testFetch(22);
+        $customer = new Customer();
         $customer = $customer->withName('Ibrahim bb');
         $customer = $customer->withNotes('aa');
         $customer = $customer->withOrgNo('556801-7155');
@@ -55,33 +53,23 @@ class CustomerTest extends BaseTestCase
         $customer = $customer->withAddress($addressCustomer);
         $customer = $customer->withDeliveryAddress($addressDelivery);
         $customer = $customer->withCompanyType('individual');
-        $cacheClient = $this->getHttpClient();
-        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
-        $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $customerUpdated = $apiClient->customers()->update(22, $customer->toArray());
+
+        $billogram = $this->getBillogram();
+        $customerUpdated = $billogram->customers()->update(22, $customer->toArray());
         $this->assertInstanceOf(Customer::class, $customerUpdated);
     }
 
-    public function testFetch(int $customerNo = 22)
+    public function testFetch()
     {
-        $cacheClient = $this->getHttpClient();
-        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
-        $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $customerFetched = $apiClient->customers()->fetch($customerNo);
+        $billogram = $this->getBillogram();
+        $customerFetched = $billogram->customers()->fetch(22);
         $this->assertInstanceOf(Customer::class, $customerFetched);
-
-        return $customerFetched;
     }
 
     public function testSearch()
     {
-        $cacheClient = $this->getHttpClient();
-        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
-        $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $customers = $apiClient->customers()->search(['page' => '1']);
+        $billogram = $this->getBillogram();
+        $customers = $billogram->customers()->search(['page' => '1']);
         $this->assertInstanceOf(CustomerCollection::class, $customers);
     }
 }

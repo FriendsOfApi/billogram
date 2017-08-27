@@ -21,21 +21,17 @@ class LogoTypeTest extends BaseTestCase
         $image = __DIR__.'/../test.png';
         $logoType = $logoType->withContent(base64_encode(file_get_contents($image)));
         $logoType = $logoType->withFileType(mime_content_type($image));
-        $cacheClient = $this->getHttpClient();
-        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
-        $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $logoTypeCreated = $apiClient->logotype()->upload($logoType->toArray());
+
+
+        $billogram = $this->getBillogram();
+        $logoTypeCreated = $billogram->logotype()->upload($logoType->toArray());
         $this->assertInstanceOf(LogoType::class, $logoTypeCreated);
     }
 
     public function testGet()
     {
-        $cacheClient = $this->getHttpClient();
-        $httpClientConfigurator = new HttpClientConfigurator($cacheClient);
-        $httpClientConfigurator->setAuth('20561-3vhGtAxH', '4eddc2ab063bdd53dc64836ff3a0c7bc');
-        $apiClient = BillogramClient::configure($httpClientConfigurator);
-        $logoTypeFetched = $apiClient->logotype()->get();
+        $billogram = $this->getBillogram();
+        $logoTypeFetched = $billogram->logotype()->get();
         $this->assertInstanceOf(LogoType::class, $logoTypeFetched);
     }
 }
