@@ -81,8 +81,8 @@ class Item extends HttpApi
     }
 
     /**
-     * @param string   $itemNo
-     * @param array $item
+     * @param string $itemNo
+     * @param array  $item
      *
      * @return Model|ResponseInterface
      *

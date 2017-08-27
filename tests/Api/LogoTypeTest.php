@@ -14,7 +14,6 @@ use Billogram\Tests\BaseTestCase;
  */
 class LogoTypeTest extends BaseTestCase
 {
-
     public function testUpload()
     {
         $logoType = new LogoType();

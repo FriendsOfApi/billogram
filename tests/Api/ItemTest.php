@@ -17,7 +17,6 @@ use Billogram\Tests\BaseTestCase;
  */
 class ItemTest extends BaseTestCase
 {
-
     public function testCreate()
     {
         $bookkeeping = Bookkeeping::createFromArray(['income_account' => '302', 'vat_account' => '303']);
