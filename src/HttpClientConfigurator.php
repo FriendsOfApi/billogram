@@ -72,7 +72,7 @@ final class HttpClientConfigurator
         $plugins = $this->prependPlugins;
         $plugins[] = new Plugin\BaseUriPlugin($this->uriFactory->createUri($this->endpoint));
         $plugins[] = new Plugin\HeaderDefaultsPlugin([
-            'User-Agent' => 'FriendsOfApi/boilerplate (https://github.com/FriendsOfApi/boilerplate)',
+            'User-Agent' => 'FriendsOfApi/billogram (https://github.com/FriendsOfApi/billogram)',
             'Content-Type' => 'application/json',
         ]);
         if (null !== $this->authKey && null !== $this->authUser) {

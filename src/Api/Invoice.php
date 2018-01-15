@@ -19,7 +19,7 @@ class Invoice extends HttpApi
      *
      * @return InvoiceCollection|ResponseInterface
      *
-     * @see https://billogram.com/api/documentation#billogram_call_create
+     * @see https://billogram.com/api/documentation#billogram_call_list
      */
     public function search(array $param = [])
     {
@@ -34,7 +34,7 @@ class Invoice extends HttpApi
      *
      * @return Model|ResponseInterface
      *
-     * @see https://billogram.com/api/documentation#billogram_call_create
+     * @see https://billogram.com/api/documentation#billogram_call_fetch
      */
     public function fetch(string $invoiceId)
     {
@@ -65,7 +65,7 @@ class Invoice extends HttpApi
      *
      * @return Model|ResponseInterface
      *
-     * @see https://billogram.com/api/documentation#billogram_call_create
+     * @see https://billogram.com/api/documentation#billogram_call_update
      *
      * @throws ValidationException
      */
@@ -75,4 +75,6 @@ class Invoice extends HttpApi
 
         return $this->handleResponse($response, Model::class);
     }
+
+    // TODO add send stuff https://billogram.com/api/documentation#billogram_call_send
 }

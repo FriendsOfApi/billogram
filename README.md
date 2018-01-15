@@ -15,17 +15,21 @@ made to improve the original library but they were quickly shutdown. This fork w
 ## Installation:
 
 ```bash
-composer require friendsofapi/billogram
+composer require friendsofapi/billogram php-http/guzzle6-adapter php-http/message
 ```  
+
+Why `php-http/guzzle6-adapter php-http/message`? We are decoupled from any HTTP messaging client with help by 
+[HTTPlug](http://httplug.io/). Read about clients in the [HTTPlug docs](http://docs.php-http.org/en/latest/httplug/users.html).
 
 ## Usage 
 
 First you need to register an account. it's recommend that you sign up on Billogram sandbox environment
-[Sandbox Billogram](https://billogram.com) or on [Billogram](https://billogram.com) ,then generate an API user
+[Sandbox Billogram](https://sandbox.billogram.com/register) or on [Billogram](https://billogram.com), then generate an API user.
     
 ##### Authentication:
 
-After you have generated an API user you need to create a BillogramClient and pass your user and the password to the static create function
+After you have generated an API user you need to create a BillogramClient and pass your user and the password to the 
+factory function.
 
 ```php
 $billogram = BillogramClient::create($username, $apikey);

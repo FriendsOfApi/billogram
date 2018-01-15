@@ -15,7 +15,7 @@ class LogoType extends HttpApi
     /**
      * @return string|array
      *
-     * @see https://billogram.com/api/documentation#logotype_calls
+     * @see https://billogram.com/api/documentation#logotype_fetch
      */
     public function get()
     {
@@ -29,11 +29,23 @@ class LogoType extends HttpApi
      *
      * @return Model|ResponseInterface
      *
-     * @see https://billogram.com/api/documentation#logotype_calls
+     * @see https://billogram.com/api/documentation#logotype_update
      */
     public function upload(array $logoType)
     {
         $response = $this->httpPost('/logotype', $logoType);
+
+        return $this->handleResponse($response, Model::class);
+    }
+
+    /**
+     * @return Model|ResponseInterface
+     *
+     * @see https://billogram.com/api/documentation#logotype_delete
+     */
+    public function delete()
+    {
+        $response = $this->httpDelete('/logotype');
 
         return $this->handleResponse($response, Model::class);
     }

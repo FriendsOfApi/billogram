@@ -8,28 +8,17 @@ use Billogram\Model\Report\ReportCollection;
 use Billogram\Model\Report\Report as Model;
 use Psr\Http\Message\ResponseInterface;
 
+/**
+ * @see https://billogram.com/api/documentation#reports
+ */
 class Report extends HttpApi
 {
-    /**
-     * @param string $fileName
-     *
-     * @return Model|ResponseInterface
-     *
-     * @see https://billogram.com/api/documentation#reports
-     */
-    public function fetch(string $fileName)
-    {
-        $response = $this->httpGet('/report/'.$fileName);
-
-        return $this->handleResponse($response, Model::class);
-    }
-
     /**
      * @param array $param
      *
      * @return ReportCollection|ResponseInterface
      *
-     * @see https://billogram.com/api/documentation#reports
+     * @see https://billogram.com/api/documentation#reports_list
      */
     public function search(array $param = [])
     {
@@ -37,5 +26,19 @@ class Report extends HttpApi
         $response = $this->httpGet('/report', $param);
 
         return $this->handleResponse($response, ReportCollection::class);
+    }
+
+    /**
+     * @param string $fileName
+     *
+     * @return Model|ResponseInterface
+     *
+     * @see https://billogram.com/api/documentation#reports_fetch
+     */
+    public function fetch(string $fileName)
+    {
+        $response = $this->httpGet('/report/'.$fileName);
+
+        return $this->handleResponse($response, Model::class);
     }
 }

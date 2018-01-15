@@ -64,7 +64,7 @@ class Customer extends HttpApi
 
     /**
      * @param int   $customerNo
-     * @param array $customer
+     * @param array $customer with the fields you want to update
      *
      * @return Model|ResponseInterface
      *
