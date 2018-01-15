@@ -92,13 +92,13 @@ class Event implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->createdAt !== null) {
+        if (null !== $this->createdAt) {
             $data['created_at'] = $this->createdAt->getTimestamp();
         }
-        if ($this->type !== null) {
+        if (null !== $this->type) {
             $data['type'] = $this->type;
         }
-        if ($this->data !== null) {
+        if (null !== $this->data) {
             $data['data'] = $this->data->toArray();
         }
 

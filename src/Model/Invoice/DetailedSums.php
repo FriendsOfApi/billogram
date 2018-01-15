@@ -300,37 +300,37 @@ class DetailedSums implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->invoiceFee !== null) {
+        if (null !== $this->invoiceFee) {
             $data['invoice_fee'] = $this->invoiceFee;
         }
-        if ($this->invoiceFeeVat !== null) {
+        if (null !== $this->invoiceFeeVat) {
             $data['invoice_fee_vat'] = $this->invoiceFeeVat;
         }
-        if ($this->netSum !== null) {
+        if (null !== $this->netSum) {
             $data['net_sum'] = $this->netSum;
         }
-        if ($this->vatSum !== null) {
+        if (null !== $this->vatSum) {
             $data['vat_sum'] = $this->vatSum;
         }
-        if ($this->grossSum !== null) {
+        if (null !== $this->grossSum) {
             $data['gross_sum'] = $this->grossSum;
         }
-        if ($this->rounding !== null) {
+        if (null !== $this->rounding) {
             $data['rounding'] = $this->rounding;
         }
-        if ($this->reminderFee !== null) {
+        if (null !== $this->reminderFee) {
             $data['reminder_fee'] = $this->reminderFee;
         }
-        if ($this->interestFee !== null) {
+        if (null !== $this->interestFee) {
             $data['interest_fee'] = $this->interestFee;
         }
-        if ($this->paidSum !== null) {
+        if (null !== $this->paidSum) {
             $data['paid_sum'] = $this->paidSum;
         }
-        if ($this->collectorPaidSum !== null) {
+        if (null !== $this->collectorPaidSum) {
             $data['collector_paid_sum'] = $this->collectorPaidSum;
         }
-        if ($this->remainingSum !== null) {
+        if (null !== $this->remainingSum) {
             $data['remaining_sum'] = $this->remainingSum;
         }
     }

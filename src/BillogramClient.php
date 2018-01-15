@@ -78,7 +78,7 @@ final class BillogramClient
      *
      * @return BillogramClient
      */
-    public static function create(string $username, string $apiKey): BillogramClient
+    public static function create(string $username, string $apiKey): self
     {
         $httpClientConfigurator = (new HttpClientConfigurator())->setAuth($username, $apiKey);
 

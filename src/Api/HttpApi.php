@@ -24,10 +24,12 @@ abstract class HttpApi
      * @var HttpClient
      */
     protected $httpClient;
+
     /**
      * @var Hydrator
      */
     protected $hydrator;
+
     /**
      * @var RequestBuilder
      */
@@ -138,7 +140,7 @@ abstract class HttpApi
      */
     private function createJsonBody(array $params)
     {
-        return (count($params) === 0) ? null : json_encode($params, empty($params) ? JSON_FORCE_OBJECT : 0);
+        return (0 === count($params)) ? null : json_encode($params, empty($params) ? JSON_FORCE_OBJECT : 0);
     }
 
     /**
@@ -179,7 +181,7 @@ abstract class HttpApi
             return $response;
         }
 
-        if ($response->getStatusCode() !== 200) {
+        if (200 !== $response->getStatusCode()) {
             $this->handleErrors($response);
         }
 

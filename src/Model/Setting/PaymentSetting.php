@@ -136,26 +136,26 @@ class PaymentSetting implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->bankgiro !== null) {
+        if (null !== $this->bankgiro) {
             $data['bankgiro'] = $this->bankgiro;
         }
-        if ($this->plusgiro !== null) {
+        if (null !== $this->plusgiro) {
             $data['plusgiro'] = $this->plusgiro;
         }
-        if ($this->domesticBankAccount['account_no'] !== null && $this->domesticBankAccount['clearing_no'] !== null) {
+        if (null !== $this->domesticBankAccount['account_no'] && null !== $this->domesticBankAccount['clearing_no']) {
             $data['domestic_bank_account']['account_no'] = $this->domesticBankAccount['account_no'];
             $data['domestic_bank_account']['clearing_no'] = $this->domesticBankAccount['clearing_no'];
         }
-        if ($this->internationalBankAccount['iban'] !== null) {
+        if (null !== $this->internationalBankAccount['iban']) {
             $data['international_bank_account']['iban'] = $this->internationalBankAccount['iban'];
 
-            if ($this->internationalBankAccount['iban'] !== null && $this->internationalBankAccount['bank'] !== null) {
+            if (null !== $this->internationalBankAccount['iban'] && null !== $this->internationalBankAccount['bank']) {
                 $data['international_bank_account']['bank'] = $this->internationalBankAccount['bank'];
             }
-            if ($this->internationalBankAccount['bic'] !== null) {
+            if (null !== $this->internationalBankAccount['bic']) {
                 $data['international_bank_account']['bic'] = $this->internationalBankAccount['bic'];
             }
-            if ($this->internationalBankAccount['swift'] !== null) {
+            if (null !== $this->internationalBankAccount['swift']) {
                 $data['international_bank_account']['swift'] = $this->internationalBankAccount['swift'];
             }
         }

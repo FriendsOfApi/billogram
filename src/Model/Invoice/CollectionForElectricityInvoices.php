@@ -352,43 +352,43 @@ class CollectionForElectricityInvoices implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->kommunkod !== null) {
+        if (null !== $this->kommunkod) {
             $data['kommunkod'] = $this->kommunkod;
         }
-        if ($this->naringsidkare !== null) {
+        if (null !== $this->naringsidkare) {
             $data['naringsidkare'] = $this->naringsidkare;
         }
-        if ($this->avflyttad !== null) {
+        if (null !== $this->avflyttad) {
             $data['avflyttad'] = $this->avflyttad;
         }
-        if ($this->avflyttadDatum !== null) {
+        if (null !== $this->avflyttadDatum) {
             $data['avflyttad_datum'] = $this->avflyttadDatum;
         }
-        if ($this->frankopplad !== null) {
+        if (null !== $this->frankopplad) {
             $data['frankopplad'] = $this->frankopplad;
         }
-        if ($this->frankoppladDatum !== null) {
+        if (null !== $this->frankoppladDatum) {
             $data['frankopplad_datum'] = $this->frankoppladDatum;
         }
-        if ($this->anladr !== null) {
+        if (null !== $this->anladr) {
             $data['anladr'] = $this->anladr;
         }
-        if ($this->natom !== null) {
+        if (null !== $this->natom) {
             $data['natom'] = $this->natom;
         }
-        if ($this->arsforb !== null) {
+        if (null !== $this->arsforb) {
             $data['arsforb'] = $this->arsforb;
         }
-        if ($this->anlid !== null) {
+        if (null !== $this->anlid) {
             $data['anlid'] = $this->anlid;
         }
-        if ($this->kravmall !== null) {
+        if (null !== $this->kravmall) {
             $data['kravmall'] = $this->kravmall;
         }
-        if ($this->plombkod !== null) {
+        if (null !== $this->plombkod) {
             $data['plombkod'] = $this->plombkod;
         }
-        if ($this->slutfaktura !== null) {
+        if (null !== $this->slutfaktura) {
             $data['slutfaktura'] = $this->slutfaktura;
         }
 

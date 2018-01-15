@@ -456,55 +456,55 @@ class RegionalInformation implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->rotavdrag !== null) {
+        if (null !== $this->rotavdrag) {
             $data['rotavdrag'] = $this->rotavdrag;
         }
-        if ($this->rotavdragPersonalNumber !== null) {
+        if (null !== $this->rotavdragPersonalNumber) {
             $data['rotavdrag_personal_number'] = $this->rotavdragPersonalNumber;
         }
-        if ($this->rotavdragDescription !== null) {
+        if (null !== $this->rotavdragDescription) {
             $data['rotavdrag_description'] = $this->rotavdragDescription;
         }
-        if ($this->reversedVat !== null) {
+        if (null !== $this->reversedVat) {
             $data['reversed_vat'] = $this->reversedVat;
         }
-        if ($this->autogiroBetalarnummer !== null) {
+        if (null !== $this->autogiroBetalarnummer) {
             $data['autogiro_betalarnummer'] = $this->autogiroBetalarnummer;
         }
-        if ($this->autogiroPaymentDate !== null) {
+        if (null !== $this->autogiroPaymentDate) {
             $data['autogiro_payment_date'] = $this->autogiroPaymentDate;
         }
-        if ($this->autogiroStatus !== null) {
+        if (null !== $this->autogiroStatus) {
             $data['autogiro_status'] = $this->autogiroStatus;
         }
-        if ($this->autogiroFullStatus !== null) {
+        if (null !== $this->autogiroFullStatus) {
             $data['autogiro_full_status'] = $this->autogiroFullStatus;
         }
-        if ($this->autogiroTotalSum !== null) {
+        if (null !== $this->autogiroTotalSum) {
             $data['autogiro_total_sum'] = $this->autogiroTotalSum;
         }
-        if ($this->efakturaRecipientIdentifier !== null) {
+        if (null !== $this->efakturaRecipientIdentifier) {
             $data['efaktura_recipient_identifier'] = $this->efakturaRecipientIdentifier;
         }
-        if ($this->efakturaRecipientType !== null) {
+        if (null !== $this->efakturaRecipientType) {
             $data['efaktura_recipient_type'] = $this->efakturaRecipientType;
         }
-        if ($this->efakturaRecipientBankName !== null) {
+        if (null !== $this->efakturaRecipientBankName) {
             $data['efaktura_recipient_bank_name'] = $this->efakturaRecipientBankName;
         }
-        if ($this->efakturaRecipientBankId !== null) {
+        if (null !== $this->efakturaRecipientBankId) {
             $data['efaktura_recipient_bank_id'] = $this->efakturaRecipientBankId;
         }
-        if ($this->efakturaRecipientBankCode !== null) {
+        if (null !== $this->efakturaRecipientBankCode) {
             $data['efaktura_recipient_bank_code'] = $this->efakturaRecipientBankCode;
         }
-        if ($this->efakturaRecipientIdNumber !== null) {
+        if (null !== $this->efakturaRecipientIdNumber) {
             $data['efaktura_recipient_id_number'] = $this->efakturaRecipientIdNumber;
         }
-        if ($this->efakturaRequestedAmount !== null) {
+        if (null !== $this->efakturaRequestedAmount) {
             $data['efaktura_requested_amount'] = $this->efakturaRequestedAmount;
         }
-        if ($this->collectionForElectricityInvoices !== null) {
+        if (null !== $this->collectionForElectricityInvoices) {
             $data['efaktura_recipient_bank_code'] = $this->collectionForElectricityInvoices->toArray();
         }
 

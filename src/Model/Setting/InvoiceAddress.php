@@ -63,7 +63,7 @@ class InvoiceAddress extends BaseAddress
     public function toArray()
     {
         $data = parent::toArray();
-        if ($this->email !== null) {
+        if (null !== $this->email) {
             $data['email'] = $this->email;
         }
 

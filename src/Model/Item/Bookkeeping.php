@@ -66,10 +66,10 @@ class Bookkeeping implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->incomeAccount !== null) {
+        if (null !== $this->incomeAccount) {
             $data['income_account'] = $this->incomeAccount;
         }
-        if ($this->vatAccount !== null) {
+        if (null !== $this->vatAccount) {
             $data['vat_account'] = $this->vatAccount;
         }
 

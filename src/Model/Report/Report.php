@@ -176,7 +176,7 @@ class Report implements CreatableFromArray
      */
     public static function createFromArray(array $data)
     {
-        if ($data['status'] === 'INVALID_PARAMETER' && array_key_exists('message', $data['data'])) {
+        if ('INVALID_PARAMETER' === $data['status'] && array_key_exists('message', $data['data'])) {
             throw new ValidationException($data['data']['message']);
         }
         $report = new self();

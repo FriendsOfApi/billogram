@@ -92,13 +92,13 @@ class BillogramCallback implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->url !== null) {
+        if (null !== $this->url) {
             $data['url'] = $this->url;
         }
-        if ($this->custom !== null) {
+        if (null !== $this->custom) {
             $data['custom'] = $this->custom;
         }
-        if ($this->signKey !== null) {
+        if (null !== $this->signKey) {
             $data['sign_key'] = $this->signKey;
         }
     }

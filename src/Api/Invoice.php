@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Billogram\Api;
 
-use Billogram\Exception\Domain\ValidationException;
 use Billogram\Model\Invoice\Invoice as Model;
 use Billogram\Model\Invoice\InvoiceCollection;
 use Psr\Http\Message\ResponseInterface;
@@ -89,7 +88,7 @@ class Invoice extends HttpApi
     public function send(string $invoiceId, $method = null)
     {
         $params = [];
-        if ($method !== null) {
+        if (null !== $method) {
             $params = ['method' => $method];
         }
         $response = $this->httpPost('/billogram/'.$invoiceId.'/command/send', $params);
@@ -110,7 +109,7 @@ class Invoice extends HttpApi
     public function resend(string $invoiceId, $method = null)
     {
         $params = [];
-        if ($method !== null) {
+        if (null !== $method) {
             $params = ['method' => $method];
         }
 
@@ -137,7 +136,7 @@ class Invoice extends HttpApi
 
     /**
      * @param string $invoiceId
-     * @param float $amount
+     * @param float  $amount
      *
      * @return Model|ResponseInterface
      *
@@ -156,7 +155,7 @@ class Invoice extends HttpApi
     /**
      * @param string $invoiceId
      * @param string $mode
-     * @param float $amount
+     * @param float  $amount
      * @param string $method
      *
      * @return Model|ResponseInterface
@@ -237,7 +236,7 @@ class Invoice extends HttpApi
      */
     public function addMessage(string $invoiceId, string $message)
     {
-        $params = ['message'=>$message];
+        $params = ['message' => $message];
         $response = $this->httpPost('/billogram/'.$invoiceId.'/command/message', $params);
 
         return $this->handleResponse($response, Model::class);

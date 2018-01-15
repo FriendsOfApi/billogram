@@ -109,13 +109,13 @@ class TaxSetting implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->isVatRegistered !== null) {
+        if (null !== $this->isVatRegistered) {
             $data['is_vat_registered'] = $this->isVatRegistered;
         }
-        if ($this->hasFskatt !== null) {
+        if (null !== $this->hasFskatt) {
             $data['has_fskatt'] = $this->hasFskatt;
         }
-        if ($this->vatNo !== null) {
+        if (null !== $this->vatNo) {
             $data['vat_no'] = $this->vatNo;
         }
 

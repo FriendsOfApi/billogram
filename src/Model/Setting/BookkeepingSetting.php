@@ -568,67 +568,67 @@ class BookkeepingSetting implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->incomeAccountForVat25 !== null) {
+        if (null !== $this->incomeAccountForVat25) {
             $data['income_account_for_vat_25'] = $this->incomeAccountForVat25;
         }
-        if ($this->incomeAccountForVat12 !== null) {
+        if (null !== $this->incomeAccountForVat12) {
             $data['income_account_for_vat_25'] = $this->incomeAccountForVat12;
         }
-        if ($this->incomeAccountForVat6 !== null) {
+        if (null !== $this->incomeAccountForVat6) {
             $data['income_account_for_vat_6'] = $this->incomeAccountForVat6;
         }
-        if ($this->incomeAccountForVat0 !== null) {
+        if (null !== $this->incomeAccountForVat0) {
             $data['income_account_for_vat_0'] = $this->incomeAccountForVat0;
         }
-        if ($this->reversedVatAccount !== null) {
+        if (null !== $this->reversedVatAccount) {
             $data['reversed_vat_account'] = $this->reversedVatAccount;
         }
-        if ($this->vatAccountForVat25 !== null) {
+        if (null !== $this->vatAccountForVat25) {
             $data['vat_account_for_vat_25'] = $this->vatAccountForVat25;
         }
-        if ($this->vatAccountForVat12 !== null) {
+        if (null !== $this->vatAccountForVat12) {
             $data['vat_account_for_vat_12'] = $this->vatAccountForVat12;
         }
-        if ($this->vatAccountForVat6 !== null) {
+        if (null !== $this->vatAccountForVat6) {
             $data['vat_account_for_vat_6'] = $this->vatAccountForVat6;
         }
-        if ($this->accountReceivableAccount !== null) {
+        if (null !== $this->accountReceivableAccount) {
             $data['account_receivable_account'] = $this->accountReceivableAccount;
         }
-        if ($this->clientFundsAccount !== null) {
+        if (null !== $this->clientFundsAccount) {
             $data['client_funds_account'] = $this->clientFundsAccount;
         }
-        if ($this->bankingAccount !== null) {
+        if (null !== $this->bankingAccount) {
             $data['banking_account'] = $this->bankingAccount;
         }
-        if ($this->interestFeeAccount !== null) {
+        if (null !== $this->interestFeeAccount) {
             $data['interest_fee_account'] = $this->interestFeeAccount;
         }
-        if ($this->roundingAccount !== null) {
+        if (null !== $this->roundingAccount) {
             $data['reminder_account'] = $this->roundingAccount;
         }
-        if ($this->reminderFeeAccount !== null) {
+        if (null !== $this->reminderFeeAccount) {
             $data['reminder_fee_account'] = $this->reminderFeeAccount;
         }
-        if ($this->roundingAccount !== null) {
+        if (null !== $this->roundingAccount) {
             $data['rounding_account'] = $this->roundingAccount;
         }
-        if ($this->factoringReceivableAccount !== null) {
+        if (null !== $this->factoringReceivableAccount) {
             $data['factoring_receivable_account'] = $this->factoringReceivableAccount;
         }
-        if ($this->nonAllocatedAccount !== null) {
+        if (null !== $this->nonAllocatedAccount) {
             $data['non_allocated_account'] = $this->nonAllocatedAccount;
         }
-        if ($this->incomePayoutAccount !== null) {
+        if (null !== $this->incomePayoutAccount) {
             $data['income_payout_account'] = $this->incomePayoutAccount;
         }
-        if ($this->writtenDownReceivablesAccount !== null) {
+        if (null !== $this->writtenDownReceivablesAccount) {
             $data['written_down_receivables_account'] = $this->writtenDownReceivablesAccount;
         }
-        if ($this->expectedLossAccount !== null) {
+        if (null !== $this->expectedLossAccount) {
             $data['expected_loss_account'] = $this->expectedLossAccount;
         }
-        if ($this->regionalSweden['rotavdrag_account'] !== null) {
+        if (null !== $this->regionalSweden['rotavdrag_account']) {
             $data['regional_sweden']['rotavdrag_account'] = $this->regionalSweden['rotavdrag_account'];
         }
 

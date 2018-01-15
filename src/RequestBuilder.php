@@ -24,6 +24,7 @@ final class RequestBuilder
      * @var RequestFactory
      */
     private $requestFactory;
+
     /**
      * @var MultipartStreamBuilder
      */

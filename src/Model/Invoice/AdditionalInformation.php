@@ -222,28 +222,28 @@ class AdditionalInformation implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->orderNo !== null) {
+        if (null !== $this->orderNo) {
             $data['order_no'] = $this->orderNo;
         }
-        if ($this->orderDate !== null) {
+        if (null !== $this->orderDate) {
             $data['order_date'] = $this->orderDate;
         }
-        if ($this->ourReference !== null) {
+        if (null !== $this->ourReference) {
             $data['our_reference'] = $this->ourReference;
         }
-        if ($this->yourReference !== null) {
+        if (null !== $this->yourReference) {
             $data['your_reference'] = $this->yourReference;
         }
-        if ($this->shippingDate !== null) {
+        if (null !== $this->shippingDate) {
             $data['shipping_date'] = $this->shippingDate;
         }
-        if ($this->deliveryDate !== null) {
+        if (null !== $this->deliveryDate) {
             $data['delivery_date'] = $this->deliveryDate;
         }
-        if ($this->referenceNumber !== null) {
+        if (null !== $this->referenceNumber) {
             $data['reference_number'] = $this->referenceNumber;
         }
-        if ($this->message !== null) {
+        if (null !== $this->message) {
             $data['message'] = $this->message;
         }
 

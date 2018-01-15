@@ -298,34 +298,34 @@ class Setting implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->name !== null) {
+        if (null !== $this->name) {
             $data['name'] = $this->name;
         }
-        if ($this->orgNo !== null) {
+        if (null !== $this->orgNo) {
             $data['org_no'] = $this->orgNo;
         }
-        if ($this->contact !== null) {
+        if (null !== $this->contact) {
             $data['contact'] = $this->contact->toArray();
         }
-        if ($this->businessAddress !== null) {
+        if (null !== $this->businessAddress) {
             $data['address'] = $this->businessAddress->toArray();
         }
-        if ($this->invoiceAddress !== null) {
+        if (null !== $this->invoiceAddress) {
             $data['invoice_address'] = $this->invoiceAddress->toArray();
         }
-        if ($this->visitingAddress !== null) {
+        if (null !== $this->visitingAddress) {
             $data['visiting_address'] = $this->visitingAddress->toArray();
         }
-        if ($this->payment !== null) {
+        if (null !== $this->payment) {
             $data['payment'] = $this->payment->toArray();
         }
-        if ($this->tax !== null) {
+        if (null !== $this->tax) {
             $data['tax'] = $this->tax->toArray();
         }
-        if ($this->bookkeeping !== null) {
+        if (null !== $this->bookkeeping) {
             $data['bookkeeping'] = $this->bookkeeping->toArray();
         }
-        if ($this->invoices !== null) {
+        if (null !== $this->invoices) {
             $data['invoices'] = $this->invoices->toArray();
         }
 

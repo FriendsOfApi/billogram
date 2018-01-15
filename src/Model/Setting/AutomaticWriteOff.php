@@ -66,7 +66,7 @@ class AutomaticWriteOff implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->setting !== null && $this->amount !== null) {
+        if (null !== $this->setting && null !== $this->amount) {
             $data['settings'] = $this->setting;
             $data['amount'] = $this->amount;
         }

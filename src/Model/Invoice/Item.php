@@ -68,10 +68,10 @@ class Item extends BaseItem implements CreatableFromArray
     public function toArray()
     {
         $data = parent::toArray();
-        if ($this->count !== null) {
+        if (null !== $this->count) {
             $data['count'] = $this->count;
         }
-        if ($this->discount !== null) {
+        if (null !== $this->discount) {
             $data['discount'] = $this->discount;
         }
 

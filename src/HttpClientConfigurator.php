@@ -28,6 +28,7 @@ final class HttpClientConfigurator
      * @var string
      */
     private $endpoint = 'https://billogram.com/api/v2';
+
     /**
      * @var string
      */
@@ -37,18 +38,22 @@ final class HttpClientConfigurator
      * @var string
      */
     private $authKey;
+
     /**
      * @var UriFactory
      */
     private $uriFactory;
+
     /**
      * @var HttpClient
      */
     private $httpClient;
+
     /**
      * @var Plugin[]
      */
     private $prependPlugins = [];
+
     /**
      * @var Plugin[]
      */
@@ -87,7 +92,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function setEndpoint(string $endpoint): HttpClientConfigurator
+    public function setEndpoint(string $endpoint): self
     {
         $this->endpoint = $endpoint;
 
@@ -100,7 +105,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function setAuth(string $username, string $authKey): HttpClientConfigurator
+    public function setAuth(string $username, string $authKey): self
     {
         $this->authUser = $username;
         $this->authKey = $authKey;
@@ -113,7 +118,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function appendPlugin(Plugin ...$plugin): HttpClientConfigurator
+    public function appendPlugin(Plugin ...$plugin): self
     {
         foreach ($plugin as $p) {
             $this->appendPlugins[] = $p;
@@ -127,7 +132,7 @@ final class HttpClientConfigurator
      *
      * @return HttpClientConfigurator
      */
-    public function prependPlugin(Plugin ...$plugin): HttpClientConfigurator
+    public function prependPlugin(Plugin ...$plugin): self
     {
         $plugin = array_reverse($plugin);
         foreach ($plugin as $p) {

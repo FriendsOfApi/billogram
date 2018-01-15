@@ -243,25 +243,25 @@ abstract class BaseItem implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->title !== null) {
+        if (null !== $this->title) {
             $data['title'] = $this->title;
         }
-        if ($this->itemNo !== null) {
+        if (null !== $this->itemNo) {
             $data['item_no'] = $this->itemNo;
         }
-        if ($this->description !== null) {
+        if (null !== $this->description) {
             $data['description'] = $this->description;
         }
-        if ($this->price !== null) {
+        if (null !== $this->price) {
             $data['price'] = $this->price;
         }
-        if ($this->vat !== null) {
+        if (null !== $this->vat) {
             $data['vat'] = $this->vat;
         }
-        if ($this->unit !== null) {
+        if (null !== $this->unit) {
             $data['unit'] = $this->unit;
         }
-        if ($this->bookkeeping !== null) {
+        if (null !== $this->bookkeeping) {
             $data['bookkeeping'] = $this->bookkeeping->toArray();
         }
 

@@ -277,7 +277,7 @@ class Customer implements CreatableFromArray
         $this->updatedAt = $updatedAt;
     }
 
-    public static function createFromArray(array $data): Customer
+    public static function createFromArray(array $data): self
     {
         $customer = new self();
         if (array_key_exists('data', $data)) {
@@ -310,28 +310,28 @@ class Customer implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->customerNo !== null) {
+        if (null !== $this->customerNo) {
             $data['customer_no'] = $this->customerNo;
         }
-        if ($this->name !== null) {
+        if (null !== $this->name) {
             $data['name'] = $this->name;
         }
-        if ($this->notes !== null) {
+        if (null !== $this->notes) {
             $data['notes'] = $this->notes;
         }
-        if ($this->orgNo !== null) {
+        if (null !== $this->orgNo) {
             $data['org_no'] = $this->orgNo;
         }
-        if ($this->vatNo !== null) {
+        if (null !== $this->vatNo) {
             $data['vat_no'] = $this->vatNo ?? null;
         }
-        if ($this->contact !== null) {
+        if (null !== $this->contact) {
             $data['contact'] = $this->contact->toArray();
         }
-        if ($this->address !== null) {
+        if (null !== $this->address) {
             $data['address'] = $this->address->toArray();
         }
-        if ($this->deliveryAddress !== null) {
+        if (null !== $this->deliveryAddress) {
             $data['delivery_address'] = $this->deliveryAddress->toArray();
         }
 

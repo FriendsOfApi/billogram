@@ -768,88 +768,88 @@ class EventData implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->invoiceNo !== null) {
+        if (null !== $this->invoiceNo) {
             $data['invoice_no'] = $this->invoiceNo;
         }
-        if ($this->deliveryMethod !== null) {
+        if (null !== $this->deliveryMethod) {
             $data['delivery_method'] = $this->deliveryMethod;
         }
-        if ($this->letterId !== null) {
+        if (null !== $this->letterId) {
             $data['letter_id'] = $this->letterId;
         }
-        if ($this->amount !== null) {
+        if (null !== $this->amount) {
             $data['amount'] = $this->amount;
         }
-        if ($this->paymentFlags !== null) {
+        if (null !== $this->paymentFlags) {
             $data['payment_flags'] = $this->paymentFlags;
         }
-        if ($this->bankingAmount !== null) {
+        if (null !== $this->bankingAmount) {
             $data['banking_amount'] = $this->bankingAmount;
         }
-        if ($this->manual !== null) {
+        if (null !== $this->manual) {
             $data['manual'] = $this->manual;
         }
-        if ($this->reminderFee !== null) {
+        if (null !== $this->reminderFee) {
             $data['reminder_fee'] = $this->reminderFee;
         }
-        if ($this->reminderCount !== null) {
+        if (null !== $this->reminderCount) {
             $data['reminder_count'] = $this->reminderCount;
         }
-        if ($this->interestRate !== null) {
+        if (null !== $this->interestRate) {
             $data['interest_rate'] = $this->interestRate;
         }
-        if ($this->customerPhone !== null) {
+        if (null !== $this->customerPhone) {
             $data['customer_phone'] = $this->customerPhone;
         }
-        if ($this->customerEmail !== null) {
+        if (null !== $this->customerEmail) {
             $data['customer_email'] = $this->customerEmail;
         }
-        if ($this->ip !== null) {
+        if (null !== $this->ip) {
             $data['ip'] = $this->ip;
         }
-        if ($this->type !== null) {
+        if (null !== $this->type) {
             $data['type'] = $this->type;
         }
-        if ($this->message !== null) {
+        if (null !== $this->message) {
             $data['message'] = $this->message;
         }
-        if ($this->fullStatus !== null) {
+        if (null !== $this->fullStatus) {
             $data['full_status'] = $this->fullStatus;
         }
-        if ($this->collectorMethod !== null) {
+        if (null !== $this->collectorMethod) {
             $data['collector_method'] = $this->collectorMethod;
         }
-        if ($this->collectorReference !== null) {
+        if (null !== $this->collectorReference) {
             $data['collector_reference'] = $this->collectorReference;
         }
-        if ($this->factoringMethod !== null) {
+        if (null !== $this->factoringMethod) {
             $data['factoring_method'] = $this->factoringMethod;
         }
-        if ($this->factoringReference !== null) {
+        if (null !== $this->factoringReference) {
             $data['factoring_reference'] = $this->factoringReference;
         }
-        if ($this->sellsFor !== null) {
+        if (null !== $this->sellsFor) {
             $data['sells_for'] = $this->sellsFor;
         }
-        if ($this->soldFor !== null) {
+        if (null !== $this->soldFor) {
             $data['sold_for'] = $this->soldFor;
         }
-        if ($this->bankgiro !== null) {
+        if (null !== $this->bankgiro) {
             $data['bankgiro'] = $this->bankgiro;
         }
-        if ($this->recipientIdentifier !== null) {
+        if (null !== $this->recipientIdentifier) {
             $data['recipient_identifier'] = $this->recipientIdentifier;
         }
-        if ($this->errorStatus !== null) {
+        if (null !== $this->errorStatus) {
             $data['error_status'] = $this->errorStatus;
         }
-        if ($this->totalSum !== null) {
+        if (null !== $this->totalSum) {
             $data['total_sum'] = $this->totalSum;
         }
-        if ($this->remainingSum !== null) {
+        if (null !== $this->remainingSum) {
             $data['remaining_sum'] = $this->remainingSum;
         }
-        if ($this->scanningCentral !== null) {
+        if (null !== $this->scanningCentral) {
             $data['scanning_central'] = $this->scanningCentral;
         }
 

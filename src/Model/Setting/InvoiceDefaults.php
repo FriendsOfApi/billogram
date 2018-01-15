@@ -219,25 +219,25 @@ class InvoiceDefaults implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->defaultMessage !== null) {
+        if (null !== $this->defaultMessage) {
             $data['default_message'] = $this->defaultMessage;
         }
-        if ($this->defaultInterestRate !== null) {
+        if (null !== $this->defaultInterestRate) {
             $data['default_interest_rate'] = $this->defaultInterestRate;
         }
-        if ($this->defaultReminderFee !== null) {
+        if (null !== $this->defaultReminderFee) {
             $data['default_reminder_fee'] = $this->defaultReminderFee;
         }
-        if ($this->defaultInvoiceFee !== null) {
+        if (null !== $this->defaultInvoiceFee) {
             $data['default_invoice_fee'] = $this->defaultInvoiceFee;
         }
-        if ($this->automaticReminders !== null) {
+        if (null !== $this->automaticReminders) {
             $data['automatic_reminders'] = $this->automaticReminders->toArray();
         }
-        if ($this->automaticWriteoff !== null) {
+        if (null !== $this->automaticWriteoff) {
             $data['automatic_reminders'] = $this->automaticWriteoff->toArray();
         }
-        if ($this->reminderCollection !== null) {
+        if (null !== $this->reminderCollection) {
             $data['automatic_reminders'] = $this->reminderCollection->toArray();
         }
 

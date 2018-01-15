@@ -118,17 +118,17 @@ class Contact implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->name !== null) {
+        if (null !== $this->name) {
             $data['name'] = $this->name;
         }
-        if ($this->email !== null) {
+        if (null !== $this->email) {
             $data['email'] = $this->email;
         }
-        if ($this->phone !== null) {
+        if (null !== $this->phone) {
             $data['phone'] = $this->phone;
         }
 
-        if ($this->www !== null) {
+        if (null !== $this->www) {
             $data['www'] = $this->www;
         }
 

@@ -24,10 +24,10 @@ class AutomaticReminder implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->delayDays !== null) {
+        if (null !== $this->delayDays) {
             $data['delay_days'] = $this->delayDays;
         }
-        if ($this->message !== null) {
+        if (null !== $this->message) {
             $data['message'] = $this->message;
         }
 

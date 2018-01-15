@@ -168,22 +168,22 @@ class CustomerDeliveryAddress implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->name !== null) {
+        if (null !== $this->name) {
             $data['name'] = $this->name;
         }
-        if ($this->streetAddress !== null) {
+        if (null !== $this->streetAddress) {
             $data['street_address'] = $this->streetAddress;
         }
-        if ($this->careOf !== null) {
+        if (null !== $this->careOf) {
             $data['careof'] = $this->careOf;
         }
-        if ($this->zipCode !== null) {
+        if (null !== $this->zipCode) {
             $data['zipcode'] = $this->zipCode;
         }
-        if ($this->city !== null) {
+        if (null !== $this->city) {
             $data['city'] = $this->city;
         }
-        if ($this->country !== null) {
+        if (null !== $this->country) {
             $data['country'] = $this->country;
         }
 

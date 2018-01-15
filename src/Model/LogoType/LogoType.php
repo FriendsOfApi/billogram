@@ -72,7 +72,7 @@ class LogoType implements CreatableFromArray
      */
     public static function createFromArray(array $data)
     {
-        if ($data['status'] === 'INVALID_PARAMETER' && array_key_exists('message', $data['data'])) {
+        if ('INVALID_PARAMETER' === $data['status'] && array_key_exists('message', $data['data'])) {
             throw new ValidationException($data['data']['message']);
         }
 
@@ -89,10 +89,10 @@ class LogoType implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->content !== null) {
+        if (null !== $this->content) {
             $data['content'] = $this->content;
         }
-        if ($this->fileType !== null) {
+        if (null !== $this->fileType) {
             $data['file_type'] = $this->fileType;
         }
 

@@ -56,6 +56,7 @@ class Invoice implements CreatableFromArray
      * @var int
      */
     private $invoiceFee;
+
     /**
      * @var int
      */
@@ -885,7 +886,7 @@ class Invoice implements CreatableFromArray
     public function toArray()
     {
         $data = [];
-        if ($this->customer !== null) {
+        if (null !== $this->customer) {
             $data['customer'] = $this->customer->toArray();
         }
 
