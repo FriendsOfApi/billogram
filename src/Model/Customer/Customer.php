@@ -294,15 +294,15 @@ class Customer implements CreatableFromArray
             $customer->deliveryAddress = CustomerDeliveryAddress::createFromArray($data['delivery_address']);
         }
 
-        $customer->customerNo = $customerArray['customer_no'] ?? null;
-        $customer->name = $customerArray['name'] ?? null;
-        $customer->notes = $customerArray['notes'] ?? null;
-        $customer->orgNo = $customerArray['org_no'] ?? null;
-        $customer->vatNo = $customerArray['vat_no'] ?? null;
+        $customer->customerNo = $data['customer_no'] ?? null;
+        $customer->name = $data['name'] ?? null;
+        $customer->notes = $data['notes'] ?? null;
+        $customer->orgNo = $data['org_no'] ?? null;
+        $customer->vatNo = $data['vat_no'] ?? null;
 
         $customer->createdAt = isset($data['created_at']) ? new \DateTime($data['created_at']) : null;
-        $customer->updatedAt = $customerArray['updated_at'] ?? null;
-        $customer->companyType = $customerArray['company_type'] ?? null;
+        $customer->updatedAt = $data['updated_at'] ?? null;
+        $customer->companyType = $data['company_type'] ?? null;
 
         return $customer;
     }
