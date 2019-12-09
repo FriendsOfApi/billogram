@@ -537,7 +537,7 @@ class RegionalInformation implements CreatableFromArray
         $regionalInfo->efakturaRecipientBankCode = $data['efaktura_recipient_bank_code'] ?? null;
         $regionalInfo->rotavdragPersonalNumber = $data['efaktura_recipient_id_number'] ?? null;
         $regionalInfo->efakturaRequestedAmount = $data['efaktura_requested_amount'] ?? null;
-        $regionalInfo->collectionForElectricityInvoices = CollectionForElectricityInvoices::createFromArray($data['electricity_collection']);
+        $regionalInfo->collectionForElectricityInvoices = CollectionForElectricityInvoices::createFromArray($data['electricity_collection'] ?? []);
 
         return $regionalInfo;
     }
